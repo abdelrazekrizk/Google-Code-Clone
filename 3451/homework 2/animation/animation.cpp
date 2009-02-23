@@ -3,13 +3,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <glut.h>
+
 #include <time.h>
 
 // Window width and height
 int width = 1280;
 int height = 1024;
 
-float rot = 0;
+float rotX = 0;
+float rotY = 0;
+float rotZ = 0;
 
 // Draws a planecar in the [-11, 11][-15,15][-4,4] space
 void drawplanecar(void)
@@ -140,17 +143,32 @@ void drawplanecar(void)
 	glPopMatrix();
 }
 
-
+void drawRoad(void){
+	glPushMatrix();
+	glBegin(GL_QUADS);
+	glColor3f(.5, .5, .5);
+	glVertex3f(-300, -300, 0);
+	glVertex3f(300, -300, 0);
+	glVertex3f(300, 300, 0);
+	glVertex3f(-300, 300, 0);
+	glEnd();
+	glPopMatrix();
+}
 
 void display(void)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glPushMatrix();
+	glTranslatef(0, 0, -27);
 	//glPolygonMode(GL_FRONT, GL_FILL);
+	drawRoad();
+	glTranslatef(0, 0, 4);
 	glPushMatrix();
-	glTranslatef(0, 0, -25);
-	glRotatef(rot, 1, 1, 0);
+	glRotatef(rotX, 1, 0, 0);
+	glRotatef(rotY, 0, 1, 0);
+	glRotatef(rotZ, 0, 0, 1);
 	drawplanecar();
+	glutSolidCube(3);
 	glPopMatrix();
 	glPopMatrix();
 
@@ -195,14 +213,39 @@ void keyboard(unsigned char key, int x, int y) {
 	case 27: // escape key
 		exit(0);
 		break;
+	case 0x3d:
 	case 0x2b: // plus key
-		rot += 1;
+//		rot += 1;
 		break;
+	case 0x5f:
 	case 0x2d: // minus key
-		rot -= 1;
+//		rot -= 1;
 		break;
 	}
 
+}
+
+void specialKeyboard(int key, int x, int y){
+	switch(key){
+		case GLUT_KEY_UP:
+			rotX += 2;
+			break;
+		case GLUT_KEY_DOWN:
+			rotX -= 2;
+			break;
+		case GLUT_KEY_RIGHT:
+			rotY -= 2;
+			break;
+		case GLUT_KEY_LEFT:
+			rotY += 2;
+			break;
+		case GLUT_KEY_PAGE_DOWN:
+			rotZ += 2;
+			break;
+		case GLUT_KEY_PAGE_UP:
+			rotZ -= 2;
+			break;
+	}
 }
 
 
@@ -221,7 +264,7 @@ int main(int argc, char** argv) {
 
 	glutDisplayFunc(display); 
 	glutKeyboardFunc(keyboard);
-
+	glutSpecialFunc(specialKeyboard);
 	glutMainLoop(); 
 
 	return 0;   /* ANSI C requires main to return int. */
