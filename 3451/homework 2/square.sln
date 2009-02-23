@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "square", "square\square.vcproj", "{6748B33C-7B9F-4AA2-A36F-7138A6F51336}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "animation", "animation\animation.vcproj", "{9819EE5B-F164-4A32-A6F5-B5B0593612A3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testbed", "testbed\testbed.vcproj", "{02422C2A-8F15-4E4E-9101-7BC63159961B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6748B33C-7B9F-4AA2-A36F-7138A6F51336}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6748B33C-7B9F-4AA2-A36F-7138A6F51336}.Debug|Win32.Build.0 = Debug|Win32
+		{6748B33C-7B9F-4AA2-A36F-7138A6F51336}.Release|Win32.ActiveCfg = Release|Win32
+		{6748B33C-7B9F-4AA2-A36F-7138A6F51336}.Release|Win32.Build.0 = Release|Win32
+		{9819EE5B-F164-4A32-A6F5-B5B0593612A3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9819EE5B-F164-4A32-A6F5-B5B0593612A3}.Debug|Win32.Build.0 = Debug|Win32
+		{9819EE5B-F164-4A32-A6F5-B5B0593612A3}.Release|Win32.ActiveCfg = Release|Win32
+		{9819EE5B-F164-4A32-A6F5-B5B0593612A3}.Release|Win32.Build.0 = Release|Win32
+		{02422C2A-8F15-4E4E-9101-7BC63159961B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{02422C2A-8F15-4E4E-9101-7BC63159961B}.Debug|Win32.Build.0 = Debug|Win32
+		{02422C2A-8F15-4E4E-9101-7BC63159961B}.Release|Win32.ActiveCfg = Release|Win32
+		{02422C2A-8F15-4E4E-9101-7BC63159961B}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
