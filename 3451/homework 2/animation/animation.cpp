@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <glut.h>
-
 #include <time.h>
 
 // Window width and height
@@ -14,11 +13,117 @@ float rotX = 0;
 float rotY = 0;
 float rotZ = 0;
 
-// Draws a planecar in the [-11, 11][-15,15][-4,4] space
-void drawplanecar(void)
+// various constants - probably should use #define for these instead, oh well
+const float worldWidth = 10000.0f;
+const float roadWidth = 100.0f;
+const float roadStripeRatio = 8.0f;
+const float roadStripeWidth = 2.0f;
+const float roadStripeLength = roadStripeWidth * roadStripeRatio;
+const float roadStripeSpacing = 20.0f;
+const float roadSolidStripeMargin = 4.0f;
+const float streetLightSpacing = 200.0f;
+const float streetLightMargin = 5.0f; // distance from road
+const float streetLightHeight = 40.0f;
+const float streetLightThickness = 1.0f;
+const float streetLightLuminance = 1.0f; //fixme
+const float streetLightTheta = 15.0f;
+const float streetLightBranchLength = 5.0f;
+const float streetLightLampHeight = 5.0f;
+const float streetLightLampBottomRadius = 5.0f;
+const float streetLightLampTopRadius = 2.0f;
+
+// animation variables
+int frame = 0;
+float carPos[] = {-1 * worldWidth / 2 + 500, -1 * roadWidth / 4, 0};
+
+void drawTriangle(float* v1, float* v2, float* v3){
+	float normal[3];
+	// to find the normal to this triangle need to calculate a cross b, where
+	// a = v1 - v2
+	float a[3];
+	a[0] = v1[0] - v2[0];
+	a[1] = v1[1] - v2[1];
+	a[2] = v1[2] - v2[2]; 
+	// b = v2 - v3
+	float b[3];
+	b[0] = v2[0] - v3[0];
+	b[1] = v2[1] - v3[1];
+	b[2] = v2[2] - v3[2];
+	// cross product: axb = <ay*bz - az*by, az*bx - ax*bz, ax*by - ay*bx>
+	normal[0] = a[1] * b[2] - a[2] * b[1];
+	normal[1] = a[2] * b[0] - a[0] * b[2];
+	normal[2] = a[0] * b[1] - a[1] * b[0];
+	// normalize to a unit vector
+	float length = sqrtf(normal[0] * normal[0] + normal[1] * normal[1] + normal[2] * normal[2]);
+	if(length == 0) length = 1; // avoid div/0 errors
+	for(int i = 0; i < 3; i++){
+		normal[i] /= length;
+	}
+	glNormal3fv(normal);
+	glVertex3fv(v1);
+	glVertex3fv(v2);
+	glVertex3fv(v3);
+}
+void drawConalCylinder(float x, float y, float z, float bottomRadius, float topRadius, float height){
+	glPushMatrix();
+	glTranslatef(x, y, z);
+	gluCylinder(gluNewQuadric(), bottomRadius, topRadius, height, 25, 1);
+	gluDisk(gluNewQuadric(), 0, bottomRadius, 25, 1);
+	glTranslatef(0, 0, height);
+	gluDisk(gluNewQuadric(), 0, topRadius, 25, 1);
+	glPopMatrix();
+}
+void drawCylinder(float x, float y, float z, float radius, float height){
+	drawConalCylinder(x, y, z, radius, radius, height);
+}
+void drawCube(float x, float y, float z, float width, float height, float depth){
+	glPushMatrix();
+	glTranslatef(x, y, z);
+	glScalef(width, height, depth);
+	/*
+	glNormal3f(0, 0, 1);
+	int slices = 10;
+	float d = 1.0f / slices;
+	for(int i = 0; i < slices; i++){
+		glBegin(GL_TRIANGLE_STRIP);
+		for(int j = 0; j < slices; j++){
+			glVertex3f(d * i, d * (j + 1), 1);
+			glVertex3f(d * i, d * j, 1);
+		}
+		glEnd();
+	}*/
+	glutSolidCube(1);
+	glPopMatrix();
+}
+
+void placeLight(void){
+	// todo
+}
+// rot: rotation around the z-axis
+void drawStreetLight(float x, float y, float z, float rot){
+	glPushMatrix();
+	glTranslatef(x, y, z);
+	glRotatef(rot, 0, 0, 1);
+	//glColor3b(77, 40, 0);
+	drawCylinder(0, 0, 0, streetLightThickness, streetLightHeight);
+	glTranslatef(0, 0, streetLightHeight - streetLightThickness);
+	glRotatef(90.0f - streetLightTheta, 0, 1, 0);
+	for(int i = 0; i < 3; i++){
+		drawCylinder(0, 0, 0, streetLightThickness, streetLightBranchLength);
+		glTranslatef(0, 0, streetLightBranchLength);
+		glRotatef(streetLightTheta, 0, 1, 0);
+		//drawCylinder(0, 0, 0, streetLightThickness, streetLightBranchLength);
+	}
+	glRotatef(-1 * (streetLightTheta * 2 + 90), 0, 1, 0);
+	drawConalCylinder(0, 0, -.25 * streetLightLampHeight, streetLightLampBottomRadius, streetLightLampTopRadius, streetLightLampTopRadius);
+	placeLight();
+	glPopMatrix();
+}
+// Draws a planecar in the [-11, 11][-15,15][0,8] space
+void drawPlaneCar(void)
 {
 	glPushMatrix();
-	glTranslatef(-11, -15, -4);
+	glTranslatef(-11, -15, 0);
 	float vectors[][3] = {
 		{6, 0, 1},		// v0 
 		{2, 0, 1},		// v1
@@ -67,17 +172,12 @@ void drawplanecar(void)
 		{0, 11, 1},		// v44
 		{0, 19, 1}		// v45
 	};
-	int quads[][4] = {
+	int bodyQuads[][4] = {
 		{1, 0, 5, 4},
 		{4, 5, 8, 12},
 		{12, 13, 19, 20},
 		{20, 11, 22, 21},
 		{21, 22, 2, 17},
-		{19, 13, 14, 18},
-		{19, 18, 16, 11},
-		{18, 14, 15, 16},
-		{15, 8, 11, 16},
-		{15, 14, 13, 8},
 		{8, 9, 10, 11},
 		{25, 3, 4, 21},
 		{21, 4, 12, 20},
@@ -104,20 +204,13 @@ void drawplanecar(void)
 		{12, 13, 30, 29}, // left
 		{30, 31, 28, 29} // top
 	};
-
-	srand((unsigned)time(NULL));
-
-	glBegin(GL_QUADS);
-	glColor3f(.25, .25, 1);
-	int quadCount = sizeof(quads) / sizeof(quads[0]);
-	for(int i = 0; i < quadCount; i++){
-		glColor3f((float)rand()/RAND_MAX, (float)rand()/RAND_MAX, (float)rand()/RAND_MAX);
-		for(int j = 0; j < 4; j++){
-			glVertex3fv(vectors[quads[i][j]]);
-		}
-	}
-	glEnd();
-
+	int windowQuads[][4] = {
+		{19, 13, 14, 18},
+		{19, 18, 16, 11},
+		{18, 14, 15, 16},
+		{15, 8, 11, 16},
+		{15, 14, 13, 8}
+	};
 	int triangles[][3] = {
 		{1, 4, 3},
 		{0, 6, 5},
@@ -130,50 +223,97 @@ void drawplanecar(void)
 		{23, 2, 22},
 		{25, 21, 17}
 	};
+
 	glBegin(GL_TRIANGLES);
+	float carColor[] = {.3, .1, .1, 0};
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, carColor);
+	int bodyQuadCount = sizeof(bodyQuads) / sizeof(bodyQuads[0]);
+	for(int i = 0; i < bodyQuadCount; i++){
+		drawTriangle(vectors[bodyQuads[i][0]], vectors[bodyQuads[i][1]], vectors[bodyQuads[i][3]]);
+		drawTriangle(vectors[bodyQuads[i][3]], vectors[bodyQuads[i][1]], vectors[bodyQuads[i][2]]);
+	}
+	float windowColor[] = {.3, .3, .3, 0};
+	float windowReflection[] = {1, 1, 1, 1};
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, windowColor);
+	glMaterialfv(GL_FRONT, GL_SPECULAR, windowReflection);
+	int windowQuadCount = sizeof(windowQuads) / sizeof(windowQuads[0]);
+	for(int i = 0; i < windowQuadCount; i++){
+		drawTriangle(vectors[windowQuads[i][0]], vectors[windowQuads[i][1]], vectors[windowQuads[i][3]]);
+		drawTriangle(vectors[windowQuads[i][3]], vectors[windowQuads[i][1]], vectors[windowQuads[i][2]]);
+	}
+	float resetSpecular[] = {0, 0, 0, 0};
+	glMaterialfv(GL_FRONT, GL_SPECULAR, resetSpecular);
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, carColor);
 	int triangleCount = sizeof(triangles) / sizeof(triangles[0]);
 	for(int i = 0; i < triangleCount; i++){
-		glColor3f((float)rand()/RAND_MAX, (float)rand()/RAND_MAX, (float)rand()/RAND_MAX);
-		for(int j = 0; j < 3; j++){
-			glVertex3fv(vectors[triangles[i][j]]);
-		}
+		drawTriangle(vectors[triangles[i][0]], vectors[triangles[i][1]], vectors[triangles[i][2]]);
 	}
 	glEnd();
-	
+
 	glPopMatrix();
 }
 
-void drawRoad(void){
-	glPushMatrix();
-	glBegin(GL_QUADS);
-	glColor3f(.5, .5, .5);
-	glVertex3f(-300, -300, 0);
-	glVertex3f(300, -300, 0);
-	glVertex3f(300, 300, 0);
-	glVertex3f(-300, 300, 0);
-	glEnd();
-	glPopMatrix();
+void drawGroundAndRoad(void){
+	// road lights
+	float streetLightColor[] = {100.0f/256.0f, 100.0f/256.0f, 100.0f/256.0f, 1};
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, streetLightColor);
+	for(int y = -1; y <= 1; y += 2){
+		float rotation = (y<0?90:-90);
+		for(int x = (y < 0?-1*worldWidth/2+streetLightSpacing/2:-1 * worldWidth / 2); x < worldWidth / 2; x += streetLightSpacing){
+			drawStreetLight(x, y * (roadWidth / 2 + streetLightMargin), 0, rotation);
+		}
+	}
+
+	// grass
+	glColor3b(26, 51, 0);
+	float grassColor[] = {26.0f/256.0f, 51.0f/256.0f, 0.0f/256.0f, 1};
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, grassColor);
+	drawCube(0, 0, -1.0f, worldWidth, worldWidth, 1);
+
+	// road
+	float mcolor[] = {41.0f/256.0f, 41.0f/256.0f, 41.0f/256.0f, 1};
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mcolor);
+	//glColor3b(41, 41, 41);
+	drawCube(0, 0, -0.5f, worldWidth, roadWidth, 1);
+	// road solid stripe
+	//glColor3f(1, 1, 1);
+	float stripecolor[] = {1, 1, 1, 1};
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, stripecolor);
+	drawCube(0, roadWidth/2 - roadSolidStripeMargin, 0, worldWidth, roadStripeWidth, 1);
+	drawCube(0, -1 * (roadWidth/2 - roadSolidStripeMargin), 0, worldWidth, roadStripeWidth, 1);
+	// road middle stripe
+	for(int x = -1 * worldWidth / 2; x < worldWidth / 2; x += roadStripeSpacing + roadStripeLength){
+		drawCube(x, 0, 0, roadStripeLength, roadStripeWidth, 1);
+	}
 }
 
 void display(void)
 {
+	frame++;
+	//fprintf(stderr, "Frame: %x\n", frame);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glPushMatrix();
-	glTranslatef(0, 0, -27);
-	//glPolygonMode(GL_FRONT, GL_FILL);
-	drawRoad();
-	glTranslatef(0, 0, 4);
-	glPushMatrix();
-	glRotatef(rotX, 1, 0, 0);
-	glRotatef(rotY, 0, 1, 0);
-	glRotatef(rotZ, 0, 0, 1);
-	drawplanecar();
-	glutSolidCube(3);
-	glPopMatrix();
-	glPopMatrix();
+	glLoadIdentity();
 
+	float mcolor[] = {.5, .5, .5, 1};
+	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mcolor);
+
+	// Camera
+	gluLookAt(carPos[0] + rotX, carPos[1] + rotY, rotZ + 100, carPos[0], carPos[1], 0, 0, 1, 0);
+
+	drawGroundAndRoad();
+
+	glPushMatrix();
+	glTranslatef(carPos[0], carPos[1], carPos[2]);
+	drawPlaneCar();
+	glPopMatrix();	
+
+	// double buffering
 	glutSwapBuffers();
-	//rot += 2;
+
+	carPos[0] += 5;
+	carPos[2] = 0.25 * sin((float)frame);
+
+	// queues a redisplay
 	glutPostRedisplay();
 }
 
@@ -184,20 +324,44 @@ Initialize the OpenGL graphics context.
 
 void init(void) {
 
-  /* select clearing color */ 
+	/* select clearing color */ 
 
-  glClearColor (0.0, 0.0, 0.0, 0.0);
-  glShadeModel (GL_SMOOTH);
+	glClearColor (0.0, 0.0, 0.0, 0.0);
+	glShadeModel (GL_SMOOTH);
+    glDepthFunc(GL_LESS);
 
-  /* initialize viewing values */
+	/* initialize viewing values */
 
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  gluPerspective(90.0f, (GLfloat)width/(GLfloat)height, 1.0f, 100.0f);
-  glMatrixMode(GL_MODELVIEW);
-  glEnable(GL_DEPTH_TEST);
-  glLoadIdentity();
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	gluPerspective(90.0f, (GLfloat)width/(GLfloat)height, 1.0f, 6000.0f);
+	glMatrixMode(GL_MODELVIEW);
+	glEnable(GL_DEPTH_TEST);
+	glEnable(GL_NORMALIZE);
 
+	glShadeModel(GL_SMOOTH);
+	glLoadIdentity();
+
+	glEnable(GL_LIGHTING);
+	GLfloat global_ambient[] = {.2f, .2f, .2f, 1.0f};
+	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
+
+	// Create light components
+	GLfloat ambientLight[] = { .3, .3, .3, 1.0f };
+	GLfloat diffuseLight[] = { .3, .3, .3, 1.0f };
+	GLfloat specularLight[] = { .3, .3, .3, 1.0f };
+	GLfloat position[] = { carPos[0]+3000, 0, 50, 1.0f };
+	GLfloat direction[] = { 0, 0, -1 };
+
+	glEnable(GL_LIGHT0);
+	// Assign created components to GL_LIGHT0
+	glLightfv(GL_LIGHT0, GL_AMBIENT, ambientLight);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, diffuseLight);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
+	glLightfv(GL_LIGHT0, GL_POSITION, position);
+	glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direction);
+
+	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
 

@@ -1,8 +1,7 @@
-
 /* Copyright (c) Mark J. Kilgard, 1994. */
 
 /**
- * (c) Copyright 1993, Silicon Graphics, Inc.
+ * (c) Copyright 1993, 1994, Silicon Graphics, Inc.
  * ALL RIGHTS RESERVED 
  * Permission to use, copy, modify, and distribute this software for 
  * any purpose and without fee is hereby granted, provided that the above
@@ -37,385 +36,315 @@
  *
  * OpenGL(TM) is a trademark of Silicon Graphics, Inc.
  */
+
 #include "stdafx.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
 #include <string.h>
-#include <time.h>
+#include <math.h>
 #include <GL/glut.h>
 
-#define MAXOBJS 10000
-#define MAXSELECT 100
-#define MAXFEED 300
-#define	SOLID 1
-#define	LINE 2
-#define	POINT 3
+/* Some <math.h> files do not define M_PI... */
+#ifndef M_PI
+#define M_PI 3.14159265
+#endif
 
-GLint windW = 300, windH = 300;
+#define TWO_PI	(2*M_PI)
 
-GLuint selectBuf[MAXSELECT];
-GLfloat feedBuf[MAXFEED];
-GLint vp[4];
-float zRotation = 90.0;
-float zoom = 1.0;
-GLint objectCount;
-GLint numObjects;
-struct object {
-  float v1[2];
-  float v2[2];
-  float v3[2];
-  float color[3];
-} objects[MAXOBJS];
-GLenum linePoly = GL_FALSE;
+typedef struct lightRec {
+  float amb[4];
+  float diff[4];
+  float spec[4];
+  float pos[4];
+  float spotDir[3];
+  float spotExp;
+  float spotCutoff;
+  float atten[3];
+
+  float trans[3];
+  float rot[3];
+  float swing[3];
+  float arc[3];
+  float arcIncr[3];
+} Light;
+
+static int useSAME_AMB_SPEC = 1;
+/* *INDENT-OFF* */
+static float modelAmb[4] = {0.2, 0.2, 0.2, 1.0};
+
+static float matAmb[4] = {0.2, 0.2, 0.2, 1.0};
+static float matDiff[4] = {0.8, 0.8, 0.8, 1.0};
+static float matSpec[4] = {0.4, 0.4, 0.4, 1.0};
+static float matEmission[4] = {0.0, 0.0, 0.0, 1.0};
+/* *INDENT-ON* */
+
+#define NUM_LIGHTS 3
+static Light spots[] =
+{
+  {
+    {0.2, 0.0, 0.0, 1.0},  /* ambient */
+    {0.8, 0.0, 0.0, 1.0},  /* diffuse */
+    {0.4, 0.0, 0.0, 1.0},  /* specular */
+    {0.0, 0.0, 0.0, 1.0},  /* position */
+    {0.0, -1.0, 0.0},   /* direction */
+    {20.0},
+    {60.0},             /* exponent, cutoff */
+    {1.0, 0.0, 0.0},    /* attenuation */
+    {0.0, 1.25, 0.0},   /* translation */
+    {0.0, 0.0, 0.0},    /* rotation */
+    {20.0, 0.0, 40.0},  /* swing */
+    {0.0, 0.0, 0.0},    /* arc */
+    {TWO_PI / 70.0, 0.0, TWO_PI / 140.0}  /* arc increment */
+  },
+  {
+    {0.0, 0.2, 0.0, 1.0},  /* ambient */
+    {0.0, 0.8, 0.0, 1.0},  /* diffuse */
+    {0.0, 0.4, 0.0, 1.0},  /* specular */
+    {0.0, 0.0, 0.0, 1.0},  /* position */
+    {0.0, -1.0, 0.0},   /* direction */
+    {20.0},
+    {60.0},             /* exponent, cutoff */
+    {1.0, 0.0, 0.0},    /* attenuation */
+    {0.0, 1.25, 0.0},   /* translation */
+    {0.0, 0.0, 0.0},    /* rotation */
+    {20.0, 0.0, 40.0},  /* swing */
+    {0.0, 0.0, 0.0},    /* arc */
+    {TWO_PI / 120.0, 0.0, TWO_PI / 60.0}  /* arc increment */
+  },
+  {
+    {0.0, 0.0, 0.2, 1.0},  /* ambient */
+    {0.0, 0.0, 0.8, 1.0},  /* diffuse */
+    {0.0, 0.0, 0.4, 1.0},  /* specular */
+    {0.0, 0.0, 0.0, 1.0},  /* position */
+    {0.0, -1.0, 0.0},   /* direction */
+    {20.0},
+    {60.0},             /* exponent, cutoff */
+    {1.0, 0.0, 0.0},    /* attenuation */
+    {0.0, 1.25, 0.0},   /* translation */
+    {0.0, 0.0, 0.0},    /* rotation */
+    {20.0, 0.0, 40.0},  /* swing */
+    {0.0, 0.0, 0.0},    /* arc */
+    {TWO_PI / 50.0, 0.0, TWO_PI / 100.0}  /* arc increment */
+  }
+};
 
 static void
-InitObjects(GLint num)
+usage(char *name)
 {
-  GLint i;
-  float x, y;
+  printf("\n");
+  printf("usage: %s [options]\n", name);
+  printf("\n");
+  printf("  Options:\n");
+  printf("    -geometry Specify size and position WxH+X+Y\n");
+  printf("    -lm       Toggle lighting(SPECULAR and AMBIENT are/not same\n");
+  printf("\n");
+#ifndef EXIT_FAILURE /* should be defined by ANSI C <stdlib.h> */
+#define EXIT_FAILURE 1
+#endif
+  exit(EXIT_FAILURE);
+}
 
-  if (num > MAXOBJS) {
-    num = MAXOBJS;
-  }
-  if (num < 1) {
-    num = 1;
-  }
-  objectCount = num;
+static void
+initLights(void)
+{
+  int k;
 
-  srand((unsigned int) time(NULL));
-  for (i = 0; i < num; i++) {
-    x = (rand() % 300) - 150;
-    y = (rand() % 300) - 150;
+  for (k = 0; k < NUM_LIGHTS; ++k) {
+    int lt = GL_LIGHT0 + k;
+    Light *light = &spots[k];
 
-    objects[i].v1[0] = x + (rand() % 50) - 25;
-    objects[i].v2[0] = x + (rand() % 50) - 25;
-    objects[i].v3[0] = x + (rand() % 50) - 25;
-    objects[i].v1[1] = y + (rand() % 50) - 25;
-    objects[i].v2[1] = y + (rand() % 50) - 25;
-    objects[i].v3[1] = y + (rand() % 50) - 25;
-    objects[i].color[0] = ((rand() % 100) + 50) / 150.0;
-    objects[i].color[1] = ((rand() % 100) + 50) / 150.0;
-    objects[i].color[2] = ((rand() % 100) + 50) / 150.0;
+    glEnable(lt);
+    glLightfv(lt, GL_AMBIENT, light->amb);
+    glLightfv(lt, GL_DIFFUSE, light->diff);
+
+    if (useSAME_AMB_SPEC)
+      glLightfv(lt, GL_SPECULAR, light->amb);
+    else
+      glLightfv(lt, GL_SPECULAR, light->spec);
+
+    glLightf(lt, GL_SPOT_EXPONENT, light->spotExp);
+    glLightf(lt, GL_SPOT_CUTOFF, light->spotCutoff);
+    glLightf(lt, GL_CONSTANT_ATTENUATION, light->atten[0]);
+    glLightf(lt, GL_LINEAR_ATTENUATION, light->atten[1]);
+    glLightf(lt, GL_QUADRATIC_ATTENUATION, light->atten[2]);
   }
 }
 
 static void
-Init(void)
+aimLights(void)
 {
-  numObjects = 10;
-  InitObjects(numObjects);
+  int k;
+
+  for (k = 0; k < NUM_LIGHTS; ++k) {
+    Light *light = &spots[k];
+
+    light->rot[0] = light->swing[0] * sin(light->arc[0]);
+    light->arc[0] += light->arcIncr[0];
+    if (light->arc[0] > TWO_PI)
+      light->arc[0] -= TWO_PI;
+
+    light->rot[1] = light->swing[1] * sin(light->arc[1]);
+    light->arc[1] += light->arcIncr[1];
+    if (light->arc[1] > TWO_PI)
+      light->arc[1] -= TWO_PI;
+
+    light->rot[2] = light->swing[2] * sin(light->arc[2]);
+    light->arc[2] += light->arcIncr[2];
+    if (light->arc[2] > TWO_PI)
+      light->arc[2] -= TWO_PI;
+  }
 }
 
 static void
-Reshape(int width, int height)
+setLights(void)
 {
-  windW = width;
-  windH = height;
-  glViewport(0, 0, windW, windH);
-  glGetIntegerv(GL_VIEWPORT, vp);
+  int k;
+
+  for (k = 0; k < NUM_LIGHTS; ++k) {
+    int lt = GL_LIGHT0 + k;
+    Light *light = &spots[k];
+
+    glPushMatrix();
+    glTranslatef(light->trans[0], light->trans[1], light->trans[2]);
+    glRotatef(light->rot[0], 1, 0, 0);
+    glRotatef(light->rot[1], 0, 1, 0);
+    glRotatef(light->rot[2], 0, 0, 1);
+    glLightfv(lt, GL_POSITION, light->pos);
+    glLightfv(lt, GL_SPOT_DIRECTION, light->spotDir);
+    glPopMatrix();
+  }
 }
 
 static void
-Render(GLenum mode)
+drawLights(void)
 {
-  GLint i;
+  int k;
 
-  for (i = 0; i < objectCount; i++) {
-    if (mode == GL_SELECT) {
-      glLoadName(i);
+  glDisable(GL_LIGHTING);
+  for (k = 0; k < NUM_LIGHTS; ++k) {
+    Light *light = &spots[k];
+
+    glColor4fv(light->diff);
+
+    glPushMatrix();
+    glTranslatef(light->trans[0], light->trans[1], light->trans[2]);
+    glRotatef(light->rot[0], 1, 0, 0);
+    glRotatef(light->rot[1], 0, 1, 0);
+    glRotatef(light->rot[2], 0, 0, 1);
+    glBegin(GL_LINES);
+    glVertex3f(light->pos[0], light->pos[1], light->pos[2]);
+    glVertex3f(light->spotDir[0], light->spotDir[1], light->spotDir[2]);
+    glEnd();
+    glPopMatrix();
+  }
+  glEnable(GL_LIGHTING);
+}
+
+static void
+drawPlane(int w, int h)
+{
+  int i, j;
+  float dw = 1.0 / w;
+  float dh = 1.0 / h;
+
+  glNormal3f(0.0, 0.0, 1.0);
+  for (j = 0; j < h; ++j) {
+    glBegin(GL_TRIANGLE_STRIP);
+    for (i = 0; i <= w; ++i) {
+      glVertex2f(dw * i, dh * (j + 1));
+      glVertex2f(dw * i, dh * j);
     }
-    glColor3fv(objects[i].color);
-    glBegin(GL_POLYGON);
-    glVertex2fv(objects[i].v1);
-    glVertex2fv(objects[i].v2);
-    glVertex2fv(objects[i].v3);
     glEnd();
   }
 }
 
-static GLint
-DoSelect(GLint x, GLint y)
+int spin = 0;
+
+void
+display(void)
 {
-  GLint hits;
-
-  glSelectBuffer(MAXSELECT, selectBuf);
-  glRenderMode(GL_SELECT);
-  glInitNames();
-  glPushName(~0);
-
-  glPushMatrix();
-
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  gluPickMatrix(x, windH - y, 4, 4, vp);
-  gluOrtho2D(-175, 175, -175, 175);
-  glMatrixMode(GL_MODELVIEW);
-
-  glClearColor(0.0, 0.0, 0.0, 0.0);
   glClear(GL_COLOR_BUFFER_BIT);
 
-  glScalef(zoom, zoom, zoom);
-  glRotatef(zRotation, 0, 0, 1);
-
-  Render(GL_SELECT);
-
-  glPopMatrix();
-
-  hits = glRenderMode(GL_RENDER);
-  if (hits <= 0) {
-    return -1;
-  }
-  return selectBuf[(hits - 1) * 4 + 3];
-}
-
-static void
-RecolorTri(GLint h)
-{
-  objects[h].color[0] = ((rand() % 100) + 50) / 150.0;
-  objects[h].color[1] = ((rand() % 100) + 50) / 150.0;
-  objects[h].color[2] = ((rand() % 100) + 50) / 150.0;
-}
-
-static void
-DeleteTri(GLint h)
-{
-  objects[h] = objects[objectCount - 1];
-  objectCount--;
-}
-
-static void
-GrowTri(GLint h)
-{
-  float v[2];
-  float *oldV;
-  GLint i;
-
-  v[0] = objects[h].v1[0] + objects[h].v2[0] + objects[h].v3[0];
-  v[1] = objects[h].v1[1] + objects[h].v2[1] + objects[h].v3[1];
-  v[0] /= 3;
-  v[1] /= 3;
-
-  for (i = 0; i < 3; i++) {
-    switch (i) {
-    case 0:
-      oldV = objects[h].v1;
-      break;
-    case 1:
-      oldV = objects[h].v2;
-      break;
-    case 2:
-      oldV = objects[h].v3;
-      break;
-    }
-    oldV[0] = 1.5 * (oldV[0] - v[0]) + v[0];
-    oldV[1] = 1.5 * (oldV[1] - v[1]) + v[1];
-  }
-}
-
-static void
-Mouse(int button, int state, int mouseX, int mouseY)
-{
-  GLint hit;
-
-  if (state == GLUT_DOWN) {
-    hit = DoSelect((GLint) mouseX, (GLint) mouseY);
-    if (hit != -1) {
-      if (button == GLUT_LEFT_BUTTON) {
-        RecolorTri(hit);
-      } else if (button == GLUT_MIDDLE_BUTTON) {
-        GrowTri(hit);
-      } else if (button == GLUT_RIGHT_BUTTON) {
-        DeleteTri(hit);
-      }
-      glutPostRedisplay();
-    }
-  }
-}
-
-static void
-Draw(void)
-{
   glPushMatrix();
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  gluOrtho2D(-175, 175, -175, 175);
-  glMatrixMode(GL_MODELVIEW);
-  glClearColor(0.0, 0.0, 0.0, 0.0);
-  glClear(GL_COLOR_BUFFER_BIT);
-  glScalef(zoom, zoom, zoom);
-  glRotatef(zRotation, 0, 0, 1);
-  Render(GL_RENDER);
+  glRotatef(spin, 0, 1, 0);
+
+  aimLights();
+  setLights();
+
+  glPushMatrix();
+  glRotatef(-90.0, 1, 0, 0);
+  glScalef(1.9, 1.9, 1.0);
+  glTranslatef(-0.5, -0.5, 0.0);
+  drawPlane(16, 16);
   glPopMatrix();
+
+  drawLights();
+  glPopMatrix();
+
   glutSwapBuffers();
 }
 
-static void
-DumpFeedbackVert(GLint * i, GLint n)
+void
+animate(void)
 {
-  GLint index;
-
-  index = *i;
-  if (index + 7 > n) {
-    *i = n;
-    printf("  ???\n");
-    return;
-  }
-  printf("  (%g %g %g), color = (%4.2f %4.2f %4.2f)\n",
-    feedBuf[index],
-    feedBuf[index + 1],
-    feedBuf[index + 2],
-    feedBuf[index + 3],
-    feedBuf[index + 4],
-    feedBuf[index + 5]);
-  index += 7;
-  *i = index;
+  spin += 0.5;
+  if (spin > 360.0)
+    spin -= 360.0;
+  glutPostRedisplay();
 }
 
-static void
-DrawFeedback(GLint n)
+void
+visibility(int state)
 {
-  GLint i;
-  GLint verts;
-
-  printf("Feedback results (%d floats):\n", n);
-  for (i = 0; i < n; i++) {
-    switch ((GLint) feedBuf[i]) {
-    case GL_POLYGON_TOKEN:
-      printf("Polygon");
-      i++;
-      if (i < n) {
-        verts = (GLint) feedBuf[i];
-        i++;
-        printf(": %d vertices", verts);
-      } else {
-        verts = 0;
-      }
-      printf("\n");
-      while (verts) {
-        DumpFeedbackVert(&i, n);
-        verts--;
-      }
-      i--;
-      break;
-    case GL_LINE_TOKEN:
-      printf("Line:\n");
-      i++;
-      DumpFeedbackVert(&i, n);
-      DumpFeedbackVert(&i, n);
-      i--;
-      break;
-    case GL_LINE_RESET_TOKEN:
-      printf("Line Reset:\n");
-      i++;
-      DumpFeedbackVert(&i, n);
-      DumpFeedbackVert(&i, n);
-      i--;
-      break;
-    default:
-      printf("%9.2f\n", feedBuf[i]);
-      break;
-    }
-  }
-  if (i == MAXFEED) {
-    printf("...\n");
-  }
-  printf("\n");
-}
-
-static void
-DoFeedback(void)
-{
-  GLint x;
-
-  glFeedbackBuffer(MAXFEED, GL_3D_COLOR, feedBuf);
-  (void) glRenderMode(GL_FEEDBACK);
-
-  glPushMatrix();
-
-  glMatrixMode(GL_PROJECTION);
-  glLoadIdentity();
-  gluOrtho2D(-175, 175, -175, 175);
-  glMatrixMode(GL_MODELVIEW);
-
-  glClearColor(0.0, 0.0, 0.0, 0.0);
-  glClear(GL_COLOR_BUFFER_BIT);
-
-  glScalef(zoom, zoom, zoom);
-  glRotatef(zRotation, 0, 0, 1);
-
-  Render(GL_FEEDBACK);
-
-  glPopMatrix();
-
-  x = glRenderMode(GL_RENDER);
-  if (x == -1) {
-    x = MAXFEED;
-  }
-  DrawFeedback((GLint) x);
-}
-
-/* ARGSUSED1 */
-static void
-Key(unsigned char key, int x, int y)
-{
-
-  switch (key) {
-  case 'z':
-    zoom /= 0.75;
-    glutPostRedisplay();
-    break;
-  case 'Z':
-    zoom *= 0.75;
-    glutPostRedisplay();
-    break;
-  case 'f':
-    DoFeedback();
-    glutPostRedisplay();
-    break;
-  case 'l':
-    linePoly = !linePoly;
-    if (linePoly) {
-      glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    } else {
-      glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-    }
-    glutPostRedisplay();
-    break;
-  case 27:
-    exit(0);
-  }
-}
-
-/* ARGSUSED1 */
-static void
-SpecialKey(int key, int x, int y)
-{
-
-  switch (key) {
-  case GLUT_KEY_LEFT:
-    zRotation += 0.5;
-    glutPostRedisplay();
-    break;
-  case GLUT_KEY_RIGHT:
-    zRotation -= 0.5;
-    glutPostRedisplay();
-    break;
+  if (state == GLUT_VISIBLE) {
+    glutIdleFunc(animate);
+  } else {
+    glutIdleFunc(NULL);
   }
 }
 
 int
 main(int argc, char **argv)
 {
+  int i;
+
   glutInit(&argc, argv);
-  glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
-  glutCreateWindow("Select Test");
-  Init();
-  glutReshapeFunc(Reshape);
-  glutKeyboardFunc(Key);
-  glutSpecialFunc(SpecialKey);
-  glutMouseFunc(Mouse);
-  glutDisplayFunc(Draw);
+  glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
+  /* process commmand line args */
+  for (i = 1; i < argc; ++i) {
+    if (!strcmp("-lm", argv[i])) {
+      useSAME_AMB_SPEC = !useSAME_AMB_SPEC;
+    } else {
+      usage(argv[0]);
+    }
+  }
+
+  glutCreateWindow("GLUT spotlight swing");
+  glutDisplayFunc(display);
+  glutVisibilityFunc(visibility);
+
+  glMatrixMode(GL_PROJECTION);
+  glFrustum(-1, 1, -1, 1, 2, 6);
+
+  glMatrixMode(GL_MODELVIEW);
+  glTranslatef(0.0, 0.0, -3.0);
+  glRotatef(45.0, 1, 0, 0);
+
+  glEnable(GL_LIGHTING);
+  glEnable(GL_NORMALIZE);
+
+  glLightModelfv(GL_LIGHT_MODEL_AMBIENT, modelAmb);
+  glLightModelf(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE);
+  glLightModelf(GL_LIGHT_MODEL_TWO_SIDE, GL_FALSE);
+
+  glMaterialfv(GL_FRONT, GL_AMBIENT, matAmb);
+  glMaterialfv(GL_FRONT, GL_DIFFUSE, matDiff);
+  glMaterialfv(GL_FRONT, GL_SPECULAR, matSpec);
+  glMaterialfv(GL_FRONT, GL_EMISSION, matEmission);
+  glMaterialf(GL_FRONT, GL_SHININESS, 10.0);
+
+  initLights();
+
   glutMainLoop();
   return 0;             /* ANSI C requires main to return int. */
 }
