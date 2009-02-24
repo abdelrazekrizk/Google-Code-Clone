@@ -76,23 +76,29 @@ void drawConalCylinder(float x, float y, float z, float bottomRadius, float topR
 void drawCylinder(float x, float y, float z, float radius, float height){
 	drawConalCylinder(x, y, z, radius, radius, height);
 }
+void drawSegmentedSquare(){
+	int slices = 10;
+	glNormal3f(0, 0, 1);
+	glTranslatef(-.5f, -.5f, 0);
+	float d = 1.0f / slices;
+	for(int i = 0; i < slices; i++){
+		glBegin(GL_TRIANGLE_STRIP);
+		for(int j = 0; j <= slices; j++){
+			glVertex3f(d * j, d * (i + 1), 0); // ccw winding
+			glVertex3f(d * j, d * i, 0);
+		}
+		glEnd();
+	}
+}
 void drawCube(float x, float y, float z, float width, float height, float depth){
 	glPushMatrix();
 	glTranslatef(x, y, z);
 	glScalef(width, height, depth);
-	/*
-	glNormal3f(0, 0, 1);
-	int slices = 10;
-	float d = 1.0f / slices;
-	for(int i = 0; i < slices; i++){
-		glBegin(GL_TRIANGLE_STRIP);
-		for(int j = 0; j < slices; j++){
-			glVertex3f(d * i, d * (j + 1), 1);
-			glVertex3f(d * i, d * j, 1);
-		}
-		glEnd();
-	}*/
-	glutSolidCube(1);
+	glPushMatrix();
+	glTranslatef(0, 0, 1);
+	drawSegmentedSquare();
+	glPopMatrix();
+	//glutSolidCube(1);
 	glPopMatrix();
 }
 
@@ -265,7 +271,7 @@ void drawGroundAndRoad(void){
 	}
 
 	// grass
-	glColor3b(26, 51, 0);
+	//glColor3b(26, 51, 0);
 	float grassColor[] = {26.0f/256.0f, 51.0f/256.0f, 0.0f/256.0f, 1};
 	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, grassColor);
 	drawCube(0, 0, -1.0f, worldWidth, worldWidth, 1);
@@ -298,7 +304,7 @@ void display(void)
 	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, mcolor);
 
 	// Camera
-	gluLookAt(carPos[0] + rotX, carPos[1] + rotY, rotZ + 100, carPos[0], carPos[1], 0, 0, 1, 0);
+	gluLookAt(carPos[0] + rotX, carPos[1] + rotY, rotZ + 500, carPos[0], carPos[1], 0, 0, 1, 0);
 
 	drawGroundAndRoad();
 
@@ -343,14 +349,14 @@ void init(void) {
 	glLoadIdentity();
 
 	glEnable(GL_LIGHTING);
-	GLfloat global_ambient[] = {.2f, .2f, .2f, 1.0f};
+	GLfloat global_ambient[] = {.6f, .6f, .6f, 1.0f};
 	glLightModelfv(GL_LIGHT_MODEL_AMBIENT, global_ambient);
 
 	// Create light components
-	GLfloat ambientLight[] = { .3, .3, .3, 1.0f };
+	GLfloat ambientLight[] = { .6, .6, .6, 1.0f };
 	GLfloat diffuseLight[] = { .3, .3, .3, 1.0f };
 	GLfloat specularLight[] = { .3, .3, .3, 1.0f };
-	GLfloat position[] = { carPos[0]+3000, 0, 50, 1.0f };
+	GLfloat position[] = { 0, 0, 50, 1.0f };
 	GLfloat direction[] = { 0, 0, -1 };
 
 	glEnable(GL_LIGHT0);
