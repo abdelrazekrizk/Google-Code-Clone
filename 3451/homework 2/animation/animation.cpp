@@ -306,6 +306,10 @@ void display(void)
 	// Camera
 	gluLookAt(carPos[0] + rotX, carPos[1] + rotY, rotZ + 500, carPos[0], carPos[1], 0, 0, 1, 0);
 
+	// car light
+	float lightpos[] = {carPos[0], carPos[1], carPos[2] + 40};
+	glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
+
 	drawGroundAndRoad();
 
 	glPushMatrix();
@@ -366,6 +370,7 @@ void init(void) {
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
 	glLightfv(GL_LIGHT0, GL_POSITION, position);
 	glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direction);
+	glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 45.0f);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
