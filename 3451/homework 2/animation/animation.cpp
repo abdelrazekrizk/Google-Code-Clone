@@ -307,7 +307,7 @@ void display(void)
 	gluLookAt(carPos[0] + rotX, carPos[1] + rotY, rotZ + 500, carPos[0], carPos[1], 0, 0, 1, 0);
 
 	// car light
-	float lightpos[] = {carPos[0], carPos[1], carPos[2] + 40};
+	float lightpos[] = {-4000, 0, 50, 1};
 	glLightfv(GL_LIGHT0, GL_POSITION, lightpos);
 
 	drawGroundAndRoad();
@@ -320,7 +320,7 @@ void display(void)
 	// double buffering
 	glutSwapBuffers();
 
-	carPos[0] += 5;
+	carPos[0] += 25;
 	carPos[2] = 0.25 * sin((float)frame);
 
 	// queues a redisplay
@@ -370,7 +370,8 @@ void init(void) {
 	glLightfv(GL_LIGHT0, GL_SPECULAR, specularLight);
 	glLightfv(GL_LIGHT0, GL_POSITION, position);
 	glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, direction);
-	glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 45.0f);
+	glLightf(GL_LIGHT0, GL_SPOT_CUTOFF, 30.0f);
+	glLightf(GL_LIGHT0, GL_SPOT_EXPONENT, .5);
 
 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
