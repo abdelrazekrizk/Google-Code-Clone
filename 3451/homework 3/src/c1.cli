@@ -1,0 +1,10 @@
+# one red cylinder, can see top end
+
+fov 60
+light 8 8 2  1 1 1
+
+surface   0.2 0 0   0.8 0 0  0 0 0  1  0
+cyl  0 -1 -2  0.7  0.5
+
+write c1.png
+

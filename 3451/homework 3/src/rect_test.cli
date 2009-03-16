@@ -1,0 +1,17 @@
+# this is a file containing test commands for the "irect" program
+
+# first a white square
+
+color 1 1 1
+rect 150 150 200 200
+
+# now a blue rectangle
+
+color .2 .2 .8
+rect 10 10 100 30
+
+# Commenting out the following line, because the act of saving does raytracing. 
+# As this file doesn't do any raytracing, only a blank screen will be shown.
+
+# write rect.png
+
