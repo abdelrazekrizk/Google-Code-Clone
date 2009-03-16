@@ -109,38 +109,64 @@ public class parserbak extends PApplet {
 		float z = -1 * (width / 2) / (tan(fovAngle / 2));
 		for(int x = 0; x < width; x++){
 			for(int y = 0; y < width; y++){
-				Vertex3 ray = (new Vertex3(-width / 2.0f + x, width / 2.0f - y, z)).normalize();
-				TraceResult result = TraceRay(ORIGIN, ray);
-				if(result != null){
-//					println(String.format("Pixel (%d, %d) intersects object %s at %s", x, y, result.intersectedObject, result.intersectionLocation));
-					RayTracableMaterial material = result.intersectedObject.material();
-					Color color = material.ambient;
-					for(RayTracableLight light : sceneLights){
-						// c = cr(ca + cl * max(0, n.l)) + cl(h.n)^p
-						Color cr = material.diffuse;
-						Color ca = material.ambient;
-						Color cl = material.specular;
-						Color lightColor = light.color;
-						float phong = material.phong;
-						Vertex3 n = result.normal;
-						Vertex3 e = result.intersectionLocation.times(-1).normalize();
-						Vertex3 l = light.location.minus(result.intersectionLocation).normalize();
-						Vertex3 h = e.plus(l).normalize();
-						TraceResult r2 = TraceRay(result.intersectionLocation, l);
-						if(r2 == null || r2.intersectedObject == result.intersectedObject){
-//						if(r2 == null){
-							Color diffuse = lightColor.times(cr.times(max(0, n.dotProd(l))));
-							Color specular = lightColor.times(cl.times(max(0, pow(h.dotProd(n), phong))));
-							color = color.plus(diffuse).plus(specular);
-						}
-					}
-					pixels[x + y * width] = color.toProcessingColor();
+				// after refactoring
+				Vertex3 source = ORIGIN;
+				Vertex3 direction = (new Vertex3(-width / 2.0f + x, width / 2.0f - y, z)).normalize();
+				TraceResult trace = ColorTrace(source, direction, 10);
+				if(trace != null){
+					pixels[x + y * width] = trace.color.toProcessingColor();
 				} else {
 					pixels[x + y * width] = backgroundColor.toProcessingColor();
 				}
 			}
 		}
 		updatePixels();
+	}
+	
+	public TraceResult ColorTrace(Vertex3 source, Vertex3 direction, int recursiveDepth){
+		TraceResult result = TraceRay(source, direction);
+		if(result != null){
+			RayTracableObject nearestShape = result.intersectedObject;
+			Vertex3 nearestLoc = result.intersectionLocation;
+			RayTracableMaterial material = nearestShape.material();
+
+			Color ambi = material.ambient;
+			Color diff = material.diffuse;
+			Color spec = material.specular;
+			float p    = material.phong;
+			
+			Vertex3 n = nearestShape.NormalAt(nearestLoc);
+			Vertex3 eye = direction.times(-1).normalize();
+			
+			Color pixelColor = ambi;
+			
+			for(RayTracableLight light : sceneLights){
+				Color lightColor = light.color;
+				Vertex3 lightVector = light.location.minus(nearestLoc).normalize();
+				Vertex3 halfway = eye.plus(lightVector).normalize();
+				TraceResult lightTrace = TraceRay(nearestLoc, lightVector);
+				if(lightTrace == null || lightTrace.intersectedObject == nearestShape){
+					Color diffuse = lightColor.times(diff.times(max(0, n.dotProd(lightVector))));
+					Color specular = lightColor.times(spec.times(max(0, pow(halfway.dotProd(n), p * 2))));
+					pixelColor = pixelColor.plus(diffuse).plus(specular);
+				}
+			}
+			
+			if(material.reflect != 0.0f && recursiveDepth > 0){
+				Color reflected;
+				Vertex3 r = direction.minus(n.times(2 * (direction.dotProd(n)))).normalize();
+				TraceResult reflectTrace = ColorTrace(nearestLoc, r, recursiveDepth - 1);
+				if(reflectTrace != null){
+					reflected = reflectTrace.color;
+				} else {
+					reflected = backgroundColor.clone();
+				}
+				pixelColor = pixelColor.plus(reflected.times(material.reflect));
+			}
+			
+			result.color = pixelColor;
+		}
+		return result;
 	}
 	
 	public class Color {
@@ -163,6 +189,9 @@ public class parserbak extends PApplet {
 		public Color times(float f){
 			return new Color(min(1, r * f), min(1, g * f), min(1, b * f));
 		}
+		public Color clone(){
+			return new Color(r, g, b);
+		}
 	}
 	
 	public TraceResult TraceRay(Vertex3 source, Vertex3 direction){
@@ -184,7 +213,7 @@ public class parserbak extends PApplet {
 			}
 		}
 		if(nearestPoint != null){
-			return new TraceResult(nearestPoint, normal, nearestObject);
+			return new TraceResult(nearestPoint, normal, nearestObject, WHITE.clone());
 		} else {
 			return null;
 		}
@@ -194,10 +223,12 @@ public class parserbak extends PApplet {
 		Vertex3 intersectionLocation;
 		Vertex3 normal;
 		RayTracableObject intersectedObject;
-		public TraceResult(Vertex3 intersection, Vertex3 normal, RayTracableObject object){
+		Color color;
+		public TraceResult(Vertex3 intersection, Vertex3 normal, RayTracableObject object, Color c){
 			this.intersectionLocation = intersection;
 			this.normal = normal;
 			this.intersectedObject = object;
+			this.color = color;
 		}
 	}
 	

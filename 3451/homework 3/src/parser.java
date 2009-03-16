@@ -2,121 +2,166 @@ import processing.core.*;
 import java.util.*;
 
 public class parser extends PApplet {
-	
-	// "constants"
-	private final int width = 600;
+
+	// Constants
+	private final float BIGFLOAT = 50000.0f;
 	private Color WHITE = new Color(1.0f, 1.0f, 1.0f);
-	private Color BLACK = new Color(0.0f, 0.0f, 0.0f); 
-	private final float EPSILON = 0.0001f; // small value for floating point math.
-	private final float INF = Float.POSITIVE_INFINITY; // large value!
-	private Vector ORIGIN = new Vector(0, 0, 0);
+	private Color BLACK = new Color(0.0f, 0.0f, 0.0f);
+	private final int width = 600;
+	private Vertex3 ORIGIN = new Vertex3(0, 0, 0);
+	private final float SMALLFLOAT = 0.001f;
 	
-	// runtime variables
-	private String gCurrentFile = new String("rect_test.cli");
-	private Color backgroundColor = null;
-	private float fovAngle = 0;
-	private ArrayList<RayTracable> sceneShapes = null;
-	private ArrayList<Light> lights = null;
-	private Material currentSurface = null;
-	private boolean initialized = false;
+	// A global variable for holding current active file name.
+	String gCurrentFile = new String("rect_test.cli");
+	
+	// Global variable for holding the objects in this scene
+	ArrayList<RayTracableObject> sceneObjects = new ArrayList<RayTracableObject>();
+	
+	// Global variable for holding the lights in this scene
+	ArrayList<RayTracableLight> sceneLights = new ArrayList<RayTracableLight>();
+	
+	// Global variable for holding the material information
+	RayTracableMaterial currentMaterial = new RayTracableMaterial(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+	
+	// Global variable for holding the background color
+	Color backgroundColor = BLACK;
+	
+	// Global variable holding the field of view angle.
+	float fovAngle = radians(90.0f);
+	
+	public void keyPressed() {
+		switch(key) {
+			case '1':  gCurrentFile = new String("t0.cli"); interpreter(); break;
+			case '2':  gCurrentFile = new String("t1.cli"); interpreter(); break;
+			case '3':  gCurrentFile = new String("t2.cli"); interpreter(); break;
+			case '4':  gCurrentFile = new String("t3.cli"); interpreter(); break;
+			case '5':  gCurrentFile = new String("c0.cli"); interpreter(); break;
+			case '6':  gCurrentFile = new String("c1.cli"); interpreter(); break;
+			case '7':  gCurrentFile = new String("c2.cli"); interpreter(); break;
+			case '8':  gCurrentFile = new String("c3.cli"); interpreter(); break;
+			case '9':  gCurrentFile = new String("c4.cli"); interpreter(); break;
+			case '0':  gCurrentFile = new String("c5.cli"); interpreter(); break;
+		}
+	}
 	
 	/**
-	 * Testing function for rays
+	 * Gets a float value from a string.
 	 */
-	public void mousePressed(){
-		Vector source = ORIGIN;
-		float z = -1 * (width / 2.0f) / tan(fovAngle/2);
-		Vector direction = new Vector(-width / 2.0f + mouseX, width / 2.0f - mouseY, z).normalize();
-		ArrayList<TraceResult> traceResults = new ArrayList<TraceResult>();
-		for(RayTracable shape : sceneShapes){
-			ArrayList<Vector> vectors = shape.IntersectTest(source, direction);
-			if(vectors != null){
-				for(Vector v : vectors){
-					if(v != null && shape.NormalAt(v) != null && shape != null){
-						TraceResult r = new TraceResult(v, shape.NormalAt(v), shape, WHITE);
-						traceResults.add(r);
-					}
-				}
-			}
-		}
-		println(String.format("Clicked pixel: (%d, %d) corresponding to direction %s", mouseX, mouseY, direction));
-		if(!traceResults.isEmpty()){
-			println(String.format("%d intersections:", traceResults.size()));
-			for(TraceResult r : traceResults){
-				Vector normal = r.intersectedShape.NormalAt(r.intersection);
-				println(String.format("sceneObject[%d] (dist: %.2f) %s at %s [Normal: %s]", sceneShapes.indexOf(r.intersectedShape), r.intersection.length(), r.intersectedShape, r.intersection, normal));
-			}
-			TraceResult r = Trace(source, direction);
-			println(String.format("Result of the Trace: sceneObject[%d] (dist: %.2f) %s at %s", sceneShapes.indexOf(r.intersectedShape), r.intersection.length(), r.intersectedShape, r.intersection));
-		} else {
-			println("Hit nothing.");
-		}
+	float get_float(String str) { 
+		return Float.parseFloat(str); 
 	}
 	
+	/**
+	 * Parser core. It parses the CLI file and processes it based on each
+	 * token. Only "color", "rect", and "write" tokens are implemented.
+	 * You should start from here and add more functionalities for your
+	 * ray tracer.
+	 * Note: Function "splitToken()" is only available in processing 1.25
+	 * or higher.
+	 */
+	void interpreter() {
+		loadDefaults();
+		String str[] = loadStrings(gCurrentFile);
+		if (str == null) println("Error! Failed to read the file.");
+		for (int i=0; i<str.length; i++) {
+			String[] token = splitTokens(str[i], " "); // Get a line and parse tokens.
+			if (token.length == 0) 
+				continue; // Skip blank line.
+			if(!token[0].equals("#"))
+				println(token[0]);
+			if (token[0].equals("fov")) {
+				changeFov(token);
+			} else if (token[0].equals("background")) {
+				changeBackground(token);
+			} else if (token[0].equals("light")) {
+				createLight(token);
+			} else if (token[0].equals("surface")) {
+				changeSurface(token);
+			} else if (token[0].equals("cyl")) {
+				createCylinder(token);
+			} else if (token[0].equals("sphere")) {
+				createSphere(token);
+			} else if (token[0].equals("color")) {
+				changeColor(token);
+			} else if (token[0].equals("rect")) {
+				createRectangle(token);
+			} else if (token[0].equals("write")) {
+				rayTrace();
+				save(token[1]);  
+			}
+		}
+	}
+
+	private void loadDefaults() {
+		sceneObjects = new ArrayList<RayTracableObject>();
+		sceneLights = new ArrayList<RayTracableLight>();
+		currentMaterial = new RayTracableMaterial(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1);
+		backgroundColor = BLACK;
+		fovAngle = radians(90.0f);
+	}
+
+	/**
+	 * Where the actual raytracing takes place!
+	 */
 	private void rayTrace() {
-		if(initialized){
-			loadPixels();
-			// let a ray be <px, py, z> where px, py are cartisan coords of screen pixels, then z must be:
-			float z = -1 * (width / 2.0f) / tan(fovAngle/2);
-			for(int x = 0; x < width; x++){
-				for(int y = 0; y < width; y++){
-					Vector source = ORIGIN;
-					Vector direction = new Vector(-width / 2.0f + x, width / 2.0f - y, z).normalize();
-					TraceResult rayTrace = TraceWithColor(source, direction, 10);
-					
-					if(rayTrace != null){
-						pixels[x + y * width] = rayTrace.color.toProcessingColor();
-					} else {
-						pixels[x + y * width] = backgroundColor.toProcessingColor();
-					}
+		loadPixels();
+		
+		float z = -1 * (width / 2) / (tan(fovAngle / 2));
+		for(int x = 0; x < width; x++){
+			for(int y = 0; y < width; y++){
+				// after refactoring
+				Vertex3 source = ORIGIN;
+				Vertex3 direction = (new Vertex3(-width / 2.0f + x, width / 2.0f - y, z)).normalize();
+				TraceResult trace = ColorTrace(source, direction, 10);
+				if(trace != null){
+					pixels[x + y * width] = trace.color.toProcessingColor();
+				} else {
+					pixels[x + y * width] = backgroundColor.toProcessingColor();
 				}
 			}
-			updatePixels();
-		} else {
-			error("Scene was not intialized properly.");
 		}
+		updatePixels();
 	}
 	
-	public TraceResult TraceWithColor(Vector source, Vector direction, int reflectiveDepth){
-		TraceResult result = Trace(source, direction);
+	public TraceResult ColorTrace(Vertex3 source, Vertex3 direction, int recursiveDepth){
+		TraceResult result = TraceRay(source, direction);
 		if(result != null){
-			RayTracable nearestShape = result.intersectedShape;
-			Vector nearestLoc = result.intersection;
-			Material material = nearestShape.material;
+			RayTracableObject nearestShape = result.intersectedObject;
+			Vertex3 nearestLoc = result.intersectionLocation;
+			RayTracableMaterial material = nearestShape.material();
+
 			Color ambi = material.ambient;
 			Color diff = material.diffuse;
 			Color spec = material.specular;
 			float p    = material.phong;
 			
-			Vector n = nearestShape.NormalAt(nearestLoc);
-			Vector eye = direction.fTimes(-1);
-	
+			Vertex3 n = nearestShape.NormalAt(nearestLoc);
+			Vertex3 eye = direction.times(-1).normalize();
+			
 			Color pixelColor = ambi;
 			
-			for(Light light : lights){
+			for(RayTracableLight light : sceneLights){
 				Color lightColor = light.color;
-				Vector lightVector = light.location.vMinus(nearestLoc).normalize();
-				Vector halfway = eye.vPlus(lightVector).normalize();
-				TraceResult lightTrace = Trace(nearestLoc, lightVector);
-				if(lightTrace == null || lightTrace.intersectedShape == nearestShape){
-					Color diffuse = lightColor.times(diff.times(max(0, n.dot(lightVector))));
-					Color specular = lightColor.times(spec.times(max(0, pow(halfway.dot(n), p*2))));
+				Vertex3 lightVector = light.location.minus(nearestLoc).normalize();
+				Vertex3 halfway = eye.plus(lightVector).normalize();
+				TraceResult lightTrace = TraceRay(nearestLoc, lightVector);
+				if(lightTrace == null || lightTrace.intersectedObject == nearestShape){
+					Color diffuse = lightColor.times(diff.times(max(0, n.dotProd(lightVector))));
+					Color specular = lightColor.times(spec.times(max(0, pow(halfway.dotProd(n), p * 2))));
 					pixelColor = pixelColor.plus(diffuse).plus(specular);
 				}
 			}
 			
-			if(material.reflectK != 0.0f && reflectiveDepth > 0){
+			if(material.reflect != 0.0f && recursiveDepth > 0){
 				Color reflected;
-				Vector r = direction.vMinus(n.fTimes(2 * (direction.dot(n)))).normalize();
-				TraceResult reflectTrace = TraceWithColor(nearestLoc, r, reflectiveDepth - 1);
-//				reflectTrace = null;
+				Vertex3 r = direction.minus(n.times(2 * (direction.dotProd(n)))).normalize();
+				TraceResult reflectTrace = ColorTrace(nearestLoc, r, recursiveDepth - 1);
 				if(reflectTrace != null){
 					reflected = reflectTrace.color;
 				} else {
 					reflected = backgroundColor.clone();
 				}
-//				pixelColor = pixelColor.times(1 - material.reflectK).plus(reflected.times(material.reflectK));
-				pixelColor = pixelColor.plus(reflected.times(material.reflectK));
+				pixelColor = pixelColor.plus(reflected.times(material.reflect));
 			}
 			
 			result.color = pixelColor;
@@ -124,271 +169,13 @@ public class parser extends PApplet {
 		return result;
 	}
 	
-	public TraceResult Trace(Vector source, Vector direction){
-		Vector nearestLoc = null;
-		RayTracable nearestShape = null;
-		for(RayTracable shape : sceneShapes){
-			ArrayList<Vector> intersections = shape.IntersectTest(source, direction);
-			if(intersections != null){
-				for(Vector v : intersections){
-					if((nearestLoc == null || nearestLoc.vMinus(source).length() > v.vMinus(source).length()) && abs(v.vMinus(source).length()) > EPSILON){
-						nearestLoc = v;
-						nearestShape = shape;
-					}
-				}
-			}
-		}
-		if(nearestLoc != null){
-			return new TraceResult(nearestLoc, nearestShape.NormalAt(nearestLoc), nearestShape, WHITE.clone());
-		} else {
-			return null;
-		}
-	}
-	
-	public class TraceResult {
-		public Vector intersection;
-		public Vector normal;
-		public RayTracable intersectedShape;
-		public Color color;
-		public TraceResult(Vector intersection, Vector normal, RayTracable intersected, Color color){
-			this.intersection = intersection;
-			this.normal = normal;
-			this.intersectedShape = intersected;
-			this.color = color;
-		}
-	}
-
-	private void createSphere(ArrayReader r) {
-		Vector center = r.readVector();
-		float radius = r.readFloat();
-		Sphere s = new Sphere(center, radius);
-		sceneShapes.add(s);
-	}
-	private void createCylinder(ArrayReader r) {
-		Vector center = r.readVector();
-		float height = r.readFloat();
-		float radius = r.readFloat();
-		Cylinder c = new Cylinder(center, height, radius);
-		sceneShapes.add(c);
-	}
-	private void changeMaterial(ArrayReader r) {
-		Color ambient  = r.readColor(),
-		      diffuse  = r.readColor(),
-		      specular = r.readColor();
-		currentSurface = new Material(ambient, diffuse, specular, r.readFloat(), r.readFloat());
-	}
-	private void createLight(ArrayReader r) {
-		Vector location = r.readVector();
-		Color color = r.hasRemaining() ? r.readColor() : WHITE.clone();
-		Light newLight = new Light(location, color);
-		lights.add(newLight);
-	}
-	private void changeBackground(ArrayReader r) {
-		backgroundColor = r.readColor();
-	}
-	private void changeFov(ArrayReader r) {
-		fovAngle = radians(r.readFloat());
-	}
-
-	private void initializeNewScene() {
-		backgroundColor = BLACK.clone();
-		fovAngle = radians(90.0f);
-		currentSurface = new Material(WHITE, WHITE, WHITE, 1, 1);
-		lights = new ArrayList<Light>();
-		sceneShapes = new ArrayList<RayTracable>();
-		initialized = true;
-	}
-	
-	// abstract class for an object that can be ray-traced.
-	public abstract class RayTracable {
-		public Material material;
-		public RayTracable(){
-			material = currentSurface.clone();
-		}
-		public abstract ArrayList<Vector> IntersectTest(Vector source, Vector direction);
-		public abstract Vector NormalAt(Vector v);
-		public Material Material(){
-			return material;
-		}
-	}
-	
-	public class Sphere extends RayTracable {
-		public Vector center;
-		public float radius;
-		
-		public Sphere(Vector center, float radius){
-			this.center = center;
-			this.radius = radius;
-		}
-		
-		public ArrayList<Vector> IntersectTest(Vector source, Vector direction) {
-			ArrayList<Vector> hits = null;
-			Vector v = source.vMinus(center);
-			float vDotDir = v.dot(direction);
-			float discriminant = vDotDir * vDotDir - v.squared() + radius * radius;
-			if(discriminant >= 0){
-				hits = new ArrayList<Vector>();
-				float tp = -vDotDir + sqrt(discriminant);
-				float tm = -vDotDir - sqrt(discriminant);
-				if(tp > EPSILON) // we're using a ray - we don't want solutions that give negative direction vectors.
-					hits.add(source.vPlus(direction.fTimes(tp)));
-				if(tm > EPSILON)
-					hits.add(source.vPlus(direction.fTimes(tm)));
-			}
-			return hits;
-		}
-		
-		public Vector NormalAt(Vector v) {
-			return v.vMinus(center).normalize();
-		}
-		
-		public String toString(){
-			return String.format("Sphere with center: %s, radius: %.2f", center, radius);
-		}
-	}
-	
-	public class Cylinder extends RayTracable {
-		Vector center;
-		float height, radius;
-		
-		public Cylinder(Vector center, float height, float radius){
-			this.center = center; this.height = height; this.radius = radius;
-		}
-		
-		public ArrayList<Vector> IntersectTest(Vector source, Vector direction) {
-			ArrayList<Vector> hits = new ArrayList<Vector>();	
-			float t, x, y, z, a, b, c, det, tplus, tminus;
-			Vector displacement, result;
-			
-			// Walls
-			// FIXME
-//			displacement = source.vMinus(center);
-//			a = direction.x * direction.x + direction.z * direction.z;
-//			b = 2 * (direction.x * (displacement.x) + direction.z * (displacement.z));
-//			c = displacement.x * displacement.x + displacement.z * displacement.z - radius * radius;
-//			det = b * b - 4 * a * c;
-//			if(det >= EPSILON){
-//				tplus = -b + sqrt(det) / (2 * a);
-//				result = source.vPlus(direction.fTimes(tplus));
-//				if(result.y > center.y && result.y < center.y + height)
-//					hits.add(result);
-//				tminus = -b - sqrt(det) / (2 * a);
-//				result = source.vPlus(direction.fTimes(tminus));
-//				if(result.y > center.y && result.y < center.y + height)
-//					hits.add(result);
-//			}
-			
-			
-			// Top - FIXME?
-			t = (center.y + height - source.y) / direction.y;
-			if(t > -EPSILON){
-				x = source.x + direction.x * t;
-				y = center.y + height - source.y;
-				z = source.z + direction.z * t;
-				Vector soln = new Vector(x, y, z);
-//				Vector soln = source.vPlus(direction.fTimes(t));
-//				soln.y = center.y + height - source.y;
-				a = pow(soln.x - center.x, 2) + pow(soln.z, 2) - radius * radius;
-				if(a <= EPSILON){
-					hits.add(soln);
-				}
-			}
-			
-			// Bottom - FIXME
-//			t = (center.y - source.y) / direction.y;
-//			if(t > -EPSILON){
-//				Vector soln = source.vPlus(direction.fTimes(t));
-//				soln.y = center.y - source.y;
-//				a = pow(soln.x - center.x, 2) + pow(soln.z, 2) - radius * radius;
-//				if(a <= EPSILON){
-//					hits.add(soln);
-//				}
-//			}
-			
-			return hits;
-		}
-
-		public Vector NormalAt(Vector v) {
-			if(abs(v.y - center.y) < EPSILON){
-				return new Vector(0, -1, 0);
-			} else if(abs(v.y - center.y - height) < EPSILON){
-				return new Vector(0, 1, 0);
-			} else {
-				return new Vector(v.x - center.x, 0, v.z - center.z).normalize();
-			}
-//			return new Vector(0, 1, 0);
-		}
-		
-		public String toString(){
-			return String.format("Cylinder with bottom-center: %s, height: %.2f, radius: %.2f", center, height, radius);
-		}
-	}
-	
-	public class Light {
-		Vector location;
-		Color color;
-		public Light(Vector loc, Color c){
-			this.location = loc; this.color = c;
-		}
-		public Light(Vector loc){
-			this.location = loc; this.color = WHITE.clone();
-		}
-	}
-	
-	public class Material {
-		public float phong, reflectK;
-		public Color ambient, diffuse, specular;
-		public Material(Color ambient, Color diffuse, Color specular, float phong, float reflect){
-			this.phong = phong; this.reflectK = reflect;
-			this.ambient = ambient; this.diffuse = diffuse; this.specular = specular;
-		}
-		public Material clone(){
-			return new Material(ambient.clone(), diffuse.clone(), specular.clone(), phong, reflectK);
-		}
-	}
-	
-	// Helper classes, created by myself (Java probably has its own versions of these classes,
-	// I decided to make my own for certainty however.).
-	public class Vector {
-		public float x, y, z;
-		public Vector(float x, float y, float z){
-			this.x = x; this.y = y; this.z = z;
-		}
-		public float dot(Vector v){
-			return x * v.x + y * v.y + z * v.z;
-		}
-		public Vector fTimes(float f){
-			return new Vector(x * f, y * f, z * f);
-		}
-		public Vector vMinus(Vector b){
-			return new Vector(x - b.x, y - b.y, z - b.z);
-		}
-		public Vector fMinus(float f){
-			return new Vector(x - f, y - f, z - f);
-		}
-		public Vector vPlus(Vector b){
-			return new Vector(x + b.x, y + b.y, z + b.z);
-		}
-		public Vector normalize(){
-			return this.fDivide(this.length());
-		}
-		public Vector fDivide(float f){
-			return fTimes(1 / f);
-		}
-		public float length(){
-			return sqrt(squared());
-		}
-		public float squared(){
-			return dot(this);
-		}
-		public String toString(){
-			return String.format("(%.2f, %.2f, %.2f)", x, y, z);
-		}
-	}
 	public class Color {
-		public float r, g, b;
-		public Color(float red, float green, float blue) {
-			this.r = red; this.g = green; this.b = blue;
+		float r, g, b;
+		public Color(float r, float g, float b){
+			this.r = r; this.g = g; this.b = b;
+		}
+		public Color(){
+			this.r = 1.0f; this.g = 1.0f; this.b = 1.0f;
 		}
 		public int toProcessingColor(){
 			return color(r, g, b);
@@ -407,87 +194,390 @@ public class parser extends PApplet {
 		}
 	}
 	
-	/**
-	 * Sequential reader for a string array.
-	 */
-	public class ArrayReader{
-		private String[] array;
-		private int position;
-		public ArrayReader(String[] array){
-			this.array = array;
-			position = 1;
+	public TraceResult TraceRay(Vertex3 source, Vertex3 direction){
+		Vertex3 nearestPoint = null;
+		Vertex3 normal = null;
+		RayTracableObject nearestObject = null;
+		for(RayTracableObject sceneObj : sceneObjects){
+			ArrayList<Vertex3> intersectPoints = sceneObj.IntersectsRay(source, direction);
+			if(intersectPoints != null){
+				for(Vertex3 point : intersectPoints){
+					if(nearestPoint == null || point.minus(source).length() < nearestPoint.minus(source).length()){
+						if(point.minus(source).length() > SMALLFLOAT){
+							nearestPoint = point;
+							nearestObject = sceneObj;
+							normal = sceneObj.NormalAt(point);
+						}
+					}
+				}
+			}
 		}
-		public String readString(){
-			return array[position++];
-		}
-		public float readFloat(){
-			return get_float(array[position++]);
-		}
-		public Vector readVector(){
-			float x = readFloat();
-			float y = readFloat();
-			float z = readFloat();
-			return new Vector(x, y, z);
-		}
-		public Color readColor(){
-			float r = readFloat();
-			float g = readFloat();
-			float b = readFloat();
-			return new Color(r, g, b);
-		}
-		public float remaining(){
-			return array.length - position;
-		}
-		public boolean hasRemaining(){
-			return remaining() > 0;
-		}
-	}
-	public void keyPressed() {
-		switch(key) {
-			case '1':  gCurrentFile = new String("t0.cli"); interpreter(); break;
-			case '2':  gCurrentFile = new String("t1.cli"); interpreter(); break;
-			case '3':  gCurrentFile = new String("t2.cli"); interpreter(); break;
-			case '4':  gCurrentFile = new String("t3.cli"); interpreter(); break;
-			case '5':  gCurrentFile = new String("c0.cli"); interpreter(); break;
-			case '6':  gCurrentFile = new String("c1.cli"); interpreter(); break;
-			case '7':  gCurrentFile = new String("c2.cli"); interpreter(); break;
-			case '8':  gCurrentFile = new String("c3.cli"); interpreter(); break;
-			case '9':  gCurrentFile = new String("c4.cli"); interpreter(); break;
-			case '0':  gCurrentFile = new String("c5.cli"); interpreter(); break;
+		if(nearestPoint != null){
+			return new TraceResult(nearestPoint, normal, nearestObject, WHITE.clone());
+		} else {
+			return null;
 		}
 	}
 	
-	void interpreter() {
-		initializeNewScene();
-		String str[] = loadStrings(gCurrentFile);
-		if (str == null) println("Error! Failed to read the file.");
-		for (int i=0; i<str.length; i++) {
-			String[] token = splitTokens(str[i], " "); // Get a line and parse tokens.
-			if (token.length == 0) 
-				continue; // Skip blank line.
-			ArrayReader reader = new ArrayReader(token);
-			if (token[0].equals("fov")) {
-				changeFov(reader);
-			} else if (token[0].equals("background")) {
-				changeBackground(reader);
-			} else if (token[0].equals("light")) {
-				createLight(reader);
-			} else if (token[0].equals("surface")) {
-				changeMaterial(reader);
-			} else if (token[0].equals("cyl")) {
-				createCylinder(reader);
-			} else if (token[0].equals("sphere")) {
-				createSphere(reader);
-			} else if (token[0].equals("color")) {
-				changeColor(reader);
-			} else if (token[0].equals("rect")) {
-				createRectangle(reader);
-			} else if (token[0].equals("write")) {
-				rayTrace();
-				save(token[1]);  
-			}
+	public class TraceResult {
+		Vertex3 intersectionLocation;
+		Vertex3 normal;
+		RayTracableObject intersectedObject;
+		Color color;
+		public TraceResult(Vertex3 intersection, Vertex3 normal, RayTracableObject object, Color c){
+			this.intersectionLocation = intersection;
+			this.normal = normal;
+			this.intersectedObject = object;
+			this.color = color;
 		}
 	}
+	
+	private void createRectangle(String[] token) {
+		float x0 = get_float(token[1]);
+		float y0 = get_float(token[2]);
+		float x1 = get_float(token[3]);
+		float y1 = get_float(token[4]);
+		rect(x0, height-y1, x1-x0, y1-y0);
+	}
+
+	private void changeColor(String[] token) {
+		float r = get_float(token[1]);
+		float g = get_float(token[2]);
+		float b = get_float(token[3]);
+		fill(r, g, b);
+	}
+
+	private void createSphere(String[] token) {
+		float x = get_float(token[1]);
+		float y = get_float(token[2]);
+		float z = get_float(token[3]);
+		float radius = get_float(token[4]);
+		RayTracableSphere sphere = new RayTracableSphere(x, y, z, radius, currentMaterial);
+		sceneObjects.add(sphere);
+	}
+
+	private void createCylinder(String[] token) {
+		float x = get_float(token[1]);
+		float y = get_float(token[2]);
+		float z = get_float(token[3]);
+		float height = get_float(token[4]);
+		float radius = get_float(token[5]);
+		RayTracableCylinder cylinder = new RayTracableCylinder(x, y, z, height, radius, currentMaterial);
+		sceneObjects.add(cylinder);
+	}
+
+	private void changeSurface(String[] token) {
+		float car = get_float(token[1]);
+		float cag = get_float(token[2]);
+		float cab = get_float(token[3]);
+		float crr = get_float(token[4]);
+		float crg = get_float(token[5]);
+		float crb = get_float(token[6]);
+		float clr = get_float(token[7]);
+		float clg = get_float(token[8]);
+		float clb = get_float(token[9]);
+		float p   = get_float(token[10]);
+		float krefl = get_float(token[11]);
+		currentMaterial = new RayTracableMaterial(car, cag, cab, crr, crg, crb, clr, clg, clb, p, krefl);
+	}
+
+	private void createLight(String[] token) {
+		float x = get_float(token[1]);
+		float y = get_float(token[2]);
+		float z = get_float(token[3]);
+		float r, g, b;
+		if(token.length > 4){
+			r = get_float(token[4]);
+			g = get_float(token[5]);
+			b = get_float(token[6]);
+		} else {
+			r = 1; g = 1; b = 1;
+		}
+		RayTracableLight light = new RayTracableLight(x, y, z, r, g, b);
+		sceneLights.add(light);
+	}
+
+	private void changeBackground(String[] token) {
+		float r = get_float(token[1]);
+		float g = get_float(token[2]);
+		float b = get_float(token[3]);
+		backgroundColor = new Color(r, g, b);
+	}
+
+	public void changeFov(String[] token) {
+		float angle = get_float(token[1]);
+		fovAngle = radians(angle);
+	}
+	
+	public class Vertex3 {
+		public float x, y, z;
+		public Vertex3(){
+			x = 1; y = 1; z = 1;
+		}
+		public Vertex3(float x, float y, float z){
+			this.x = x; this.y = y; this.z = z;
+		}
+		
+		/**
+		 * Returns a Vertex that equals this - b.
+		 */
+		public Vertex3 minus(Vertex3 b){
+			return new Vertex3(this.x - b.x, this.y - b.y, this.z - b.z);
+		}
+		
+		public Vertex3 times(float k){
+			return new Vertex3(this.x * k, this.y * k, this.z * k);
+		}
+		
+		/**
+		 * Returns a Vertex that equals this + b.
+		 */
+		public Vertex3 plus(Vertex3 b){
+			return new Vertex3(this.x + b.x, this.y + b.y, this.z + b.z);
+		}
+		
+		/**
+		 * Length of this vertex.
+		 */
+		public float length(){
+			return sqrt(dotProd(this));
+		}
+		
+		public Vertex3 divide(float d){
+			return new Vertex3(x / d, y / d, z / d);
+		}
+		
+		public Vertex3 normalize(){
+			return this.divide(length());
+		}
+		
+		public float dotProd(Vertex3 v){
+			return this.x * v.x + this.y * v.y + this.z * v.z;
+		}
+		
+		public float squared(){
+			return dotProd(this);
+		}
+		
+		public String toString(){
+			return String.format("(%.2f, %.2f, %.2f)", x, y, z);
+		}
+	}
+	
+	public interface RayTracableObject {
+		/**
+		 * Ray intersection algorithm. If the given Vertex (ray) intersects the object, then
+		 * an ArrayList of Vertex's will be returned of where the ray intersects the object.
+		 * If the given Vertex does not intersect the object, then null is returned.
+		 * @param v Vertex to test for intersection.
+		 * @return ArrayList of intersection points if intersected, null otherwise.
+		 */
+		public ArrayList<Vertex3> IntersectsRay(Vertex3 source, Vertex3 direction);
+		
+		/**
+		 * Get the material for this object.
+		 * @return
+		 */
+		public RayTracableMaterial material();
+		
+		/**
+		 * Get the normal at a given location.
+		 */
+		public Vertex3 NormalAt(Vertex3 v);
+	}
+	
+	/**
+	 * A sphere primitive to be used for ray tracing.
+	 */
+	public class RayTracableSphere implements RayTracableObject {
+		public Vertex3 center;
+		public float radius;
+		public RayTracableMaterial surfaceMaterial;
+		
+		/**
+		 * Constructor for a sphere to be used with ray tracing.
+		 * @param x The x-coordinate for the center of the sphere.
+		 * @param y The y-coordinate for the center of the sphere.
+		 * @param z The z-coordinate for the center of the sphere.
+		 * @param radius The Radius of the sphere.
+		 */
+		public RayTracableSphere(float x, float y, float z, float radius, RayTracableMaterial material){
+			this.center = new Vertex3(x, y, z);
+			this.radius = radius; 
+			this.surfaceMaterial = material.clone();
+		}
+		
+		/**
+		 * Determines if a given ray intersects this sphere.
+		 * Returns all vectors (absolute location) that intersect this sphere.
+		 * Returns null if the given vector does not intersect this sphere.
+		 */
+		public ArrayList<Vertex3> IntersectsRay(Vertex3 source, Vertex3 direction) {
+			ArrayList<Vertex3> results = null;
+			// for comments, read . as "dot product"
+			// v = source - center
+			Vertex3 v = source.minus(center);
+			float vDotDirection = v.dotProd(direction);
+			// discriminant: (v.d)^2 - (v.v) + radius^2
+			float discriminant = vDotDirection * vDotDirection - v.dotProd(v) + radius * radius;
+			if(discriminant >= 0){
+				results = new ArrayList<Vertex3>();
+				float t = -1 * vDotDirection + sqrt(discriminant);
+				Vertex3 r = direction.times(t).plus(source);
+				if(t > 0)
+					results.add(r);
+				if(discriminant != 0){
+					t = -1 * vDotDirection - sqrt(discriminant);
+					r = direction.times(t).plus(source);
+					if(t > 0)
+						results.add(r);
+				}
+			}
+			return results;
+		}
+
+		@Override
+		public RayTracableMaterial material() {
+			return surfaceMaterial;
+		}
+
+		@Override
+		public Vertex3 NormalAt(Vertex3 v) {
+			return v.minus(center).normalize();
+		}
+		
+		public String toString(){
+			return String.format("<%.2f, %.2f, %.2f> w/radius: %.2f", center.x, center.y, center.z, radius);
+		}
+	}
+
+	/**
+	 * A cylinder primitive to be used for ray tracing.
+	 */
+	public class RayTracableCylinder implements RayTracableObject {
+		public Vertex3 loc;
+		public float radius, height;
+		RayTracableMaterial surfaceMaterial;
+		
+		public RayTracableCylinder(float x, float y, float z, float height, float radius, RayTracableMaterial material){
+			this.loc = new Vertex3(x, y, z);
+			this.radius = radius; this.height = height; this.surfaceMaterial = material.clone();
+		}
+		
+		@Override
+		public ArrayList<Vertex3> IntersectsRay(Vertex3 source, Vertex3 direction) {
+			ArrayList<Vertex3> results = new ArrayList<Vertex3>();
+			float a, b, c, discrim, t, x, y, z;
+			Vertex3 tmp;
+			// sides
+			// TODO
+			
+			// caps
+			// intersection with planes loc.y and loc.y + height
+			// bottom
+			t = (loc.y - source.y) / direction.y;
+			if(t > 0){
+				x = source.x + t * direction.x;
+				z = source.z + t * direction.z;
+				tmp = new Vertex3(x, loc.y, z);
+				a = pow(tmp.x - loc.x, 2) + pow(tmp.z - loc.z, 2) - radius * radius;
+				if(a <= 0){
+					results.add(tmp);
+				}
+			}
+			// top
+			t = (loc.y + height - source.y) / direction.y;
+			if(t > 0){
+				x = source.x + t * direction.x;
+				z = source.z + t * direction.z;
+				tmp = new Vertex3(x, loc.y + height, z);
+				a = pow(tmp.x - loc.x, 2) + pow(tmp.z - loc.z, 2) - radius * radius;
+				if(a <= 0){
+					results.add(tmp);
+				}
+			}
+			return results;
+		}
+
+		@Override
+		public RayTracableMaterial material() {
+			return surfaceMaterial;
+		}
+
+		@Override
+		public Vertex3 NormalAt(Vertex3 v) {
+			Vertex3 norm = null;
+			if(abs(v.y - loc.y) < SMALLFLOAT){
+				norm = new Vertex3(0, -1, 0);
+			} else if(abs(v.y - (loc.y + height)) < SMALLFLOAT){
+				norm = new Vertex3(0, 1, 0);
+			} else {
+				norm = new Vertex3(v.x - loc.x, 0, v.z - loc.z);
+//				norm = norm.times(-1);
+			}
+			return norm.normalize();
+		}
+		
+		public String toString(){
+			return String.format("Cylinder loc: <%.2f, %.2f, %.2f> height: %.2f radius: %.2f", loc.x, loc.y, loc.z, height, radius);
+		}
+	}
+	
+	public class RayTracableMaterial {
+		public float phong, reflect;
+		public Color ambient, diffuse, specular;
+		public RayTracableMaterial(float car, float cag, float cab, float crr, float crg, float crb, float clr, float clg, float clb, float phong, float krefl){
+			this.phong = phong; this.reflect = krefl;
+			this.ambient = new Color(car, cag, cab);
+			this.diffuse = new Color(crr, crg, crb);
+			this.specular = new Color(clr, clg, clb);
+		}
+		
+		public RayTracableMaterial(Color ambient, Color diffuse, Color specular, float phong, float krefl){
+			this.ambient = ambient; this.diffuse = diffuse; this.specular = specular;
+			this.phong = phong; this.reflect = krefl;
+		}
+		public RayTracableMaterial clone(){
+			return new RayTracableMaterial(ambient, diffuse, specular, phong, reflect);
+		}
+	}
+	
+
+	public class RayTracableLight {
+		Vertex3 location;
+		Color color;
+		
+		public RayTracableLight(){
+			init(0, 0, 0, WHITE);
+		}
+		
+		public RayTracableLight(float x, float y, float z, float r, float g, float b){
+			init(x, y, z, new Color(r, g, b));
+		}
+		
+		public RayTracableLight(Vertex3 v){
+			init(v.x, v.y, v.z, WHITE);
+		}
+		
+		public RayTracableLight(Vertex3 v, Color color){
+			init(v.x, v.y, v.z, color);
+		}
+		
+		public RayTracableLight(float x, float y, float z, Color color){
+			init(x, y, z, color);
+		}
+		
+		public RayTracableLight(Vertex3 v, float r, float g, float b){
+			init(v.x, v.y, v.z, new Color(r, g, b));
+		}
+		
+		private void init(float x, float y, float z, Color color){
+			this.location = new Vertex3(x, y, z); this.color = color;
+		}
+	}
+	
+
+	
 	
 	/**
 	 * Frame drawing loop
@@ -505,29 +595,5 @@ public class parser extends PApplet {
 		colorMode(RGB, 1.0f);
 		background(0, 0, 0);
 		interpreter();
-	}
-	
-	private void createRectangle(ArrayReader r){
-		float x0 = r.readFloat(), 
-		      y0 = r.readFloat(),
-		      x1 = r.readFloat(),
-		      y1 = r.readFloat();
-		rect(x0, height-y1, x1-x0, y1-y0);
-	}
-
-	private void changeColor(ArrayReader r) {
-		float red = r.readFloat(),
-		      green = r.readFloat(),
-		      blue = r.readFloat();
-		fill(red, green, blue);
-	}
-	
-	float get_float(String str) { 
-		return Float.parseFloat(str); 
-	}
-	
-	private void error(String errMsg){
-		println(String.format("ERROR: %s", errMsg));
-		exit();
 	}
 }
