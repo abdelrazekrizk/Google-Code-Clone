@@ -1,0 +1,37 @@
+# several reflective spheres
+
+fov 60
+
+# blue background
+
+background 0.2 0.2 1
+
+# two light sources
+
+light 8 8 3  .7 .7 .7
+light -4 2 0  .3 .3 .3
+
+# this cylinder acts as a ground plane
+
+surface  .2 .2 .2  .8 .8 .8  0 0 0  1  0
+cyl  0 -2 0  1  50
+
+# reflective spheres
+
+surface  .2 .2 .2  .6 .6 .6  0.7 0.7 0.7  20  0.7
+sphere 1 0 -5  1
+
+surface  .2 .2 .2  .6 .6 .6  0.7 0.7 0.7  20  0.7
+sphere -2 0 -7  1
+
+surface  .2 .2 .2  .6 .6 .6  0.7 0.7 0.7  20  0.7
+sphere 0 -0.7 -2  0.3
+
+surface  .2 .2 .2  .6 .6 .6  0.7 0.7 0.7  20  0.7
+sphere 1 -0.6 -3  0.4
+
+surface  .2 .2 .2  .6 .6 .6  0.7 0.7 0.7  20  0.7
+sphere -0.7 -0.5 -3  0.5
+
+write c4.png
+

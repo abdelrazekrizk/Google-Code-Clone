@@ -1,0 +1,26 @@
+# colored lights
+
+fov 60
+
+# blue background
+
+background 0.2 0.2 1
+
+# three light sources (red, green, blue)
+
+light  3 4  0  .8 .2 .2
+light -3 4  0  .2 .8 .2
+light  0 4 -5  .2 .2 .8
+
+# this cylinder acts as a ground plane
+
+surface  0 0 0  1 1 1  0 0 0  1  0
+cyl  0 -2 0  1  50
+
+# shadow-casting sphere
+
+surface  .2 .2 .2  .8 .8 .8  0 0 0  1  0
+sphere  0 0.5 -3  1
+
+write c3.png
+
