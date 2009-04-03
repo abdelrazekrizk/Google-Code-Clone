@@ -1,0 +1,49 @@
+propel:
+  roster:
+    id:     ~
+    name:   { type: varchar(255), required: true, index: unique }
+    charclass:  { type: integer, foreignTable: classes, foreignReference: id, required: true }
+    ep:     { type: float, required: true, default: 0 }
+    gp:     { type: float, required: true, default: 0 }
+    priority: { type: float, required: true, default: 0 }
+    joined_on: { type: timestamp, required: true }
+    is_active: { type: boolean, required: true, default: 1 }
+    
+  classes:
+    id:     ~
+    name:   { type: varchar(255), required: true }
+    
+  raids:
+    id:     ~
+    note:   { type: varchar(512), required: true }
+    boss:   { type: integer, foreignTable: bosses, foreignReference: id, required: true }
+    baseval: { type: float, required: true, default: 100 }
+    inflatedval: { type: float, required: true, default: 100 }
+    date:   { type: timestamp, required: true }
+  
+  attendees:
+    raidid: { type: integer, foreignTable: raids, foreignReference: id }
+    playerid: { type: integer, foreignTable: roster, foreignReference: id }
+    
+  bosses:
+    id:     ~
+    name:   { type: varchar(255), required: true, index: unique }
+    zone:   { type: integer, foreignTable: zones, foreignReference: id, required: true }
+    baseval: { type: float, required: true, default: 100 }
+    
+  zones:
+    id:     ~
+    name:   { type: varchar(255), required: true, index: unique }
+    
+  items:
+    id:     ~
+    name:   { type: varchar(255), required: true }
+    playerid: { type: integer, foreignTable: roster, foreignReference: id, required: true }
+    raidid: { type: integer, foreignTable: raids, foreignReference: id, required: true }
+    itemid: { type: integer, required: true }
+    baseval: { type: float, required: true }
+    inflatedval: { type: float, required: true }
+    
+  decays:
+    id:     ~
+    performed_at: { type: timestamp, required: true }
