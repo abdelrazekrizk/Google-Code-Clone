@@ -1,0 +1,45 @@
+Bosses:
+  flameleviathan:
+    name: Flame Leviathan
+    zone: ulduar
+  ignis:
+    name: Ignis the Furnace Master
+    zone: ulduar
+  razorscale:
+    name: Razorscale
+    zone: ulduar
+  deconstructor:
+    name: XT-002 Deconstructor
+    zone: ulduar
+  ironcouncil:
+    name: The Iron Council
+    zone: ulduar
+  kologarn:
+    name: Kologarn
+    zone: ulduar
+  auriaya:
+    name: Auriaya
+    zone: ulduar
+  mimiron:
+    name: Mimiron
+    zone: ulduar
+  freya:
+    name: Freya
+    zone: ulduar
+  thorim:
+    name: Thorim
+    zone: ulduar
+  hodir:
+    name: Hodir
+    zone: ulduar
+  vezax:
+    name: General Vezax
+    zone: ulduar
+  algalon:
+    name: Algalon the Observer
+    zone: ulduar
+    baseval: 125
+  yoggsaron:
+    name: Yogg-Saron
+    zone: ulduar
+    baseval: 125

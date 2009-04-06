@@ -10,6 +10,10 @@
  */
 class raidActions extends sfActions
 {
+  public function executeIndex(sfRequest $request){
+    
+  }
+  
   public function executeShow(sfRequest $request){
     $raidId = $request->getParameter('id');
     $this->forward404Unless($raidId);

@@ -17,7 +17,7 @@ class Bosses extends BaseBosses
   }
   
   public function __toString(){
-    return $this->name;
+    return $this->getName();
   }
   
   public function echoLink(){

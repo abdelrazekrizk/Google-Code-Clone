@@ -12,5 +12,8 @@ class RosterForm extends BaseRosterForm
 {
   public function configure()
   {
+    unset(
+      $this['ep'], $this['gp'], $this['priority']
+    );
   }
 }

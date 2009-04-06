@@ -18,7 +18,6 @@ class zoneActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
     // todo: show all zones
-    $this->forward404();
   }
   
   public function executeShow(sfWebRequest $request){

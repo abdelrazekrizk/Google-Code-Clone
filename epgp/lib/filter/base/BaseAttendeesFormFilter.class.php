@@ -15,13 +15,9 @@ class BaseAttendeesFormFilter extends BaseFormFilterPropel
   public function setup()
   {
     $this->setWidgets(array(
-      'raidid'   => new sfWidgetFormPropelChoice(array('model' => 'Raids', 'add_empty' => true)),
-      'playerid' => new sfWidgetFormPropelChoice(array('model' => 'Roster', 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
-      'raidid'   => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Raids', 'column' => 'id')),
-      'playerid' => new sfValidatorPropelChoice(array('required' => false, 'model' => 'Roster', 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('attendees_filters[%s]');
@@ -39,9 +35,8 @@ class BaseAttendeesFormFilter extends BaseFormFilterPropel
   public function getFields()
   {
     return array(
-      'raidid'   => 'ForeignKey',
-      'playerid' => 'ForeignKey',
-      'id'       => 'Number',
+      'raids_id'  => 'ForeignKey',
+      'roster_id' => 'ForeignKey',
     );
   }
 }

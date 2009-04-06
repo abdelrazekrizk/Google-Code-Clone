@@ -1,0 +1,22 @@
+Races:
+  draenei:
+    name: Draenei
+  dwarf:
+    name: Dwarf
+  gnome:
+    name: Gnome
+  human:
+    name: Human
+  nelf:
+    name: Night Elf
+    
+  belf:
+    name: Blood Elf
+  orc:
+    name: Orc
+  tauren:
+    name: Tauren
+  troll:
+    name: Troll
+  undead:
+    name: Undead

@@ -1,0 +1,756 @@
+Apr 04 13:38:07 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 04 13:38:07 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 04 13:38:07 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 04 13:38:07 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'default',  'action' => 'index',)
+Apr 04 13:38:07 symfony [info] {myUser} Automatic user logout due to timeout
+Apr 04 13:38:07 symfony [info] {myUser} User is not authenticated
+Apr 04 13:38:07 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 04 13:38:07 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 04 13:38:07 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 04 13:38:07 symfony [info] {defaultActions} Call "defaultActions->executeIndex()"
+Apr 04 13:38:07 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib/controller/default/templates/indexSuccess.php"
+Apr 04 13:38:07 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib\controller\default\templates/defaultLayout.php"
+Apr 04 13:38:07 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib\controller\default\templates/defaultLayout.php"
+Apr 04 13:38:07 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 04 13:38:07 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 04 13:38:07 symfony [info] {sfWebDebugLogger} Configuration 618.32 ms (9)
+Apr 04 13:38:07 symfony [info] {sfWebDebugLogger} Action "default/index" 0.25 ms (1)
+Apr 04 13:38:07 symfony [info] {sfWebDebugLogger} View "Success" for "default/index" 70.43 ms (1)
+Apr 04 13:38:07 symfony [info] {sfWebResponse} Send content (27053 o)
+Apr 04 13:38:30 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 04 13:38:30 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 04 13:38:30 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 04 13:38:30 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'default',  'action' => 'index',)
+Apr 04 13:38:30 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 04 13:38:30 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 04 13:38:30 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 04 13:38:30 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 04 13:38:30 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 04 13:38:30 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 04 13:38:30 symfony [info] {defaultActions} Call "defaultActions->executeLogin()"
+Apr 04 13:38:30 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib/controller/default/templates/loginSuccess.php"
+Apr 04 13:38:30 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib\controller\default\templates/defaultLayout.php"
+Apr 04 13:38:30 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib\controller\default\templates/defaultLayout.php"
+Apr 04 13:38:30 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 04 13:38:30 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 04 13:38:30 symfony [info] {sfWebDebugLogger} Configuration 91.81 ms (13)
+Apr 04 13:38:30 symfony [info] {sfWebDebugLogger} Action "default/login" 0.20 ms (1)
+Apr 04 13:38:30 symfony [info] {sfWebDebugLogger} View "Success" for "default/login" 35.86 ms (1)
+Apr 04 13:38:30 symfony [info] {sfWebResponse} Send content (26946 o)
+Apr 04 13:38:34 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 04 13:38:34 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 04 13:38:34 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 04 13:38:34 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /default/login with parameters array (  'module' => 'default',  'action' => 'login',)
+Apr 04 13:38:34 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 04 13:38:34 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 04 13:38:34 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 04 13:38:34 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 04 13:38:34 symfony [info] {defaultActions} Call "defaultActions->executeLogin()"
+Apr 04 13:38:34 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib/controller/default/templates/loginSuccess.php"
+Apr 04 13:38:34 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib\controller\default\templates/defaultLayout.php"
+Apr 04 13:38:34 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib\controller\default\templates/defaultLayout.php"
+Apr 04 13:38:34 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 04 13:38:34 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 04 13:38:34 symfony [info] {sfWebDebugLogger} Configuration 47.06 ms (9)
+Apr 04 13:38:34 symfony [info] {sfWebDebugLogger} Action "default/login" 0.17 ms (1)
+Apr 04 13:38:34 symfony [info] {sfWebDebugLogger} View "Success" for "default/login" 31.31 ms (1)
+Apr 04 13:38:34 symfony [info] {sfWebResponse} Send content (26543 o)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 04 13:39:14 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /default/login with parameters array (  'module' => 'default',  'action' => 'login',)
+Apr 04 13:39:14 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 04 13:39:14 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 04 13:39:14 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 04 13:39:14 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 04 13:39:14 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 04 13:39:14 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Apr 04 13:39:14 symfony [err] {sfException} Call to undefined method myUser::setReferer.
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 04 13:39:26 symfony [info] {sfPatternRouting} Match route "default" (/:module/:action/*) for /default/login with parameters array (  'module' => 'default',  'action' => 'login',)
+Apr 04 13:39:26 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 04 13:39:26 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 04 13:39:26 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 04 13:39:26 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 04 13:39:26 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 04 13:39:26 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignin()"
+Apr 04 13:39:26 symfony [info] {sfPHPView} Render "C:/projects/sfprojects/epgp/plugins/sfGuardPlugin/modules/sfGuardAuth/templates/signinSuccess.php"
+Apr 04 13:39:26 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 04 13:39:26 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 04 13:39:26 symfony [info] {sfWebResponse} Send status "HTTP/1.1 401 Unauthorized"
+Apr 04 13:39:26 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 04 13:39:26 symfony [info] {sfWebDebugLogger} Configuration 91.12 ms (13)
+Apr 04 13:39:26 symfony [info] {sfWebDebugLogger} Action "sfGuardAuth/signin" 11.93 ms (1)
+Apr 04 13:39:26 symfony [info] {sfWebDebugLogger} View "Success" for "sfGuardAuth/signin" 69.57 ms (1)
+Apr 04 13:39:26 symfony [info] {sfWebResponse} Send content (30539 o)
+Apr 05 06:39:50 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 06:39:50 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 06:39:50 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 06:39:50 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'default',  'action' => 'index',)
+Apr 05 06:39:50 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 06:39:50 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 06:39:50 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 06:39:50 symfony [info] {defaultActions} Call "defaultActions->executeIndex()"
+Apr 05 06:39:50 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib/controller/default/templates/indexSuccess.php"
+Apr 05 06:39:50 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib\controller\default\templates/defaultLayout.php"
+Apr 05 06:39:50 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib\controller\default\templates/defaultLayout.php"
+Apr 05 06:39:50 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 06:39:50 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 06:39:50 symfony [info] {sfWebDebugLogger} Configuration 616.30 ms (9)
+Apr 05 06:39:50 symfony [info] {sfWebDebugLogger} Action "default/index" 0.17 ms (1)
+Apr 05 06:39:50 symfony [info] {sfWebDebugLogger} View "Success" for "default/index" 71.92 ms (1)
+Apr 05 06:39:50 symfony [info] {sfWebResponse} Send content (26697 o)
+Apr 05 06:40:14 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 06:40:14 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 06:40:14 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 06:40:14 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'default',  'action' => 'index',)
+Apr 05 06:40:14 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 06:40:14 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 06:40:14 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 06:40:14 symfony [info] {defaultActions} Call "defaultActions->executeIndex()"
+Apr 05 06:40:14 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib/controller/default/templates/indexSuccess.php"
+Apr 05 06:40:14 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib\controller\default\templates/defaultLayout.php"
+Apr 05 06:40:14 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib\controller\default\templates/defaultLayout.php"
+Apr 05 06:40:14 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 06:40:14 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 06:40:14 symfony [info] {sfWebDebugLogger} Configuration 570.77 ms (9)
+Apr 05 06:40:14 symfony [info] {sfWebDebugLogger} Action "default/index" 0.16 ms (1)
+Apr 05 06:40:14 symfony [info] {sfWebDebugLogger} View "Success" for "default/index" 38.74 ms (1)
+Apr 05 06:40:14 symfony [info] {sfWebResponse} Send content (26697 o)
+Apr 05 06:40:20 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 06:40:20 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 06:40:20 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 06:40:20 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 06:40:20 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 06:40:20 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 06:40:20 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 06:40:20 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 06:40:20 symfony [info] {homeActions} Forward to action "default/module"
+Apr 05 06:40:20 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 06:40:20 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 06:40:20 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 06:40:20 symfony [info] {defaultActions} Call "defaultActions->executeModule()"
+Apr 05 06:40:20 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib/controller/default/templates/moduleSuccess.php"
+Apr 05 06:40:20 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib\controller\default\templates/defaultLayout.php"
+Apr 05 06:40:20 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib\controller\default\templates/defaultLayout.php"
+Apr 05 06:40:20 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 06:40:20 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 06:40:20 symfony [info] {sfWebDebugLogger} Configuration 94.65 ms (13)
+Apr 05 06:40:20 symfony [info] {sfWebDebugLogger} Action "home/index" 63.66 ms (1)
+Apr 05 06:40:20 symfony [info] {sfWebDebugLogger} Action "default/module" 0.19 ms (1)
+Apr 05 06:40:20 symfony [info] {sfWebDebugLogger} View "Success" for "default/module" 32.89 ms (1)
+Apr 05 06:40:20 symfony [info] {sfWebResponse} Send content (28639 o)
+Apr 05 06:40:36 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 06:40:36 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 06:40:36 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 06:40:36 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 06:40:36 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 06:40:36 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 06:40:36 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 06:40:36 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 06:40:36 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 06:40:36 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:40:36 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:40:36 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 06:40:36 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 06:40:36 symfony [info] {sfWebDebugLogger} Configuration 70.36 ms (10)
+Apr 05 06:40:36 symfony [info] {sfWebDebugLogger} Action "home/index" 0.20 ms (1)
+Apr 05 06:40:36 symfony [info] {sfWebDebugLogger} View "Success" for "home/index" 60.28 ms (1)
+Apr 05 06:40:36 symfony [info] {sfWebResponse} Send content (17800 o)
+Apr 05 06:40:51 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 06:40:51 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 06:40:51 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 06:40:51 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 06:40:51 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 06:40:51 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 06:40:51 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 06:40:51 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 06:40:51 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 06:40:51 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:40:51 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:40:51 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 06:40:51 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 06:40:51 symfony [info] {sfWebDebugLogger} Configuration 47.15 ms (9)
+Apr 05 06:40:51 symfony [info] {sfWebDebugLogger} Action "home/index" 0.16 ms (1)
+Apr 05 06:40:51 symfony [info] {sfWebDebugLogger} View "Success" for "home/index" 35.14 ms (1)
+Apr 05 06:40:51 symfony [info] {sfWebResponse} Send content (17801 o)
+Apr 05 06:42:44 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 06:42:44 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 06:42:44 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 06:42:44 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 06:42:44 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 06:42:44 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 06:42:44 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 06:42:44 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 06:42:44 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 06:42:44 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:42:44 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:42:44 symfony [err] {sfConfigurationException} The route "sf_guard_signout" does not exist.
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 06:43:32 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 06:43:32 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 06:43:32 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 06:43:32 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 06:43:32 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 06:43:32 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 06:43:32 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:43:32 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:43:32 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 06:43:32 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 06:43:32 symfony [info] {sfWebDebugLogger} Configuration 44.83 ms (9)
+Apr 05 06:43:32 symfony [info] {sfWebDebugLogger} Action "home/index" 0.16 ms (1)
+Apr 05 06:43:32 symfony [info] {sfWebDebugLogger} View "Success" for "home/index" 47.01 ms (1)
+Apr 05 06:43:32 symfony [info] {sfWebResponse} Send content (30405 o)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 06:44:01 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 06:44:01 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 06:44:01 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 06:44:01 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 06:44:01 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 06:44:01 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 06:44:01 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 06:44:01 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:44:01 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:44:01 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 06:44:01 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 06:44:01 symfony [info] {sfWebDebugLogger} Configuration 90.00 ms (10)
+Apr 05 06:44:01 symfony [info] {sfWebDebugLogger} Action "home/index" 0.24 ms (1)
+Apr 05 06:44:01 symfony [info] {sfWebDebugLogger} View "Success" for "home/index" 36.14 ms (1)
+Apr 05 06:44:01 symfony [info] {sfWebResponse} Send content (30706 o)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 06:44:19 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /roster with parameters array (  'module' => 'roster',  'action' => 'index',)
+Apr 05 06:44:19 symfony [info] {sfFrontWebController} Action "roster/index" does not exist
+Apr 05 06:44:19 symfony [err] {sfError404Exception} Action "roster/index" does not exist.
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 06:44:58 symfony [info] {sfPatternRouting} Match route "sf_guard_signout" (/logout) for /logout with parameters array (  'module' => 'sfGuardAuth',  'action' => 'signout',)
+Apr 05 06:44:59 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 06:44:59 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 06:44:59 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 06:44:59 symfony [info] {sfGuardAuthActions} Call "sfGuardAuthActions->executeSignout()"
+Apr 05 06:44:59 symfony [err] {sfException} Call to undefined method myUser::signOut.
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 06:45:14 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 06:45:14 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 06:45:14 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 06:45:14 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 06:45:14 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 06:45:14 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 06:45:14 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 06:45:14 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:45:14 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:45:14 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Apr 05 06:45:14 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.ID=:p1
+Apr 05 06:45:14 symfony [debug] {sfPropelLogger} Binding 1 at position :p1 w/ PDO type PDO::PARAM_INT
+Apr 05 06:45:14 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 06:45:14 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 06:45:14 symfony [info] {sfWebDebugLogger} Configuration 51.29 ms (9)
+Apr 05 06:45:14 symfony [info] {sfWebDebugLogger} Action "home/index" 0.16 ms (1)
+Apr 05 06:45:14 symfony [info] {sfWebDebugLogger} View "Success" for "home/index" 78.41 ms (1)
+Apr 05 06:45:14 symfony [info] {sfWebResponse} Send content (32320 o)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 06:45:31 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 06:45:31 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 06:45:31 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 06:45:31 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 06:45:31 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 06:45:31 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 06:45:31 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 06:45:31 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:45:31 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:45:31 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Apr 05 06:45:31 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.ID=:p1
+Apr 05 06:45:31 symfony [debug] {sfPropelLogger} Binding 1 at position :p1 w/ PDO type PDO::PARAM_INT
+Apr 05 06:45:31 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 06:45:31 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 06:45:31 symfony [info] {sfWebDebugLogger} Configuration 43.21 ms (9)
+Apr 05 06:45:31 symfony [info] {sfWebDebugLogger} Action "home/index" 0.16 ms (1)
+Apr 05 06:45:31 symfony [info] {sfWebDebugLogger} View "Success" for "home/index" 60.27 ms (1)
+Apr 05 06:45:31 symfony [info] {sfWebResponse} Send content (32321 o)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 06:49:39 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 06:49:39 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 06:49:39 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 06:49:39 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 06:49:39 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 06:49:39 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 06:49:39 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 06:49:39 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:49:39 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 06:49:39 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Apr 05 06:49:39 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.ID=:p1
+Apr 05 06:49:39 symfony [debug] {sfPropelLogger} Binding 1 at position :p1 w/ PDO type PDO::PARAM_INT
+Apr 05 06:49:40 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 06:49:40 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 06:49:40 symfony [info] {sfWebDebugLogger} Configuration 47.98 ms (9)
+Apr 05 06:49:40 symfony [info] {sfWebDebugLogger} Action "home/index" 0.16 ms (1)
+Apr 05 06:49:40 symfony [info] {sfWebDebugLogger} View "Success" for "home/index" 69.46 ms (1)
+Apr 05 06:49:40 symfony [info] {sfWebResponse} Send content (32329 o)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 07:08:47 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 07:08:47 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 07:08:47 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 07:08:47 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 07:08:47 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 07:08:47 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 07:08:47 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 07:08:47 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:08:47 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:08:47 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Apr 05 07:08:47 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.ID=:p1
+Apr 05 07:08:47 symfony [debug] {sfPropelLogger} Binding 1 at position :p1 w/ PDO type PDO::PARAM_INT
+Apr 05 07:08:47 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 07:08:47 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 07:08:47 symfony [info] {sfWebDebugLogger} Configuration 50.47 ms (9)
+Apr 05 07:08:47 symfony [info] {sfWebDebugLogger} Action "home/index" 0.17 ms (1)
+Apr 05 07:08:47 symfony [info] {sfWebDebugLogger} View "Success" for "home/index" 72.63 ms (1)
+Apr 05 07:08:47 symfony [info] {sfWebResponse} Send content (32669 o)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 07:22:29 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 07:22:29 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 07:22:29 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 07:22:29 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 07:22:29 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 07:22:29 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 07:22:29 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 07:22:29 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:22:29 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 07:22:39 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 07:22:39 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 07:22:39 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 07:22:39 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 07:22:39 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 07:22:39 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 07:22:39 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 07:22:39 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:22:39 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 07:23:02 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 07:23:02 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 07:23:02 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 07:23:02 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 07:23:02 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 07:23:02 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 07:23:02 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 07:23:02 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:23:02 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 07:23:16 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 07:23:16 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 07:23:16 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 07:23:16 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 07:23:16 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 07:23:16 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 07:23:16 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 07:23:16 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:23:16 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:23:16 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Apr 05 07:23:16 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.ID=:p1
+Apr 05 07:23:16 symfony [debug] {sfPropelLogger} Binding 1 at position :p1 w/ PDO type PDO::PARAM_INT
+Apr 05 07:23:16 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 07:23:16 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 07:23:16 symfony [info] {sfWebDebugLogger} Configuration 60.76 ms (13)
+Apr 05 07:23:16 symfony [info] {sfWebDebugLogger} Action "home/index" 0.20 ms (1)
+Apr 05 07:23:16 symfony [info] {sfWebDebugLogger} View "Success" for "home/index" 120.60 ms (1)
+Apr 05 07:23:16 symfony [info] {sfWebResponse} Send content (32239 o)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 07:24:47 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 07:24:47 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 07:24:47 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 07:24:47 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 07:24:47 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 07:24:47 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 07:24:47 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 07:24:47 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:24:47 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:24:47 symfony [err] {InvalidArgumentException} The application "frontenddev" does not exist.
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 07:24:56 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 07:24:56 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 07:24:56 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 07:24:56 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 07:24:56 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 07:24:56 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 07:24:56 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 07:24:56 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:24:56 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:24:56 symfony [err] {InvalidArgumentException} The application "frontend_dev" does not exist.
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 07:25:08 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 07:25:08 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 07:25:08 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 07:25:08 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 07:25:08 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 07:25:08 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 07:25:08 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 07:25:08 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:25:08 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:25:08 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Apr 05 07:25:08 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.ID=:p1
+Apr 05 07:25:08 symfony [debug] {sfPropelLogger} Binding 1 at position :p1 w/ PDO type PDO::PARAM_INT
+Apr 05 07:25:08 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 07:25:08 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 07:25:08 symfony [info] {sfWebDebugLogger} Configuration 61.73 ms (13)
+Apr 05 07:25:08 symfony [info] {sfWebDebugLogger} Action "home/index" 0.17 ms (1)
+Apr 05 07:25:08 symfony [info] {sfWebDebugLogger} View "Success" for "home/index" 116.36 ms (1)
+Apr 05 07:25:09 symfony [info] {sfWebResponse} Send content (32239 o)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 07:25:35 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 07:25:35 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 07:25:35 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 07:25:35 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 07:25:35 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 07:25:35 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 07:25:35 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 07:25:35 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:25:35 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:25:35 symfony [err] {InvalidArgumentException} The application "raid/index" does not exist.
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 07:25:44 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 07:25:44 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 07:25:44 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 07:25:44 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 07:25:44 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 07:25:44 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 07:25:44 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 07:25:44 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:25:44 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:25:44 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Apr 05 07:25:44 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.ID=:p1
+Apr 05 07:25:44 symfony [debug] {sfPropelLogger} Binding 1 at position :p1 w/ PDO type PDO::PARAM_INT
+Apr 05 07:25:44 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 07:25:44 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 07:25:44 symfony [info] {sfWebDebugLogger} Configuration 65.13 ms (13)
+Apr 05 07:25:44 symfony [info] {sfWebDebugLogger} Action "home/index" 0.25 ms (1)
+Apr 05 07:25:44 symfony [info] {sfWebDebugLogger} View "Success" for "home/index" 104.38 ms (1)
+Apr 05 07:25:44 symfony [info] {sfWebResponse} Send content (32239 o)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 07:26:50 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 07:26:50 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 07:26:50 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 07:26:50 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 07:26:50 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 07:26:50 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 07:26:50 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 07:26:51 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:26:51 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:26:51 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Apr 05 07:26:51 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.ID=:p1
+Apr 05 07:26:51 symfony [debug] {sfPropelLogger} Binding 1 at position :p1 w/ PDO type PDO::PARAM_INT
+Apr 05 07:26:51 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 07:26:51 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 07:26:51 symfony [info] {sfWebDebugLogger} Configuration 64.08 ms (13)
+Apr 05 07:26:51 symfony [info] {sfWebDebugLogger} Action "home/index" 0.23 ms (1)
+Apr 05 07:26:51 symfony [info] {sfWebDebugLogger} View "Success" for "home/index" 119.35 ms (1)
+Apr 05 07:26:51 symfony [info] {sfWebResponse} Send content (32239 o)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signin" (/login)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_signout" (/logout)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfRoute "sf_guard_password" (/request_password)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user" (/sf_guard_user.:sf_format)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_new" (/sf_guard_user/new.:sf_format)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_create" (/sf_guard_user.:sf_format)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_edit" (/sf_guard_user/:id/edit.:sf_format)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_update" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_delete" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_show" (/sf_guard_user/:id.:sf_format)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_object" (/sf_guard_user/:id/:action.:sf_format)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Connect sfPropelRoute "sf_guard_user_collection" (/sf_guard_user/:action/action.:sf_format)
+Apr 05 07:39:01 symfony [info] {sfPatternRouting} Match route "default_index" (/:module) for /home with parameters array (  'module' => 'home',  'action' => 'index',)
+Apr 05 07:39:01 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 05 07:39:01 symfony [info] {sfFilterChain} Executing filter "sfBasicSecurityFilter"
+Apr 05 07:39:01 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 05 07:39:01 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 05 07:39:01 symfony [info] {homeActions} Call "homeActions->executeIndex()"
+Apr 05 07:39:02 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\modules/home/templates/indexSuccess.php"
+Apr 05 07:39:02 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:39:02 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\admin\templates/layout.php"
+Apr 05 07:39:02 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Apr 05 07:39:02 symfony [debug] {sfPropelLogger} prepare: SELECT sf_guard_user.ID, sf_guard_user.USERNAME, sf_guard_user.ALGORITHM, sf_guard_user.SALT, sf_guard_user.PASSWORD, sf_guard_user.CREATED_AT, sf_guard_user.LAST_LOGIN, sf_guard_user.IS_ACTIVE, sf_guard_user.IS_SUPER_ADMIN FROM `sf_guard_user` WHERE sf_guard_user.ID=:p1
+Apr 05 07:39:02 symfony [debug] {sfPropelLogger} Binding 1 at position :p1 w/ PDO type PDO::PARAM_INT
+Apr 05 07:39:02 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 05 07:39:02 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 05 07:39:02 symfony [info] {sfWebDebugLogger} Configuration 45.66 ms (9)
+Apr 05 07:39:02 symfony [info] {sfWebDebugLogger} Action "home/index" 0.17 ms (1)
+Apr 05 07:39:02 symfony [info] {sfWebDebugLogger} View "Success" for "home/index" 77.29 ms (1)
+Apr 05 07:39:02 symfony [info] {sfWebResponse} Send content (32321 o)

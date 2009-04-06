@@ -1,0 +1,48 @@
+Bosses:
+  anubrekhan:
+    name: 'Anub''Rekhan'
+    zone: naxxramas
+  faerlina:
+    name: Grand Widow Faerlina
+    zone: naxxramas
+  maexxna:
+    name: Maexxna
+    zone: naxxramas
+  noth:
+    name: Noth the Plaugebringer
+    zone: naxxramas
+  heigan:
+    name: Heigan the Unclean
+    zone: naxxramas
+  loatheb:
+    name: Loatheb
+    zone: naxxramas
+  razuvious:
+    name: Instructor Razuvious
+    zone: naxxramas
+  gothik:
+    name: Gothik the Harvester
+    zone: naxxramas
+  fourhorsemen:
+    name: The Four Horsemen
+    zone: naxxramas
+  patchwerk:
+    name: Patchwerk
+    zone: naxxramas
+  grobbulus:
+    name: Grobbulus
+    zone: naxxramas
+  gluth:
+    name: Gluth
+    zone: naxxramas
+  thaddius:
+    name: Thaddius
+    zone: naxxramas
+  sapphiron:
+    name: Sapphiron
+    zone: naxxramas
+    baseval: 125
+  kelthuzad:
+    name: 'Kel''Thuzad'
+    zone: naxxramas
+    baseval: 125

@@ -1,0 +1,25 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           Attendees
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          attendees
+    with_propel_route:     1
+
+    config:
+      actions: ~
+      fields:  ~
+      list:    
+        display: [=raids, roster]
+      filter:  ~
+      form:    ~
+      edit:
+        fields:
+          raid_attendees:
+            type: admin_double_list
+            params: through_class=Attendees
+      new:     ~

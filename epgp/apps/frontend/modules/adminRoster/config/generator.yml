@@ -1,0 +1,26 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           Roster
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          roster
+    with_propel_route:     1
+
+    config:
+      actions: ~
+      fields:
+        name: { label: "Name" }
+        charclass: { label: "Class" }
+        charrace: { label: "Race" }
+      list:
+        title: Roster Listing
+        display: [=name, class, race]
+        max_per_page: 60
+      filter:  ~
+      form:    ~
+      edit:    ~
+      new:     ~

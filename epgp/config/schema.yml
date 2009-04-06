@@ -3,6 +3,7 @@ propel:
     id:     ~
     name:   { type: varchar(255), required: true, index: unique }
     charclass:  { type: integer, foreignTable: classes, foreignReference: id, required: true }
+    charrace: { type: integer, foreignTable: races, foreignReference: id, required: true }
     ep:     { type: float, required: true, default: 0 }
     gp:     { type: float, required: true, default: 0 }
     priority: { type: float, required: true, default: 0 }
@@ -10,6 +11,10 @@ propel:
     is_active: { type: boolean, required: true, default: 1 }
     
   classes:
+    id:     ~
+    name:   { type: varchar(255), required: true }
+  
+  races:
     id:     ~
     name:   { type: varchar(255), required: true }
     
@@ -22,8 +27,8 @@ propel:
     date:   { type: timestamp, required: true }
   
   attendees:
-    raidid: { type: integer, foreignTable: raids, foreignReference: id }
-    playerid: { type: integer, foreignTable: roster, foreignReference: id }
+    raids_id: { type: integer, primaryKey: true, required: true, foreignTable: raids, foreignReference: id, onDelete: cascade }
+    roster_id: { type: integer, primaryKey: true, required: true, foreignTable: roster, foreignReference: id, onDelete: cascade }
     
   bosses:
     id:     ~

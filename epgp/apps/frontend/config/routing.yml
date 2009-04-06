@@ -1,3 +1,39 @@
+attendees:
+  class: sfPropelRouteCollection
+  options:
+    model:                Attendees
+    module:               adminAttendees
+    prefix_path:          adminAttendees
+    column:               id
+    with_wildcard_routes: true
+
+raids:
+  class: sfPropelRouteCollection
+  options:
+    model:                Raids
+    module:               adminRaids
+    prefix_path:          adminRaids
+    column:               id
+    with_wildcard_routes: true
+
+items:
+  class: sfPropelRouteCollection
+  options:
+    model:                Items
+    module:               adminItems
+    prefix_path:          adminItems
+    column:               id
+    with_wildcard_routes: true
+
+roster:
+  class: sfPropelRouteCollection
+  options:
+    model:                Roster
+    module:               adminRoster
+    prefix_path:          adminRoster
+    column:               id
+    with_wildcard_routes: true
+
 # default rules
 homepage:
   url:   /

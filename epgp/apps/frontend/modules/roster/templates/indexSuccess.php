@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Name</th>
+      <th>Race</th>
       <th>Class</th>
       <th>EP</th>
       <th>GP</th>
@@ -14,6 +15,7 @@
   <?php foreach($characters as $character): ?>
     <tr>
       <td><?php $character->echoLink() ?></td>
+      <td><?php echo $character->getRace(); ?></td>
       <td><?php echo $character->getClass(); ?></td>
       <td><?php echo $character->getEp() ?></td>
       <td><?php echo $character->getGp() ?></td>

@@ -18,7 +18,6 @@ class bossActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
     // todo: list of all bosses
-    $this->forward404();
   }
   
   public function executeShow(sfWebRequest $request){

@@ -29,4 +29,9 @@ class Items extends BaseItems
   public function echoLink(){
     echo link_to($this->name, $this->getRoute());
   }
+  
+  public function save(PropelPDO $con = null){
+    $this->setInflatedVal($this->getBaseVal());
+    return parent::save($con);
+  }
 }

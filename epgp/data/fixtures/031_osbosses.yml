@@ -1,0 +1,17 @@
+Bosses:
+  sarth:
+    name: Sartharion
+    zone: obsidiansanctum
+    baseval: 125
+  sarthPlusOne:
+    name: Sartharion + one drake
+    zone: obsidiansanctum
+    baseval: 125
+  sarthPlusTwo:
+    name: Sartharion + two drakes
+    zone: obsidiansanctum
+    baseval: 150
+  sarthPlusThree:
+    name: Sartharion + three drakes
+    zone: obsidiansanctum
+    baseval: 175

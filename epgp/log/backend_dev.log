@@ -1,0 +1,105 @@
+Apr 03 08:55:09 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids" (/raids.:sf_format)
+Apr 03 08:55:09 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_new" (/raids/new.:sf_format)
+Apr 03 08:55:09 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_create" (/raids.:sf_format)
+Apr 03 08:55:09 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_edit" (/raids/:id/edit.:sf_format)
+Apr 03 08:55:09 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_update" (/raids/:id.:sf_format)
+Apr 03 08:55:09 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_delete" (/raids/:id.:sf_format)
+Apr 03 08:55:09 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_show" (/raids/:id.:sf_format)
+Apr 03 08:55:09 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_object" (/raids/:id/:action.:sf_format)
+Apr 03 08:55:09 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_collection" (/raids/:action/action.:sf_format)
+Apr 03 08:55:09 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 03 08:55:09 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 03 08:55:09 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 03 08:55:09 symfony [info] {sfPatternRouting} Match route "homepage" (/) for / with parameters array (  'module' => 'default',  'action' => 'index',)
+Apr 03 08:55:09 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 03 08:55:09 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 03 08:55:09 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 03 08:55:09 symfony [info] {defaultActions} Call "defaultActions->executeIndex()"
+Apr 03 08:55:09 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib/controller/default/templates/indexSuccess.php"
+Apr 03 08:55:09 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib\controller\default\templates/defaultLayout.php"
+Apr 03 08:55:09 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\lib\vendor\symfony\lib\controller\default\templates/defaultLayout.php"
+Apr 03 08:55:09 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 03 08:55:09 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 03 08:55:09 symfony [info] {sfWebDebugLogger} Configuration 487.01 ms (10)
+Apr 03 08:55:09 symfony [info] {sfWebDebugLogger} Action "default/index" 0.23 ms (1)
+Apr 03 08:55:09 symfony [info] {sfWebDebugLogger} View "Success" for "default/index" 44.73 ms (1)
+Apr 03 08:55:09 symfony [info] {sfWebResponse} Send content (29381 o)
+Apr 03 08:55:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids" (/raids.:sf_format)
+Apr 03 08:55:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_new" (/raids/new.:sf_format)
+Apr 03 08:55:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_create" (/raids.:sf_format)
+Apr 03 08:55:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_edit" (/raids/:id/edit.:sf_format)
+Apr 03 08:55:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_update" (/raids/:id.:sf_format)
+Apr 03 08:55:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_delete" (/raids/:id.:sf_format)
+Apr 03 08:55:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_show" (/raids/:id.:sf_format)
+Apr 03 08:55:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_object" (/raids/:id/:action.:sf_format)
+Apr 03 08:55:15 symfony [info] {sfPatternRouting} Connect sfPropelRoute "raids_collection" (/raids/:action/action.:sf_format)
+Apr 03 08:55:15 symfony [info] {sfPatternRouting} Connect sfRoute "homepage" (/)
+Apr 03 08:55:15 symfony [info] {sfPatternRouting} Connect sfRoute "default_index" (/:module)
+Apr 03 08:55:15 symfony [info] {sfPatternRouting} Connect sfRoute "default" (/:module/:action/*)
+Apr 03 08:55:15 symfony [info] {sfPatternRouting} Match route "raids" (/raids.:sf_format) for /raids with parameters array (  'module' => 'raids',  'action' => 'index',  'sf_format' => 'html',)
+Apr 03 08:55:15 symfony [info] {sfFilterChain} Executing filter "sfRenderingFilter"
+Apr 03 08:55:15 symfony [info] {sfFilterChain} Executing filter "sfCommonFilter"
+Apr 03 08:55:15 symfony [info] {sfFilterChain} Executing filter "sfExecutionFilter"
+Apr 03 08:55:15 symfony [info] {raidsActions} Call "raidsActions->executeIndex()"
+Apr 03 08:55:16 symfony [debug] {sfPropelLogger} exec: SET NAMES 'utf8'
+Apr 03 08:55:16 symfony [debug] {sfPropelLogger} prepare: SELECT COUNT(*) FROM `raids`
+Apr 03 08:55:16 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/indexSuccess.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_assets.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_flashes.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_list_header.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_filters.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_filters_field.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_filters_field.php"
+Apr 03 08:55:16 symfony [debug] {sfPropelLogger} prepare: SELECT bosses.ID, bosses.NAME, bosses.ZONE, bosses.BASEVAL FROM `bosses`
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_filters_field.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_filters_field.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_filters_field.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_list.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_list_th_tabular.php"
+Apr 03 08:55:16 symfony [info] {main} Set slot "sf_admin.current_header"
+Apr 03 08:55:16 symfony [info] {main} Get slot "sf_admin.current_header"
+Apr 03 08:55:16 symfony [info] {main} Set slot "sf_admin.current_header"
+Apr 03 08:55:16 symfony [info] {main} Get slot "sf_admin.current_header"
+Apr 03 08:55:16 symfony [info] {main} Set slot "sf_admin.current_header"
+Apr 03 08:55:16 symfony [info] {main} Get slot "sf_admin.current_header"
+Apr 03 08:55:16 symfony [info] {main} Set slot "sf_admin.current_header"
+Apr 03 08:55:16 symfony [info] {main} Get slot "sf_admin.current_header"
+Apr 03 08:55:16 symfony [info] {main} Set slot "sf_admin.current_header"
+Apr 03 08:55:16 symfony [info] {main} Get slot "sf_admin.current_header"
+Apr 03 08:55:16 symfony [info] {main} Set slot "sf_admin.current_header"
+Apr 03 08:55:16 symfony [info] {main} Get slot "sf_admin.current_header"
+Apr 03 08:55:16 symfony [debug] {sfPropelLogger} prepare: SELECT raids.ID, raids.NOTE, raids.BOSS, raids.BASEVAL, raids.INFLATEDVAL, raids.DATE FROM `raids` LIMIT 20
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_list_td_batch_actions.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_list_td_tabular.php"
+Apr 03 08:55:16 symfony [debug] {sfPropelLogger} prepare: SELECT bosses.ID, bosses.NAME, bosses.ZONE, bosses.BASEVAL FROM `bosses` WHERE bosses.ID=:p1 LIMIT 1
+Apr 03 08:55:16 symfony [debug] {sfPropelLogger} Binding 15 at position :p1 w/ PDO type PDO::PARAM_INT
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_list_td_actions.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_list_td_batch_actions.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_list_td_tabular.php"
+Apr 03 08:55:16 symfony [debug] {sfPropelLogger} prepare: SELECT bosses.ID, bosses.NAME, bosses.ZONE, bosses.BASEVAL FROM `bosses` WHERE bosses.ID=:p1 LIMIT 1
+Apr 03 08:55:16 symfony [debug] {sfPropelLogger} Binding 14 at position :p1 w/ PDO type PDO::PARAM_INT
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_list_td_actions.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_list_batch_actions.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_list_actions.php"
+Apr 03 08:55:16 symfony [info] {sfPartialView} Render "C:\projects\sfprojects\epgp\cache\backend\dev\modules/autoRaids/templates/_list_footer.php"
+Apr 03 08:55:16 symfony [info] {sfPHPView} Decorate content with "C:\projects\sfprojects\epgp\apps\backend\templates/layout.php"
+Apr 03 08:55:16 symfony [info] {sfPHPView} Render "C:\projects\sfprojects\epgp\apps\backend\templates/layout.php"
+Apr 03 08:55:16 symfony [info] {sfWebResponse} Send status "HTTP/1.1 200 OK"
+Apr 03 08:55:16 symfony [info] {sfWebResponse} Send header "Content-Type: text/html; charset=utf-8"
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Configuration 654.39 ms (11)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Action "raids/index" 264.43 ms (1)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} View "Success" for "raids/index" 251.31 ms (1)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Partial "raids/_assets" 0.52 ms (1)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Partial "raids/_flashes" 0.56 ms (1)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Partial "raids/_list_header" 0.51 ms (1)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Partial "raids/_filters" 67.44 ms (1)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Partial "raids/_filters_field" 21.88 ms (5)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Partial "raids/_list" 53.75 ms (1)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Partial "raids/_list_th_tabular" 3.64 ms (1)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Partial "raids/_list_td_batch_actions" 0.95 ms (2)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Partial "raids/_list_td_tabular" 3.81 ms (2)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Partial "raids/_list_td_actions" 2.68 ms (2)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Partial "raids/_list_batch_actions" 0.99 ms (1)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Partial "raids/_list_actions" 0.77 ms (1)
+Apr 03 08:55:16 symfony [info] {sfWebDebugLogger} Partial "raids/_list_footer" 0.44 ms (1)
+Apr 03 08:55:16 symfony [info] {sfWebResponse} Send content (55507 o)

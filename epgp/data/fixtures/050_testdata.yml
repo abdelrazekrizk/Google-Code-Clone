@@ -1,0 +1,78 @@
+Roster:
+  domia:
+    name: Domia
+    charclass: rogue
+    charrace: undead
+    ep: 125
+    gp: 1061
+    priority: .1178133836
+    joined_on: 20090101000000
+  adamant:
+    name: Adamant
+    charclass: warrior
+    charrace: tauren
+    ep: 125
+    gp: 0
+    priority: 125
+    joined_on: 20090101000000
+  ehani:
+    name: Ehani
+    charclass: druid
+    charrace: tauren
+    ep: 125
+    gp: 0
+    priority: 125
+    joined_on: 20090101000000
+  malchiah:
+    name: Malchiah
+    charclass: priest
+    charrace: belf
+    ep: 125
+    gp: 0
+    priority: 125
+    joined_on: 20090101000000
+  gasty:
+    name: Gasty
+    charclass: hunter
+    charrace: tauren
+    ep: 125
+    gp: 0
+    priority: 125
+    joined_on: 20090101000000
+
+Raids:
+  raid1:
+    note: First Kill!
+    boss: kelthuzad
+    baseval: 125
+    inflatedval: 125
+    date: 20090103000000
+  raid2:
+    note: Second kill!
+    boss: sapphiron
+    baseval: 125
+    inflatedval: 125
+    date: 20090103000000
+    
+Attendees:
+  a1:
+    raids_id: raid1
+    roster_id: domia
+  a2:
+    raids_id: raid1
+    roster_id: adamant
+  a3:
+    raids_id: raid1
+    roster_id: ehani
+  a4:
+    raids_id: raid1
+    roster_id: malchiah
+    
+Items:
+  i1:
+    raidid: raid1
+    playerid: domia
+    name: 'Calamity''s Grasp'
+    itemid: 40383
+    baseval: 1061
+    inflatedval: 1061

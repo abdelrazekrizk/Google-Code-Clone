@@ -25,4 +25,12 @@ class Raids extends BaseRaids
   public function echoNoteLink(){
     echo link_to($this->note, $this->getRoute());
   }
+  
+  public function __toString(){
+    return $this->note.' ('.$this->getBoss()->getName().')';
+  }
+  
+  public function save(PropelPDO $con = null){
+    return parent::save($con);
+  }
 }

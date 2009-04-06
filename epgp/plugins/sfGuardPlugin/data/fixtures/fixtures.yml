@@ -1,0 +1,26 @@
+sfGuardUser:
+  admin:
+    username:       domia
+    password:       april99
+    is_super_admin: true
+
+sfGuardPermission:
+  admin:
+    name:           admin
+    description:    Administrator permission
+
+sfGuardGroup:
+  admin:
+    name:           admin
+    description:    Administrator group
+
+sfGuardGroupPermission:
+  admin:
+    group_id:       admin
+    permission_id:  admin
+
+sfGuardUserGroup:
+  admin:
+    group_id:       admin
+    user_id:        admin
+

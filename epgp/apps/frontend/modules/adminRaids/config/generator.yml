@@ -1,0 +1,25 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           Raids
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          raids
+    with_propel_route:     1
+
+    config:
+      actions: ~
+      fields:
+        raid_attendees:
+          type: admin_select_list
+          params: through_class=Attendees
+      list:    
+        display: [=note, boss, baseval, inflatedval, date]
+      filter:  ~
+      form:    ~
+      edit:    
+        display: [note, boss, baseval, inflatedval, date, raid_attendees]
+      new:     ~

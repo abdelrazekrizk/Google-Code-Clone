@@ -1,0 +1,26 @@
+generator:
+  class: sfPropelGenerator
+  param:
+    model_class:           Items
+    theme:                 admin
+    non_verbose_templates: true
+    with_show:             false
+    singular:              ~
+    plural:                ~
+    route_prefix:          items
+    with_propel_route:     1
+
+    config:
+      actions: ~
+      fields:
+        name: { label: "Item" }
+        playerid: { label: "Character" }
+        inflatedval: { help: "Ignored and recalculated." }
+      list:
+        title: Items Listing
+        display: [=name, awardee, raid, itemid, baseval]
+      filter:  ~
+      form:    ~
+      edit:
+        display: [name, playerid, raidid, itemid, baseval, inflatedval]
+      new:     ~

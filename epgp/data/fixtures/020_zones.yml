@@ -1,0 +1,11 @@
+Zones:
+  naxxramas:
+    name: Naxxramas
+  obsidiansanctum:
+    name: The Obsidian Sanctum
+  eyeofeternity:
+    name: The Eye of Eternity
+  vault:
+    name: Vault of Archavon
+  ulduar:
+    name: Ulduar

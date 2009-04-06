@@ -18,7 +18,6 @@ class itemsActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
     // todo: show all items
-    $this->forward404();
   }
   
   public function executeShow(sfWebRequest $request){

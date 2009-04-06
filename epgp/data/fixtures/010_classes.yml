@@ -1,0 +1,21 @@
+Classes:
+  deathknight:
+    name: Death Knight
+  druid:
+    name: Druid
+  hunter:
+    name: Hunter
+  mage:
+    name: Mage
+  paladin:
+    name: Paladin
+  priest:
+    name: Priest
+  rogue:
+    name: Rogue
+  shaman:
+    name: Shaman
+  warlock:
+    name: Warlock
+  warrior:
+    name: Warrior
