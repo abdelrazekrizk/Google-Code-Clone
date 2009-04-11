@@ -1,0 +1,80 @@
+<pre>Character Information</pre>
+<table>
+  <tr>
+    <th>Name</th>
+    <td><%=h @character.name %></td>
+  </tr>
+  
+  <tr>
+    <th>Race</th>
+    <td><%=h @character.character_race.name %></td>
+  </tr>
+  
+  <tr>
+    <th>Class</th>
+    <td><%=h @character.character_class.name %></td>
+  </tr>
+  
+  <tr>
+    <th>EP</th>
+    <td><%=h @character.ep %></td>
+  </tr>
+  
+  <tr>
+    <th>GP</th>
+    <td><%=h @character.gp %></td>
+  </tr>
+  
+  <tr>
+    <th>PR</th>
+    <td><%=h @character.pr %></td>
+  </tr>
+</table>
+
+<pre>Attended Raids</pre>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Zone</th>
+      <th>Boss</th>
+      <th>Note</th>
+      <th>Base</th>
+      <th>Decayed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @character.raids.each do |r| -%>
+    <tr>
+      <td><%=h r.time %></td>
+      <td><%=h r.boss.zone.name %></td>
+      <td><%=h r.boss.name %></td>
+      <td><%=h r.note %></td>
+      <td><%=h r.base_value %></td>
+      <td><%=h r.decayed_value %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<pre>Awarded Items</pre>
+<table>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Item Name</th>
+      <th>Base</th>
+      <th>Decayed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @character.items.each do |i| -%>
+    <tr>
+      <td><%=h i.raid.time %></td>
+      <td><%=h i.name %></td>
+      <td><%=h i.base_value %></td>
+      <td><%=h i.decayed_value %></td>
+    </tr>
+    <% end%>
+  </tbody>
+</table>

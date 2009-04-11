@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <%= stylesheet_link_tag 'main', :media => 'all' %>
+  </head>
+  <body>
+    <div align="center">
+      <table width="800" height="307" border="0">
+        <tr>
+          <td height="19" colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="265" height="112" rowspan="2">
+            <div>
+              <a href="<% url_for %>"> <!-- routes to homepage! -->
+                <img src="/images/epgplogo.png" width="267" height="112" />
+              </a>
+            </div>
+          </td>
+          <td width="442" height="112">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="19">
+            <div id="navmenu">
+              <ul>
+                <li> <%= link_to 'Standings', :controller => "character" %> </li>
+                <li> <%= link_to 'Raids', :controller => "raid" %> </li>
+                <li> <%= link_to 'Bosses', :controller => "boss" %> </li>
+                <li> <%= link_to 'Zones', :controller => "zone" %> </li>
+                <li> <%= link_to 'Items', :controller => "item" %> </li>
+                <li> <%= link_to 'Decays', :controller => "decay" %> </li>
+                <!--<li><?php echo link_to('Statistics', 'stats/index'); ?></li>-->
+                <li>Statistics</li>
+                <!-- if_authenticated Logout else Login -->
+                <li>Login</li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <!-- if_is_authenticated -->
+        <tr class="adminbar">
+          <td height="40" colspan="2">
+            <div id="adminbarlist">
+              <ul>
+                <li><b>&lt;&lt;Admin&gt;&gt;</b></li>
+                <li> <%= link_to 'Home', :controller => 'admin' %> </li>
+                <li> <%= link_to 'Import', :controller => 'import' %> </li>
+                <li> <%= link_to 'Roster', :controller => 'admin', :action => 'roster' %> </li>
+                <li> <%= link_to 'Raids', :controller => 'admin', :action => 'raid' %> </li>
+                <li> <%= link_to 'Decays', :controller => 'admin', :action => 'decay' %> </li>
+                <li> <%= link_to 'Items', :controller => 'admin', :action => 'item' %> </li>
+                <li> <%= link_to 'Bosses', :controller => 'admin', :action => 'boss' %> </li>
+                <li> <%= link_to 'Zones', :controller => 'admin', :action => 'zone' %> </li>
+                <li> <%= link_to 'Users', :controller => 'admin', :action => 'user' %> </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <!-- end_if_is_authenticated -->
+        <tr class="content">
+          <td colspan="2">
+            <%= yield :layout %> 
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

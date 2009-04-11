@@ -1,0 +1,24 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Class</th>
+      <th>Race</th>
+      <th>EP</th>
+      <th>GP</th>
+      <th>PR</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @characters.each do |c| -%>
+  <tr>
+    <td><%= link_to c.name, :controller => 'character', :action => 'show', :id => c.name %></td>
+    <td><%=h c.character_class.name %></td>
+    <td><%=h c.character_race.name %></td>
+    <td><%=h c.ep %></td>
+    <td><%=h c.gp %></td>
+    <td><%=h c.pr %></td>
+  </tr>
+<% end -%>
+  </tbody>
+</table>
