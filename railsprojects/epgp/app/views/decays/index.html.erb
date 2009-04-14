@@ -1,0 +1,18 @@
+<h1>Decays</h1>
+
+<br />
+
+<table>
+  <thead>
+    <tr>
+      <th>Performed On</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @decays.each do |d| -%>
+    <tr>
+      <td><%= decay_link(d) %></td>
+    </tr>
+<% end -%>
+  </tbody>
+</table>

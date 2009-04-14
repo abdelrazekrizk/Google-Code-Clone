@@ -1,0 +1,16 @@
+<pre>New Zone</pre>
+<table>
+  <% form_for :zone, :url => {:action => "create"} do |f| %>
+    
+  <%= f.hidden_field :id %>
+  
+  <tr>
+    <td>Name:</td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  
+  <tr>
+    <td><%= submit_tag 'Create'%></td>
+  </tr>
+</table>
+<% end %>

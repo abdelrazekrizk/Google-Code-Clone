@@ -1,0 +1,5 @@
+
+<% form_for :xml, :url => {:action => "parse_new_characters"} do |f| %>
+<%= f.text_area :data %><br />
+<%= submit_tag "Parse"%>
+<% end %>

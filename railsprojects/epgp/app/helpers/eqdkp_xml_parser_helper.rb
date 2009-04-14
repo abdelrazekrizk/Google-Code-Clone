@@ -1,0 +1,2 @@
+module EqdkpXmlParserHelper
+end

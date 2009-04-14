@@ -1,0 +1,16 @@
+<pre>Editing Zone</pre>
+<table>
+  <% form_for :zone, :url => {:action => "update"} do |f| %>
+    
+  <%= f.hidden_field :id %>
+  
+  <tr>
+    <td>Name:</td>
+    <td><%= f.text_field :name %></td>
+  </tr>
+  
+  <tr>
+    <td><%= submit_tag 'Update'%></td>
+  </tr>
+</table>
+<% end %>

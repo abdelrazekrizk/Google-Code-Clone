@@ -1,0 +1,16 @@
+<table>
+  <thead>
+    <tr>
+      <td>Boss Name</td>
+      <td>Zone</td>
+    </tr>
+  </thead>
+  <tbody>
+<% @bosses.each do |b| -%>
+    <tr>
+      <th><%= boss_link(b) %></th>
+      <th><%= zone_link(b.zone) %></th>
+    </tr>
+<% end %>
+  </tbody>
+</table>

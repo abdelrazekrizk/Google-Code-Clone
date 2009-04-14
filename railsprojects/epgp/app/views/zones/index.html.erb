@@ -1,0 +1,16 @@
+<table class='sortable' id='zones'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Bosses</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @zones.each do |z| -%>
+    <tr>
+      <td><%= zone_link(z) %></td>
+      <td><%= z.bosses.length %></td>
+    </tr>
+<% end -%>
+  </tbody>
+</table>

@@ -1,0 +1,15 @@
+<% form_for :raid, :url => {:action => "create"} do |f| %>
+
+Note: <%= f.text_field :note %><br />
+
+Boss: <%= select :raid, :boss_id, Boss.find(:all, :order => "name ASC").collect {|x| [x.name, x.id]} %><br />
+
+Base: <%= f.text_field :base_value %><br />
+
+Time: <%= datetime_select :raid, :time %><br />
+
+Attendees: <%= f.text_area :attendees_as_str %><br />
+
+<%= submit_tag 'Create'%>
+<pre>todo: ajax grab base value</pre>
+<% end %>

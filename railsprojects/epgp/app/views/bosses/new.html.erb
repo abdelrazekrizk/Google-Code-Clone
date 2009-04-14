@@ -1,0 +1,22 @@
+<pre>New Boss</pre>
+
+<table>
+  <% form_for :boss, :url => {:action => "create"} do |f| %>
+    
+  <%= f.hidden_field :id %>
+  <tr>
+    <td>Name:</td> 
+    <td><%= f.text_field :name %></td>
+  </tr>
+  
+  <tr>
+    <td>Zone:</td>
+    <td><%= select :boss, :zone_id, Zone.find(:all, :order => "name DESC").collect {|x| [x.name, x.id]} %></td>
+  </tr>
+  
+  <tr>
+    <td><%= submit_tag 'Create'%></td>
+  </tr>
+  
+  <% end %>
+</table>

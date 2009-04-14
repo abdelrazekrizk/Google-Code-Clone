@@ -1,0 +1,4 @@
+<% form_for :decay, :url => {:action => "create"} do |f| %>
+Time: <%= datetime_select :decay, :performed_on %><br />
+<%= submit_tag 'Decay'%>
+<% end %>

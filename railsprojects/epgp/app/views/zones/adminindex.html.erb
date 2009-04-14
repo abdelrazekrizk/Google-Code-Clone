@@ -1,0 +1,21 @@
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Bosses</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @zones.each do |z| -%>
+    <tr>
+      <td><%= z.name %></td>
+      <td><%= z.bosses.length %></td>
+      <td>
+        <%= link_to "Edit", :action => :edit, :id => z.id %><br />
+        <%= link_to "Destroy", {:action => :destroy, :id => z.id}, :confirm => "Are you sure?" %>
+      </td>
+    </tr>
+<% end -%>
+  </tbody>
+</table>
+<%= link_to "New", :action => "new" %>

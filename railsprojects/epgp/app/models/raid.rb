@@ -34,7 +34,8 @@ class Raid < ActiveRecord::Base
     end
     
     self.items.each do |i|
-      i.update # 'touches' each item and updates decay settings
+      i.touch
+      i.save # 'touches' each item and updates decay settings
     end
     
   end
@@ -51,6 +52,37 @@ class Raid < ActiveRecord::Base
     
     self.items.each do |i|
       i.destroy
+    end
+  end
+  
+  def date
+    self.time.strftime('%m/%d/%y')
+  end
+  
+  def desc
+    self.date + " - " + self.boss.name
+  end
+  
+  def attendees_as_str
+    str = ""
+    self.characters.each do |c|
+      str += c.name + "\n"
+    end
+    return str
+  end
+  
+  def attendees_as_str=(str)
+    chars = []
+    str.split("\r\n").each do |s|
+      chars += [Character.find_by_name(s)] or throw :invalid_character_name
+    end
+    self.attendance_records.each do |e|
+      e.destroy
+    end
+    self.attendance_records = []
+    chars.each do |a|
+      record = AttendanceRecord.create :raid_id => self.id, :character_id => a.id
+      self.attendance_records += [record]
     end
   end
   

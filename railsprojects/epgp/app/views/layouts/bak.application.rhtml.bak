@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <%= stylesheet_link_tag 'main', :media => 'all' %>
+  </head>
+  <body>
+    <div align="center">
+      <table width="800" height="307" border="0">
+        <tr>
+          <td height="19" colspan="2">&nbsp;</td>
+        </tr>
+        <tr>
+          <td width="265" height="112" rowspan="2">
+            <div>
+              <a href="<% url_for %>"> <!-- fixme to route to homepage -->
+                <img src="/images/epgplogo.png" width="267" height="112" />
+              </a>
+            </div>
+          </td>
+          <td width="442" height="112">&nbsp;</td>
+        </tr>
+        <tr>
+          <td height="19">
+            <div id="navmenu">
+              <ul>
+                <li> <%= link_to 'Standings', :controller => "characters" %> </li>
+                <li> <%= link_to 'Raids', :controller => "raids" %> </li>
+                <li> <%= link_to 'Items', :controller => "items" %> </li>
+                <li> <%= link_to 'Bosses', :controller => "bosses" %> </li>
+                <li> <%= link_to 'Zones', :controller => "zones" %> </li>
+                <li> <%= link_to 'Decays', :controller => "decays" %> </li>
+                <!--<li><?php echo link_to('Statistics', 'stats/index'); ?></li>-->
+                <li>Statistics</li>
+                <% if logged_in? %>
+                <li><%= link_to "Logout", :controller => 'sessions', :action => 'destroy' %></li>
+                <% else %>
+                <li><%= link_to "Login", :controller => 'sessions', :action => 'new' %></li>
+                <% end %>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <% if logged_in? %>
+        <tr class="adminbar">
+          <td height="40" colspan="2">
+            <div id="adminbarlist">
+              <ul>
+                <li><b>&lt;&lt;Admin&gt;&gt;</b></li>
+                <li> <%= link_to 'Home', :controller => 'admin' %> </li>
+                <li> <%= link_to 'Import', :controller => 'import' %> </li>
+                <li> <%= link_to 'Roster', :controller => 'characters', :action => 'adminindex' %> </li>
+                <li> <%= link_to 'Raids', :controller => 'raids', :action => 'adminindex' %> </li>
+                <li> <%= link_to 'Decays', :controller => 'decays', :action => 'adminindex' %> </li>
+                <li> <%= link_to 'Items', :controller => 'items', :action => 'adminindex' %> </li>
+                <li> <%= link_to 'Bosses', :controller => 'bosses', :action => 'adminindex' %> </li>
+                <li> <%= link_to 'Zones', :controller => 'zones', :action => 'adminindex' %> </li>
+                <li> <%= link_to 'Users', :controller => 'users', :action => 'adminindex' %> </li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+        <% end %>
+        <!-- end_if_is_authenticated -->
+        <tr class="content">
+          <td colspan="2">
+            <% flash.each do |key, msg| %>
+                <%= content_tag :div, msg, :class => [key, " message"], :id => "notice_ #{key}" %>
+            <% end %>
+            <%= yield :layout %> 
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

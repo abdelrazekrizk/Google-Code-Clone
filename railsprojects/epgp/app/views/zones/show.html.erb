@@ -1,0 +1,17 @@
+<p align='center'><b><%= @zone.name %> Bosses</b></pre>
+<table class='sortable' id='bosslist'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Kills</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @bosses.each do |b| %>
+    <tr>
+      <td><%= boss_link(b) %></td>
+      <td><%= b.raids.length %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>

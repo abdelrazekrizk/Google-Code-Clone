@@ -1,0 +1,36 @@
+<pre>Editing Raid</pre>
+<table>
+  <% form_for :raid, :url => {:action => "update"} do |f| %>
+    
+  <%= f.hidden_field :id %>
+  
+  <tr>
+    <td>Note:</td>
+    <td><%= f.text_field :note %></td>
+  </tr>
+  
+  <tr>
+    <td>Boss:</td>
+    <td><%= select :raid, :boss_id, Boss.find(:all, :order => "name ASC").collect {|x| [x.name, x.id]} %></td>
+  </tr>
+  
+  <tr>
+    <td>Base:</td> 
+    <td><%= f.text_field :base_value %></td>
+  </tr>
+  
+  <tr>
+    <td>Time:</td> 
+    <td><%= datetime_select :raid, :time %></td>
+  </tr>
+  
+  <tr>
+    <td>Attendees:</td> 
+    <td><%= f.text_area :attendees_as_str %></td>
+  </tr>
+  
+  <tr>
+    <td><%= submit_tag 'Update'%></td>
+  </tr>
+</table>
+<% end %>

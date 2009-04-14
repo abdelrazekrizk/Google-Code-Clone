@@ -1,0 +1,37 @@
+<pre>New Item</pre>
+
+<table>
+  <% form_for :item, :url => {:action => "create"} do |f| %>
+    
+  <%= f.hidden_field :id %>
+  <tr>
+    <td>Name:</td> 
+    <td><%= f.text_field :name %></td>
+  </tr>
+  
+  <tr>
+    <td>ItemID:</td>
+    <td><%= f.text_field :wowitemid %></td>
+  </tr>
+  
+  <tr>
+    <td>Raid:</td>
+    <td><%= select :item, :raid_id, Raid.find(:all, :order => "time DESC", :limit => 20).collect {|x| [x.desc, x.id]} %></td>
+  </tr>
+  
+  <tr>
+    <td>Base:</td>
+    <td><%= f.text_field :base_value %></td>
+  </tr>
+  
+  <tr>
+    <td>Awardee:</td>
+    <td><%= select :item, :character_id, Character.find_all_by_is_active(true, :order => "name ASC" ).collect {|x| [x.name, x.id]} %></td>
+  </tr>
+  
+  <tr>
+    <td><%= submit_tag 'Create'%></td>
+  </tr>
+  
+  <% end %>
+</table>

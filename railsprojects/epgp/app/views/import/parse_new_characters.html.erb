@@ -1,0 +1,22 @@
+<pre>New Characters:</pre>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Class</th>
+      <th>Race</th>
+      <th>Create?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% form_for :new_characters, :url => {:action => :parse_raid} do |f| %>
+      <% @new_attendees.each do |a| %>
+        <%= new_character_form a %>
+      <% end %> 
+      <%= hidden_field "xml", "xml_data", {:value => @xml} %>
+      <tr><td><input type="submit" value="Continue" /></td></tr>
+    <% end %>
+  </tbody>
+</table>
+
+<pre>todo: automatic forward on no new characters</pre>

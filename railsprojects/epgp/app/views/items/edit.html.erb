@@ -1,0 +1,43 @@
+<pre>Editing Item</pre>
+
+<table>
+  <% form_for :item, :url => {:action => "update"} do |f| %>
+    
+  <%= f.hidden_field :id %>
+  <tr>
+    <td>Name:</td> 
+    <td><%= f.text_field :name %></td>
+  </tr>
+  
+  <tr>
+    <td>ItemID:</td>
+    <td><%= f.text_field :wowitemid %></td>
+  </tr>
+  
+  <tr>
+    <td>Raid:</td>
+    <td><%= select :item, :raid_id, Raid.find(:all, :order => "time DESC", :limit => 20).collect {|x| [x.desc, x.id]} %></td>
+  </tr>
+  
+  <tr>
+    <td>Base:</td>
+    <td><%= f.text_field :base_value %></td>
+  </tr>
+  
+  <!-- should not change awardee.
+  <tr>
+    <td>Awardee:</td>
+    <td><%= select :item, :character_id, Character.find_all_by_is_active(true, :order => "name ASC" ).collect {|x| [x.name, x.id]} %></td>
+  </tr>
+  -->
+  
+  <tr>
+    <td><%= submit_tag 'Update'%></td>
+  </tr>
+  
+  <% end %>
+</table>
+<br />
+<br />
+<pre>Note: Items should not change hands (doesn't make a whole lot of sense).<br />
+If you -absolutely- must, destroy this item and re-add it.</pre>

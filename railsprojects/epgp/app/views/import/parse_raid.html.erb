@@ -1,0 +1,53 @@
+<table>
+<% form_for :new_raid, :url => {:action => :create_raid } do |f| %>
+  <tr>
+    <% date = Time.parse(@data[:date]).strftime('%m/%d/%y') %>
+    <td>Note:</td><td><%= f.text_field :note, {:value => date + " - " + (@data[:boss] or "")} %></td>
+  </tr>
+  
+  <tr>
+    <td>Boss:</td>
+    <%= boss_combo_box("new_raid[boss]", @data[:boss]) %>
+  </tr>
+  
+  <tr>
+    <td>Time:</td>
+    <td><%= datetime_select :new_raid, :datetime, {:value => Time.parse(@data[:date])}%></td>
+  </tr>
+  
+  <tr>
+    <td>Value</td>
+    <td><%= f.text_field :base_value, {:value => Boss.get_base_value_by_name(@data[:boss])}%></td>
+  </tr>
+  
+  <tr>
+    <td>Attendees:</td>
+    <td><%= f.text_area :attendees, {:value => @attendees} %></td>
+  </tr>
+  
+  <tr>
+    <td>Items</td>
+    <% if @loot.length == 0 -%>
+      <td>No items to import.</td>
+    <% else %>
+      <td><div><table>
+        <tr>
+          <th>Name</th>
+          <th>Awardee</th>
+          <th>Value</th>
+          <th>ItemID</th>
+          <th>Import?</th>
+        </tr>
+        <% i = 0 %>
+        <% @loot.each do |aloot|%>
+          <tr>
+            <%= item_row(aloot, i) %>
+          </tr>
+          <% i = i + 1 %>
+        <% end %>
+      </table></div></td>
+    <% end %>
+  </tr>
+  <tr><td /><td><%= submit_tag "Import!" %></td></tr>
+<% end %>
+</table>

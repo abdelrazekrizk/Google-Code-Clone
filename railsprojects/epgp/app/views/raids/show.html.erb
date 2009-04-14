@@ -1,0 +1,12 @@
+<h1><%= @raid.boss.desc %></h1>
+<h2>Note: <%= @raid.note %></h2>
+<h2>Date: <%= @raid.time.in_time_zone %></h>
+  
+<br />
+
+<pre>Attendees (<%= @raid.characters.length %>)</pre>
+<%= attendance_table(@raid.characters) %>
+
+<br />
+<pre>Drops</pre>
+<%= items_table(@raid.items) %>
