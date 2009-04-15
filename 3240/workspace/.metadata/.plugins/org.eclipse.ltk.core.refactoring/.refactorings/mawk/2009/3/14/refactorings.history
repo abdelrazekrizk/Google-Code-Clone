@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<session version="1.0">
+  
+  
+  
+  
+  
+  
+  <refactoring id="org.eclipse.jdt.ui.rename.package" stamp="1238514808439" flags="589830" description="Rename package &apos;src.cs3240.sp09.AbstractSyntaxTree&apos;" comment="Rename package &apos;src.cs3240.sp09.AbstractSyntaxTree&apos; to &apos;cs3240.sp09.AbstractSyntaxTree&apos;&#10;- Original element: &apos;mawk/src.cs3240.sp09.AbstractSyntaxTree&apos;&#10;- Renamed element: &apos;mawk/cs3240.sp09.AbstractSyntaxTree&apos;&#10;- Update references to refactored element&#10;- Update textual occurrences in comments and strings" textual="false" hierarchical="false" version="1.0" qualified="false" name="cs3240.sp09.AbstractSyntaxTree" input="/&lt;src.cs3240.sp09.AbstractSyntaxTree" references="true"/>
+  
+  
+  
+
+  
+  
+  <refactoring id="org.eclipse.jdt.ui.rename.package" stamp="1238514811964" flags="589830" description="Rename package &apos;src.cs3240.sp09.DataStrucutres&apos;" comment="Rename package &apos;src.cs3240.sp09.DataStrucutres&apos; to &apos;cs3240.sp09.DataStrucutres&apos;&#10;- Original element: &apos;mawk/src.cs3240.sp09.DataStrucutres&apos;&#10;- Renamed element: &apos;mawk/cs3240.sp09.DataStrucutres&apos;&#10;- Update references to refactored element&#10;- Update textual occurrences in comments and strings" textual="false" hierarchical="false" version="1.0" qualified="false" name="cs3240.sp09.DataStrucutres" input="/&lt;src.cs3240.sp09.DataStrucutres" references="true"/>
+  
+  
+
+  
+  <refactoring id="org.eclipse.jdt.ui.rename.package" stamp="1238514820272" flags="589830" description="Rename package &apos;src.cs3240.sp09.MicroAWKIntepreter&apos;" comment="Rename package &apos;src.cs3240.sp09.MicroAWKIntepreter&apos; to &apos;cs3240.sp09.MicroAWKIntepreter&apos;&#10;- Original element: &apos;mawk/src.cs3240.sp09.MicroAWKIntepreter&apos;&#10;- Renamed element: &apos;mawk/cs3240.sp09.MicroAWKIntepreter&apos;&#10;- Update references to refactored element&#10;- Update textual occurrences in comments and strings" textual="false" hierarchical="false" version="1.0" qualified="false" name="cs3240.sp09.MicroAWKIntepreter" input="/&lt;src.cs3240.sp09.MicroAWKIntepreter" references="true"/>
+  
+
+  <refactoring id="org.eclipse.jdt.ui.rename.package" stamp="1238514823667" flags="589830" description="Rename package &apos;src.cs3240.sp09.RegularLanguage&apos;" comment="Rename package &apos;src.cs3240.sp09.RegularLanguage&apos; to &apos;cs3240.sp09.RegularLanguage&apos;&#10;- Original element: &apos;mawk/src.cs3240.sp09.RegularLanguage&apos;&#10;- Renamed element: &apos;mawk/cs3240.sp09.RegularLanguage&apos;&#10;- Update references to refactored element&#10;- Update textual occurrences in comments and strings" textual="false" hierarchical="false" version="1.0" qualified="false" name="cs3240.sp09.RegularLanguage" input="/&lt;src.cs3240.sp09.RegularLanguage" references="true"/>
+</session>

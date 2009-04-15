@@ -1,0 +1,168 @@
+A language called Micro-AWK, which is a pseudo subset of the AWK scripting language.
+
+- Process text input based on a collection of patterns and corresponding actions.
+- Each pattern is a regex which is used to test a line of input.
+- If the line of input is matched, the corresponding action is executed.
+
+Example:
+-------------------------------------------------
+BEGIN{print("--begin output--")}
+
+a(a|b|c)* 	{substring(1, END.); insert(END, a)}
+b(a|b|c)* 	{replace(a,b)}
+c(a|b|c)* 	{replace(a,c)}
+			{print(LINE)}
+
+END{print("--end output--")}
+-------------------------------------------------
+
+Special patterns:
+	BEGIN - actions which should be executed before all other lines have been processed.
+	END   - !! s/before/after/
+	
+Functions:
+	print(x)		- accepts a string literal or the variable LINE (which represents the line being modified).
+	substring(x,y)	- Replaces LINE with the substring of LINE from index x (inclusive) to index y (exclusive).
+					  The special value END may be used to represent the -end- of LINE (not the last character!).
+	replace(a,b)	- Modifies LINE by replacing all occurrences of a with the character b.
+	insert(x,a)		- Inserts the character a before index x. If x is greater than END, the character should
+					  simply be inserted at the end of LINE.
+	remove(a)		- Removes all occurrences of the character a from LINE.
+	
+Example input:
+-------------------------------------------------
+aabbbbababc
+abbbcbcbcabcb
+bbcaaaaacccb
+caaabaaab
+baa
+-------------------------------------------------
+
+Example output:
+-------------------------------------------------
+--begin output--
+abbbbababca
+bbbcbcbcbbcbb
+bbcbbbbbcccb
+ccccbcccb
+bbb
+--end output--
+-------------------------------------------------
+--begin output--
+abbbbababca
+bbbcbcbcbbcbb
+bbcbbbbbcccb
+ccccbcccb
+bbb
+--end output--
+
+
+Project Description:
+	Will be developing an intepreter for Micro-AWK.
+	
+	Requirements:
+		1. The intepreter should accept a filename representing a Micro-AWK script and either a
+			filename representing the text file to be processed or the actual text. If a filename
+			is used, you should use the -f flag.
+				Examples:
+						$./myinterpreter [options] my_script.mawk -f my_input.data
+						$./myinterpreter [options] my_script.mawk "ababababbbababbbab"
+		2. After reading the input, intepreter should parse it using [[Recursive Descent]] and
+			- if it is syntactically correct - create an abstract syntax tree which represents
+			the script. Note that this requires you develop a valid grammar for the language as well
+			as the necessary lexical classes.
+		3. If the script is not syntactically correct it should be notified to the user by generating
+			a dump of the partial AST that is built for the current sentence along with the token that
+			has produced the error. The parser should be able to continue discarding the remainder of 
+			the sentence and parse the remainder of the program. The format for reporting is:
+				(root-label label-of-1st-left-child label-of-2nd-left-child label-of-3rd-left-child ...)
+			If no syntax errors are detected, the interpreter should output the resulting AST if given
+			the optional -ast flag.
+		4. For correct scripts, an evaluator should be developed which can walk the AST to perform
+			the actual interpretation. It will be necessary to test whether a given line of input is
+			matched by a given pattern to determine whether or not the corresponding action should be executed.
+		5. For each pattern/action pair, you will need to do the following:
+			a. Parse the regex using the grammar (see appendix A). Any syntax errors should be noted and
+				the final AST should be output if -ast is set.
+			b. After the AST is created, the evaluator should walk the AST and use the algorithms described
+				in class to convert to an NFA. The NFA should be represented as an adj matrix (see Appendix B).
+				The interpreter should output the adjacency matrix if the -nfa flag is given.
+			c. Use the algorithms discussed in class and the textbook to convert to a DFA (as an Adjacency matrix).
+				If -dfa is given, then the interpreter should output this final DFA.
+		6. If the -debug flag is set, the interpreter should step through the evaluation process after each
+			pattern/action pair has been interpreted. Before any pairs are executed, the current line of input
+			should be printed. After each pair has been interpreted, the modified text should be printed. When
+			printing the output, the format
+				action : string
+			should be used. Also, suppress all output from the script.
+			
+Appendix A. Regular expression grammar
+	L → L1 
+	L1 → (L) 
+	<prim> → a 
+	<prim> → b 
+	<prim> → c
+	L1 → <prim>* 
+	L1 → <prim>+ 
+	L1 → <prim>? 
+	L1 → <prim> 
+	L → L1<L1tail> 
+	<L1tail> → | L<L1tail> 
+	<L1tail> → ε 
+	L → L1<L2tail> 
+	            . L<L2tail> 
+	<L2tail> → 
+	<L2tail> → ε
+
+Appendix B. Adjacency Matrix
+	Any directed graph can be represented by an adjacency matrix. For example,
+	
+			   3
+		A ----------->_C
+		 \            /\
+		  \          /
+		  1\        / 2
+		    \      /
+		     \    /
+		     _\/ /
+		        B
+	A, B, C are nodes, and 1, 2, 3 are edges:
+	
+	---------------------------------
+	|		|	A	|	B	|	C	|
+	---------------------------------
+	|	A	|		|	1	|	3	|
+	|	B	|		|		|	2	|
+	|	C	|		|		|		|
+	---------------------------------
+	
+Appendix C. Micro-Awk Grammar
+	PROG -> STMT | STMT PROG
+	STMT -> BEGIN | END | REGEX {FUNC-BLOCK} | {FUNC-BLOCK}
+	BEGIN -> begin{FUNC-BLOCK}
+	END -> end{FUNC-BLOCK}
+	FUNC-BLOCK -> FUNCTION | FUNCTION; FUNC-BLOCK
+	FUNCTION -> SUBSTRING-FUNC | INSERT-FUNC | PRINT-FUNC | RE-FUNC
+	RE-FUNC -> reREPLACE-FUNC | reREMOVE-FUNC
+	SUBSTRING-FUNC -> substring(INTEGER, INTEGER) | substring(INTEGER, END)
+	INSERT-FUNC -> insert(INTEGER, CHARACTER) | insert(END, CHARACTER)
+	PRINT-FUNC -> print(STRING) | print(LINE)
+	REPLACE-FUNC -> place(CHARACTER, CHARACTER)
+	REMOVE-FUNC -> move(CHARACTER)
+	INTEGER -> NUMBER | NUMBER INTEGER // no space
+	STRING -> "STRING-INNER"
+	STRING-INNER -> CHARACTER | CHARACTER STRING-INNER // no space
+	REGEX -> (REGEX) | REGEX UNARY-OP | REGEX BINARY-OP REGEX | CHARACTER
+	UNARY-OP -> *|+|?
+	BINARY-OP -> <or>|.|ε
+	NUMBER -> 0|1|2|3|4|5|6|7|8|9
+	CHARACTER -> a|b|c
+	
+	Regex Grammar
+		regex -> term | term OR regex
+		term -> factor | factor term
+		factor -> atom | atom metacharacter
+		atom -> character | (regex)
+		metacharacter -> *|+|?
+		NUMBER -> 0|1|2|3|4|5|6|7|8|9
+		CHARACTER -> a|b|c
