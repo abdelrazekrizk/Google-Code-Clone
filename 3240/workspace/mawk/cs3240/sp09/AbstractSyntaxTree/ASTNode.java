@@ -14,6 +14,8 @@ public class ASTNode {
 		StringInner,
 		ReplaceFunction,
 		RemoveFunction,
+		WhileLoop,
+		ForLoop,
 		Regex,
 		Term,
 		Factor,
