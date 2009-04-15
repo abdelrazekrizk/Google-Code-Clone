@@ -1,5 +1,6 @@
 package cs3240.sp09.MicroAWKIntepreter;
 import cs3240.sp09.AbstractSyntaxTree.*;
+import cs3240.sp09.MicroAWKIntepreter.ScriptReader.MawkParserException;
 
 
 public class ScriptParser {
@@ -16,14 +17,20 @@ public class ScriptParser {
 	
 	public ASTNode program(){
 		ASTNode programNode = new ASTNode(ASTNode.NodeType.Program);
-		programNode.setLeftChild(statement());
+		try{
+			programNode.setLeftChild(statement());
+		} catch(Exception e){
+			System.err.println("Parse error: " + e.getMessage());
+			e.printStackTrace();
+			System.exit(0);
+		}
 		if(reader.token != (char)-1){
 			programNode.setRightChild(program());
 		}
 		return programNode;
 	}
 
-	public ASTNode statement() {
+	public ASTNode statement() throws MawkParserException {
 		ASTNode statementNode = new ASTNode(ASTNode.NodeType.Statement);
 		switch(reader.token){
 			case 'B':
@@ -47,7 +54,7 @@ public class ScriptParser {
 		return statementNode;
 	}
 
-	public ASTNode regex(){
+	public ASTNode regex() throws MawkParserException{
 		ASTNode regexNode = new RegexNode(ASTNode.NodeType.Regex);
 		regexNode.setLeftChild(term());
 		if(reader.token == '|'){
@@ -57,7 +64,7 @@ public class ScriptParser {
 		return regexNode;
 	}
 	
-	public ASTNode term(){
+	public ASTNode term() throws MawkParserException{
 		ASTNode termNode = new ASTNode(ASTNode.NodeType.Term);
 		termNode.setLeftChild(factor());
 		if(reader.token == 'a' || reader.token == 'b' || reader.token == 'c' || reader.token == '('){
@@ -66,7 +73,7 @@ public class ScriptParser {
 		return termNode;
 	}
 	
-	public ASTNode factor(){
+	public ASTNode factor() throws MawkParserException{
 		ASTNode factorNode = new ASTNode(ASTNode.NodeType.Factor);
 		factorNode.setLeftChild(atom());
 		if(reader.token == '*' || reader.token == '+' || reader.token == '?'){
@@ -75,7 +82,7 @@ public class ScriptParser {
 		return factorNode;
 	}
 
-	private ASTNode atom() {
+	private ASTNode atom() throws MawkParserException {
 		ASTNode atomNode = new ASTNode(ASTNode.NodeType.Atom);
 		if(reader.token == '('){
 			reader.match('(');
@@ -87,7 +94,7 @@ public class ScriptParser {
 		return atomNode;
 	}
 
-	public ASTNode metacharacter(){
+	public ASTNode metacharacter() throws MawkParserException{
 		ASTNode metacharacterNode = new ASTNode(ASTNode.NodeType.Metacharacter);
 		switch(reader.token){
 		case '*':
@@ -105,23 +112,23 @@ public class ScriptParser {
 		}
 		return metacharacterNode;
 	}
-	public ASTNode star(){
+	public ASTNode star() throws MawkParserException{
 		ASTNode starNode = new ASTNode(ASTNode.NodeType.Star);
 		reader.match('*');
 		return starNode;
 	}
-	public ASTNode oneOrMore(){
+	public ASTNode oneOrMore() throws MawkParserException{
 		ASTNode oneOrMoreNode = new ASTNode(ASTNode.NodeType.OneOrMore);
 		reader.match('+');
 		return oneOrMoreNode;
 	}
-	public ASTNode optional(){
+	public ASTNode optional() throws MawkParserException{
 		ASTNode optionalNode = new ASTNode(ASTNode.NodeType.Optional);
 		reader.match('?');
 		return optionalNode;
 	}
 	
-	public ASTNode begin() {
+	public ASTNode begin() throws MawkParserException {
 		ASTNode beginNode = new ASTNode(ASTNode.NodeType.Begin);
 		reader.matchString("BEGIN{");
 		beginNode.setLeftChild(funcBlock());
@@ -129,7 +136,7 @@ public class ScriptParser {
 		return beginNode;
 	}
 	
-	public ASTNode end() {
+	public ASTNode end() throws MawkParserException {
 		ASTNode endNode = new ASTNode(ASTNode.NodeType.End);
 		reader.matchString("END{");
 		endNode.setLeftChild(funcBlock());
@@ -137,7 +144,7 @@ public class ScriptParser {
 		return endNode;
 	}
 	
-	public ASTNode funcBlock(){
+	public ASTNode funcBlock() throws MawkParserException{
 		ASTNode funcBlockNode = new ASTNode(ASTNode.NodeType.FunctionBlock);
 		funcBlockNode.setLeftChild(function());
 		if(reader.token == ';'){
@@ -147,7 +154,7 @@ public class ScriptParser {
 		return funcBlockNode;
 	}
 	
-	public ASTNode function(){
+	public ASTNode function() throws MawkParserException{
 		ASTNode functionNode = new ASTNode(ASTNode.NodeType.Function);
 		switch(reader.token){
 		case 's':
@@ -169,7 +176,7 @@ public class ScriptParser {
 		return functionNode;
 	}
 
-	public ASTNode substringFunction() {
+	public ASTNode substringFunction() throws MawkParserException {
 		ASTNode substringFunctionNode = new ASTNode(ASTNode.NodeType.SubstringFunction);
 		reader.matchString("substring(");
 		substringFunctionNode.setLeftChild(integer());
@@ -184,14 +191,14 @@ public class ScriptParser {
 		return substringFunctionNode;
 	}
 	
-	public ASTNode integer() {
+	public ASTNode integer() throws MawkParserException {
 		ASTNode integerNode = new ASTNode(ASTNode.NodeType.Integer);
 		integerNode.setLeftChild(number());
 		if(reader.token >= '0' && reader.token <= '9')
 			integerNode.setRightChild(integer());
 		return integerNode;
 	}
-	private ASTNode number() {
+	private ASTNode number() throws MawkParserException {
 		ASTNode numberNode = new ASTNode(ASTNode.NodeType.Number);
 		switch(reader.token){
 		case '0':
@@ -230,48 +237,48 @@ public class ScriptParser {
 		}
 		return numberNode;
 	}
-	private ASTNode zero() {
+	private ASTNode zero() throws MawkParserException {
 		reader.match('0');
 		return new ASTNode(ASTNode.NodeType.Zero);
 	}
-	private ASTNode one() {
+	private ASTNode one() throws MawkParserException {
 		reader.match('1');
 		return new ASTNode(ASTNode.NodeType.One);
 	}
-	private ASTNode two() {
+	private ASTNode two() throws MawkParserException {
 		reader.match('2');
 		return new ASTNode(ASTNode.NodeType.Two);
 	}
-	private ASTNode three() {
+	private ASTNode three() throws MawkParserException {
 		reader.match('3');
 		return new ASTNode(ASTNode.NodeType.Three);
 	}
-	private ASTNode four() {
+	private ASTNode four() throws MawkParserException {
 		reader.match('4');
 		return new ASTNode(ASTNode.NodeType.Four);
 	}
-	private ASTNode five() {
+	private ASTNode five() throws MawkParserException {
 		reader.match('5');
 		return new ASTNode(ASTNode.NodeType.Five);
 	}
-	private ASTNode six() {
+	private ASTNode six() throws MawkParserException {
 		reader.match('6');
 		return new ASTNode(ASTNode.NodeType.Six);
 	}
-	private ASTNode seven() {
+	private ASTNode seven() throws MawkParserException {
 		reader.match('7');
 		return new ASTNode(ASTNode.NodeType.Seven);
 	}
-	private ASTNode eight() {
+	private ASTNode eight() throws MawkParserException {
 		reader.match('8');
 		return new ASTNode(ASTNode.NodeType.Eight);
 	}
-	private ASTNode nine() {
+	private ASTNode nine() throws MawkParserException {
 		reader.match('9');
 		return new ASTNode(ASTNode.NodeType.Nine);
 	}
 
-	public ASTNode insertFunction() {
+	public ASTNode insertFunction() throws MawkParserException {
 		ASTNode insertFunctionNode = new ASTNode(ASTNode.NodeType.InsertFunction);
 		reader.matchString("insert(");
 		if(reader.token == 'E'){
@@ -286,7 +293,7 @@ public class ScriptParser {
 		return insertFunctionNode;
 	}
 	
-	private ASTNode character() {
+	private ASTNode character() throws MawkParserException {
 		ASTNode character = new ASTNode(ASTNode.NodeType.Character);
 		switch(reader.token){
 		case 'a':
@@ -304,20 +311,20 @@ public class ScriptParser {
 		}
 		return character;
 	}
-	private ASTNode a() {
+	private ASTNode a() throws MawkParserException {
 		reader.match('a');
 		return new ASTNode(ASTNode.NodeType.A);
 	}
-	private ASTNode b() {
+	private ASTNode b() throws MawkParserException {
 		reader.match('b');
 		return new ASTNode(ASTNode.NodeType.B);
 	}
-	private ASTNode c() {
+	private ASTNode c() throws MawkParserException {
 		reader.match('c');
 		return new ASTNode(ASTNode.NodeType.C);
 	}
 
-	public ASTNode printFunction(){
+	public ASTNode printFunction() throws MawkParserException{
 		ASTNode printFunctionNode = new ASTNode(ASTNode.NodeType.PrintFunction);
 		reader.matchString("print(");
 		if(reader.token == '"'){
@@ -329,12 +336,12 @@ public class ScriptParser {
 		return printFunctionNode;
 	}
 	
-	private ASTNode line() {
+	private ASTNode line() throws MawkParserException {
 		reader.matchString("LINE");
 		return new ASTNode(ASTNode.NodeType.Line);
 	}
 
-	private ASTNode string() {
+	private ASTNode string() throws MawkParserException {
 		ASTNode stringNode = new ASTNode(ASTNode.NodeType.String);
 		reader.match('"');
 		stringNode.setLeftChild(stringInner());
@@ -357,7 +364,7 @@ public class ScriptParser {
 		return stringInnerNode;
 	}
 
-	public ASTNode reFunction(){
+	public ASTNode reFunction() throws MawkParserException{
 		reader.matchString("re");
 		switch(reader.token){
 		case 'p':
@@ -370,7 +377,7 @@ public class ScriptParser {
 		}
 	}
 
-	private ASTNode removeFunction() {
+	private ASTNode removeFunction() throws MawkParserException {
 		ASTNode removeFunctionNode = new ASTNode(ASTNode.NodeType.RemoveFunction);
 		reader.matchString("move(");
 		removeFunctionNode.setLeftChild(character());
@@ -378,7 +385,7 @@ public class ScriptParser {
 		return removeFunctionNode;
 	}
 
-	private ASTNode replaceFunction() {
+	private ASTNode replaceFunction() throws MawkParserException {
 		ASTNode replaceFunctionNode = new ASTNode(ASTNode.NodeType.ReplaceFunction);
 		reader.matchString("place(");
 		replaceFunctionNode.setLeftChild(character());

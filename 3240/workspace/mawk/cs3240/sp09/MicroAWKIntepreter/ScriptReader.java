@@ -28,38 +28,37 @@ public class ScriptReader {
 		return (char)-1;
 	}
 	
-	public boolean match(char c){
+	public boolean match(char c) throws MawkParserException {
 		if(c == token){
 			token = getchar();
 			return true;
 		} else {
 			// TODO: Error handling
-			try {
-				throw new Exception();
-			} catch (Exception e){
-				System.err.println("MATCH ERROR at " + position + ": Expected " + c + ", got " + token + "[ASCII:" + (int)token + "]");
-				System.err.println("Surrounding text: " + script.substring(max(0, position - 5), position) + "[" + script.charAt(position) + "]" + script.substring(position+1, min(position+5, script.length())));
-				e.printStackTrace();
-				System.exit(0);
-			}
-			return false;
+			throw new MawkParserException("Character " + c + " expected, got " + token);
 		}
 	}
+	
+//
+//	private int min(int i, int j) {
+//		if(i < j) return i;
+//		else return j;
+//	}
+//
+//	private int max(int i, int j) {
+//		if(i > j) return i;
+//		else return j;
+//	}
 
-	private int min(int i, int j) {
-		if(i < j) return i;
-		else return j;
-	}
-
-	private int max(int i, int j) {
-		if(i > j) return i;
-		else return j;
-	}
-
-	public boolean matchString(String string) {
+	public boolean matchString(String string) throws MawkParserException {
 		for(int i = 0; i < string.length(); i++)
 			if (!match(string.charAt(i)))
 				return false;
 		return true;
+	}
+	
+	public static class MawkParserException extends Exception {
+		public MawkParserException(String errTxt){
+			super(errTxt);
+		}
 	}
 }
