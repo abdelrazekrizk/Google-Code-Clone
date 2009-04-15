@@ -189,16 +189,28 @@ public class ScriptParser {
 	
 	public ASTNode whileLoop() throws MawkParserException {
 		ASTNode whileNode = new ASTNode(ASTNode.NodeType.WhileLoop);
-		reader.matchString("while{");
-		whileNode.setLeftChild(loopBlock());
+		reader.matchString("while");
+		reader.match('(');
+		whileNode.setLeftChild(regex());
+		reader.match(')');
+		reader.match('{');
+		while(reader.token != '}'){
+			whileNode.setRightChild(loopBlock());
+		}
 		reader.match('}');
 		return whileNode;
 	}
 	
 	public ASTNode forLoop() throws MawkParserException {
 		ASTNode forNode = new ASTNode(ASTNode.NodeType.ForLoop);
-		reader.matchString("for{");
-		forNode.setLeftChild(loopBlock());
+		reader.matchString("for");
+		reader.match('(');
+		forNode.setLeftChild(integer());
+		reader.match(')');
+		reader.match('{');
+		while(reader.token != '}') {
+			forNode.setRightChild(loopBlock());
+		}
 		reader.match('}');
 		return forNode;
 	}
