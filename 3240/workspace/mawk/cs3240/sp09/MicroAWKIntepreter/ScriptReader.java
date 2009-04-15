@@ -33,8 +33,7 @@ public class ScriptReader {
 			token = getchar();
 			return true;
 		} else {
-			// TODO: Error handling
-			throw new MawkParserException("Character " + c + " expected, got " + token);
+			throw new MawkParserException(String.format("Character %c expected, got %c", c, token));
 		}
 	}
 	
@@ -56,9 +55,4 @@ public class ScriptReader {
 		return true;
 	}
 	
-	public static class MawkParserException extends Exception {
-		public MawkParserException(String errTxt){
-			super(errTxt);
-		}
-	}
 }

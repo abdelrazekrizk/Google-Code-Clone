@@ -81,7 +81,6 @@ public class DynamicList<E> implements java.lang.Iterable<E>{
 	}
 
 	public Iterator<E> iterator() {
-		// TODO Auto-generated method stub
 		return new DynamicListIterator<E>();
 	}
 	
@@ -103,7 +102,7 @@ public class DynamicList<E> implements java.lang.Iterable<E>{
 		}
 
 		public void remove() {
-			// TODO: Is this entirely necessary?
+			// Is this entirely necessary?
 			
 		}
 		

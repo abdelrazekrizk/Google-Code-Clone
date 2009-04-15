@@ -45,7 +45,8 @@ public class NFA implements FiniteAutomata {
 			atom(node);
 			break;
 		default:
-			// TODO: throw error
+			// Impossible case.
+			error();
 			break;
 		}
 	}
@@ -85,7 +86,8 @@ public class NFA implements FiniteAutomata {
 				copyToSelf(atomNFA.optional());
 				break;
 			default:
-				// TODO: throw error
+				// impossible case
+				error();
 				break;
 			}
 		} else {
@@ -96,15 +98,14 @@ public class NFA implements FiniteAutomata {
 	private void atom(ASTNode node) {
 		if(node.leftChild.type == NodeType.Character){
 			// switching on the atom's character's type (atom.left => character; character.left => a|b|c)
-			Edge.Letter letter;
+			Edge.Letter letter = null;
 			switch(node.leftChild.leftChild.type){
 			case A: letter = Letter.a; break;
 			case B: letter = Letter.b; break;
 			case C: letter = Letter.c; break;
 			default:
-				// TODO: throw error
-				letter = Letter.epsilon;
-				break;
+				// Impossible case.
+				error();
 			}
 			copyToSelf(baseNFA(letter));
 		} else if(node.leftChild.type == NodeType.Regex){
@@ -275,6 +276,10 @@ public class NFA implements FiniteAutomata {
 		}
 		
 		return star;
+	}
+	
+	private void error(){
+		assert(false);
 	}
 	
 }

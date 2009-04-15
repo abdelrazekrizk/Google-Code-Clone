@@ -1,7 +1,5 @@
 package cs3240.sp09.MicroAWKIntepreter;
 import cs3240.sp09.AbstractSyntaxTree.*;
-import cs3240.sp09.MicroAWKIntepreter.ScriptReader.MawkParserException;
-
 
 public class ScriptParser {
 	
@@ -113,8 +111,7 @@ public class ScriptParser {
 			metacharacterNode.setLeftChild(optional());
 			break;
 		default:
-			// TODO: throw error
-			break;
+			throw new MawkParserException("Invalid metacharacter token: " + reader.token);
 		}
 		return metacharacterNode;
 	}
@@ -176,8 +173,7 @@ public class ScriptParser {
 			functionNode.setLeftChild(reFunction());
 			break;
 		default:
-			// TODO: parse error
-			break;
+			throw new MawkParserException("Invalid function name on token: " + reader.token);
 		}
 		return functionNode;
 	}
@@ -263,8 +259,7 @@ public class ScriptParser {
 			numberNode.setLeftChild(nine());
 			break;
 		default:
-			// TODO: parse error
-			break;
+			throw new MawkParserException(String.format("Invalid number token: %c", reader.token));
 		}
 		return numberNode;
 	}
@@ -337,8 +332,7 @@ public class ScriptParser {
 			character.setLeftChild(c());
 			break;
 		default:
-			System.err.println("ERROR: ScriptParser.character() - reader.token = " + reader.token);
-			break;
+			throw new MawkParserException("Invalid character token: " + reader.token);
 		}
 		return character;
 	}
@@ -382,15 +376,11 @@ public class ScriptParser {
 
 	private ASTNode stringInner() {
 		StringInnerNode stringInnerNode = new StringInnerNode(ASTNode.NodeType.StringInner);
-//		stringInnerNode.setLeftChild(stringCharacter());
 		String str = "";
 		while(reader.token != '"'){
 			str += reader.token;
 			reader.getcharWithWhitespace();
 		}
-//		if(reader.token != '"'){
-//			stringInnerNode.setRightChild(stringInner());
-//		}
 		stringInnerNode.setValue(str);
 		return stringInnerNode;
 	}
@@ -403,8 +393,7 @@ public class ScriptParser {
 		case 'm':
 			return removeFunction();
 		default:
-			// TODO: error
-			return null;
+			throw new MawkParserException("Invalid function name that starts with re.");
 		}
 	}
 

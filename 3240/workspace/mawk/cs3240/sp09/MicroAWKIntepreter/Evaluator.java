@@ -20,7 +20,11 @@ public class Evaluator {
 		evaluateRegexes(root);
 		executeBegin(root);
 		for(String str : input){
-			execute(root, str);
+			try {
+				execute(root, str);
+			} catch(InvalidInputStringException e){
+				System.err.println(String.format("Invalid input: %c", e.getChar()));
+			}
 		}
 		executeEnd(root);
 	}
@@ -38,7 +42,7 @@ public class Evaluator {
 		}
 	}
 
-	private static String execute(ASTNode node, String string) {
+	private static String execute(ASTNode node, String string) throws InvalidInputStringException {
 		if(node == null) return string;
 
 		// copy of the input string
@@ -225,27 +229,37 @@ public class Evaluator {
 
 	private static void executeEnd(ASTNode node) {
 		if(node == null) return;
-		switch(node.type){
-		case End:
-			execute(node.leftChild, "<<NOLINE>>");
-			break;
-		default:
-			executeEnd(node.leftChild);
-			executeEnd(node.rightChild);
-			break;
+		try {
+			switch(node.type){
+			case End:
+				execute(node.leftChild, "<<NOLINE>>");
+				break;
+			default:
+				executeEnd(node.leftChild);
+				executeEnd(node.rightChild);
+				break;
+			}
+		} catch (InvalidInputStringException e){
+			// impossible error.
+			assert(false);
 		}
 	}
 
 	private static void executeBegin(ASTNode node) {
 		if(node == null) return;
-		switch(node.type){
-		case Begin:
-			execute(node.leftChild, "<<NOLINE>>");
-			break;
-		default:
-			executeBegin(node.leftChild);
-			executeBegin(node.rightChild);
-			break;
+		try {
+			switch(node.type){
+			case Begin:
+				execute(node.leftChild, "<<NOLINE>>");
+				break;
+			default:
+				executeBegin(node.leftChild);
+				executeBegin(node.rightChild);
+				break;
+			}
+		} catch (InvalidInputStringException e){
+			// impossible error
+			assert(false);
 		}
 	}
 	

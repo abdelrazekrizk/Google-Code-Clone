@@ -133,8 +133,9 @@ public class DFA implements FiniteAutomata {
 	
 	/**
 	 * Returns true if the DFA recognizes the string input. False otherwise.
+	 * @throws InvalidInputStringException 
 	 */
-	public boolean matches(String input){
+	public boolean matches(String input) throws InvalidInputStringException{
 		State state = startState;
 		for(int pos = 0; pos < input.length(); pos++){
 			switch(input.charAt(pos)){
@@ -148,8 +149,7 @@ public class DFA implements FiniteAutomata {
 				state = adj.get(state, Letter.c);
 				break;
 			default:
-				// TODO: throw invalid input error
-				break;
+				throw new InvalidInputStringException(input.charAt(pos));
 			}
 			if(state == null)
 				return false;
