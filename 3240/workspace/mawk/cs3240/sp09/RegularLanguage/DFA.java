@@ -163,4 +163,8 @@ public class DFA implements FiniteAutomata {
 	public DynamicList<State> getStates() {
 		return states;
 	}
+	
+	public String toString() {
+		return adj.toString();
+	}
 }

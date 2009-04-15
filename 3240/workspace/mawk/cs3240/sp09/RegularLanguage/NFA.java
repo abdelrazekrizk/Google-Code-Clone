@@ -278,6 +278,10 @@ public class NFA implements FiniteAutomata {
 		return star;
 	}
 	
+	public String toString() {
+		return adj.toString();
+	}
+	
 	private void error(){
 		assert(false);
 	}

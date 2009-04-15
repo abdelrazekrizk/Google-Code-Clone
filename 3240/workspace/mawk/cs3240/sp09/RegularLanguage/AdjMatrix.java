@@ -153,4 +153,50 @@ public class AdjMatrix {
 		}
 		return newAdj;
 	}
+	
+	public String toString() {
+		int colWidth = 6;
+		String finalString = "";
+		for(int c = 0; c < colWidth; c++) {
+			finalString += " ";
+		}
+		finalString += "|";
+		for(int i = 1; i <= stateCount; i++) {
+			String tempString = ""+ i;
+			for(int c = 0; c < colWidth-tempString.length(); c++) {
+				finalString += " ";
+			}
+			finalString += tempString + "|";
+		}
+		finalString += "\n";
+		// i = row, j = col
+		for(int i = 0; i < stateCount; i++) {
+			String tempString = "" + (i+1);
+			for(int c = 0; c < colWidth-tempString.length(); c++) {
+				finalString += " ";
+			}
+			finalString += tempString + "|";
+			for(int j = 0; j < stateCount; j++) {
+				int index = i*stateCount + j;
+				if(array[index] != null) {
+					String tempString2 = "";
+					for(Edge k : array[index]) {
+						tempString2 += k.number + ",";
+					}
+					for(int c = 0; c < colWidth-tempString2.length(); c++) {
+						finalString += " ";
+					}
+					finalString += " " + tempString2.substring(0, tempString2.length()-1) + "|";
+				}
+				else {
+					for(int c = 0; c < colWidth; c++) {
+						finalString += " ";
+					}
+					finalString += "|";
+				}
+			}
+			finalString += "\n";
+		}
+		return finalString;
+	}
 }

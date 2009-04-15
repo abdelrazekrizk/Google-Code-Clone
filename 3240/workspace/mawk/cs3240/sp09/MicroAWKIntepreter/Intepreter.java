@@ -3,7 +3,11 @@ import java.util.EnumSet;
 import java.io.*;
 
 import cs3240.sp09.AbstractSyntaxTree.ASTNode;
+import cs3240.sp09.AbstractSyntaxTree.RegexNode;
+import cs3240.sp09.AbstractSyntaxTree.ASTNode.NodeType;
 import cs3240.sp09.DataStrucutres.DynamicList;
+import cs3240.sp09.RegularLanguage.DFA;
+import cs3240.sp09.RegularLanguage.NFA;
 
 
 public class Intepreter {
@@ -101,5 +105,31 @@ public class Intepreter {
 		ScriptASTRoot = parser.parse();
 		if(options.contains(Options.AST))
 			System.out.println(ScriptASTRoot);
+	}
+	
+	private static void outputNFAs(ASTNode node) {
+		if(node.type == NodeType.Regex){
+			RegexNode rex = (RegexNode)node;
+			System.out.println(rex.nfa);
+		}
+		else {
+			if(node.leftChild != null)
+				outputNFAs(node.leftChild);
+			if(node.rightChild != null)
+				outputNFAs(node.rightChild);	
+		}
+	}
+	
+	private static void outputDFAs(ASTNode node) {
+		if(node.type == NodeType.Regex){
+			RegexNode rex = (RegexNode)node;
+			System.out.println(rex.dfa);
+		}
+		else {
+			if(node.leftChild != null)
+				outputDFAs(node.leftChild);
+			if(node.rightChild != null)
+				outputDFAs(node.rightChild);	
+		}
 	}
 }

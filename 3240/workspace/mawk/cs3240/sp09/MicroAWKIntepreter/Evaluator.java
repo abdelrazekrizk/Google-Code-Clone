@@ -2,6 +2,7 @@ package cs3240.sp09.MicroAWKIntepreter;
 import cs3240.sp09.AbstractSyntaxTree.*;
 import cs3240.sp09.AbstractSyntaxTree.ASTNode.NodeType;
 import cs3240.sp09.DataStrucutres.DynamicList;
+import cs3240.sp09.MicroAWKIntepreter.Intepreter.Options;
 import cs3240.sp09.RegularLanguage.*;
 
 /**
@@ -33,7 +34,13 @@ public class Evaluator {
 		if(node.type == NodeType.Regex){
 			RegexNode rex = (RegexNode)node;
 			rex.nfa = new NFA(rex);
+			if(Intepreter.options.contains(Options.NFA)) {
+				System.out.println(rex.nfa);
+			}
 			rex.dfa = new DFA(rex.nfa);
+			if(Intepreter.options.contains(Options.DFA)) {
+				System.out.println(rex.dfa);
+			}
 		} else { // don't really care to evaluate regex node's children.
 			if(node.leftChild != null)
 				evaluateRegexes(node.leftChild);
