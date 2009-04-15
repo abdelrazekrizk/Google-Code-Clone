@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="16" version="2.0">
+<workbench progressCount="14" version="2.0">
 <workbenchAdvisor/>
 <window height="764" maximized="true" width="1032" x="0" y="0">
 <fastViewData fastViewLocation="1024"/>
@@ -31,27 +31,13 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
-<part id="2"/>
-<part id="3"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ASTNode.java" partName="ASTNode.java" path="C:/Documents and Settings/Mook/Desktop/workspace/mawk/cs3240/sp09/AbstractSyntaxTree/ASTNode.java" title="ASTNode.java" tooltip="mawk/cs3240/sp09/AbstractSyntaxTree/ASTNode.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/mawk/cs3240/sp09/AbstractSyntaxTree/ASTNode.java"/>
-<editorState selectionLength="0" selectionOffset="900"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DFA.java" partName="DFA.java" path="C:/Documents and Settings/Mook/Desktop/workspace/mawk/cs3240/sp09/RegularLanguage/DFA.java" title="DFA.java" tooltip="mawk/cs3240/sp09/RegularLanguage/DFA.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/mawk/cs3240/sp09/RegularLanguage/DFA.java"/>
-<editorState selectionLength="0" selectionOffset="356"/>
-</editor>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="DynamicList.java" partName="DynamicList.java" path="C:/Documents and Settings/Mook/Desktop/workspace/mawk/cs3240/sp09/DataStrucutres/DynamicList.java" title="DynamicList.java" tooltip="mawk/cs3240/sp09/DataStrucutres/DynamicList.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/mawk/cs3240/sp09/DataStrucutres/DynamicList.java"/>
-<editorState selectionLength="0" selectionOffset="358"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Intepreter.java" partName="Intepreter.java" path="/home/mook/workspace/mawk/cs3240/sp09/MicroAWKIntepreter/Intepreter.java" title="Intepreter.java" tooltip="mawk/cs3240/sp09/MicroAWKIntepreter/Intepreter.java" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Intepreter.java" partName="Intepreter.java" path="C:/Documents and Settings/Mook/Desktop/projects/3240/workspace/mawk/cs3240/sp09/MicroAWKIntepreter/Intepreter.java" title="Intepreter.java" tooltip="mawk/cs3240/sp09/MicroAWKIntepreter/Intepreter.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/mawk/cs3240/sp09/MicroAWKIntepreter/Intepreter.java"/>
+<editorState selectionLength="0" selectionOffset="442"/>
 </editor>
 </editors>
 <views>
@@ -63,12 +49,17 @@
 </viewState>
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
-<viewState columnWidth0="265" columnWidth1="90" columnWidth2="165" columnWidth3="925" columnWidth4="0" horizontalPosition="0" verticalPosition="0">
-<columnOrder columnOrderIndex="0"/>
-<columnOrder columnOrderIndex="1"/>
-<columnOrder columnOrderIndex="2"/>
-<columnOrder columnOrderIndex="3"/>
-<columnOrder columnOrderIndex="4"/>
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>
+<category IMemento.internal.id="Warnings"/>
+<category IMemento.internal.id="Errors"/>
+</expanded>
+<columnWidths org.eclipse.ui.ide.locationField="0" org.eclipse.ui.ide.markerType="0" org.eclipse.ui.ide.pathField="0" org.eclipse.ui.ide.resourceField="0" org.eclipse.ui.ide.severityAndDescriptionField="0"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
 </view>
 <view id="org.eclipse.ui.console.ConsoleView" partName="Console">
@@ -104,6 +95,18 @@
 <child filterId="org.eclipse.mylyn.java.ui.MembersFilter" isEnabled="false"/>
 </xmlDefinedFilters>
 </customFilters>
+</viewState>
+</view>
+<view id="org.eclipse.ui.views.TaskList" partName="Tasks">
+<viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.completionField" categoryGroup="none" markerContentGenerator="org.eclipse.ui.ide.tasksGenerator" partName="Tasks">
+<columnWidths org.eclipse.ui.ide.completionField="40" org.eclipse.ui.ide.descriptionField="254" org.eclipse.ui.ide.locationField="54" org.eclipse.ui.ide.markerType="79" org.eclipse.ui.ide.pathField="104" org.eclipse.ui.ide.priorityField="20" org.eclipse.ui.ide.resourceField="79"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.completionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.priorityField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.descriptionField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.pathField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.locationField"/>
+<visible IMemento.internal.id="org.eclipse.ui.ide.markerType"/>
 </viewState>
 </view>
 <view id="org.eclipse.ui.views.ContentOutline" partName="Outline">
@@ -174,6 +177,7 @@
 <view id="org.eclipse.jdt.ui.SourceView"/>
 <view id="org.eclipse.search.ui.views.SearchView"/>
 <view id="org.eclipse.ui.console.ConsoleView"/>
+<view id="org.eclipse.ui.views.TaskList"/>
 <view id="org.eclipse.ui.views.ContentOutline"/>
 <fastViewBars/>
 <layout>
@@ -199,13 +203,14 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.16856629" ratioLeft="281" ratioRight="1386" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.86870897" ratioLeft="794" ratioRight="120" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.77133477" ratioLeft="705" ratioRight="209" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
 <page content="org.eclipse.jdt.ui.SourceView" label="Declaration"/>
 <page content="org.eclipse.search.ui.views.SearchView" label="Search"/>
 <page content="org.eclipse.ui.console.ConsoleView" label="Console"/>
+<page content="org.eclipse.ui.views.TaskList" label="Tasks"/>
 <page content="org.eclipse.ui.views.BookmarkView" label="LabelNotFound"/>
 <page content="org.eclipse.ui.views.ProgressView" label="LabelNotFound"/>
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
@@ -214,6 +219,7 @@
 <part id="2"/>
 <part id="3"/>
 <part id="4"/>
+<part id="5"/>
 </presentation>
 </folder>
 </info>
@@ -233,124 +239,165 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/test.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/src/cs3240/sp09/AbstractSyntaxTree/ASTNode.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/cs3240/sp09/AbstractSyntaxTree/ASTNode.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/cs3240/sp09/RegularLanguage/DFA.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/cs3240/sp09/RegularLanguage/FiniteAutomata.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/cs3240/sp09/DataStrucutres/DynamicList.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/cs3240/sp09/RegularLanguage/AdjMatrix.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/cs3240/sp09/MicroAWKIntepreter/Intepreter.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/cs3240/sp09/RegularLanguage/Edge.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/mawk/Micro-Awk.txt"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/cs3240/sp09/RegularLanguage/DFA.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/cs3240/sp09/AbstractSyntaxTree/ASTNode.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/cs3240/sp09/DataStrucutres/DynamicList.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/cs3240/sp09/MicroAWKIntepreter/Evaluator.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/mawk/Micro-Awk.txt"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/cs3240/sp09/AbstractSyntaxTree/StringInnerNode.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/cs3240/sp09/MicroAWKIntepreter/ScriptParser.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/mawk/cs3240/sp09/MicroAWKIntepreter/ScriptReader.java"/>
 </editors>
-<item historyLabel="test.java" index="0">
-<position/>
-</item>
-<item historyLabel="ASTNode.java" index="1">
-<position/>
-</item>
-<item historyLabel="ASTNode.java" index="2">
-<position/>
-</item>
 <item historyLabel="DFA.java" index="3">
+<position info="not_deleted" x="356" y="0"/>
+</item>
+<item historyLabel="DynamicList.java" index="0">
+<position info="not_deleted" x="293" y="0"/>
+</item>
+<item historyLabel="Intepreter.java" index="2">
 <position/>
 </item>
-<item historyLabel="FiniteAutomata.java" index="4">
+<item historyLabel="AdjMatrix.java" index="1">
 <position/>
 </item>
-<item historyLabel="DFA.java" index="3">
-<position info="not_deleted" x="451" y="0"/>
+<item historyLabel="ASTNode.java" index="4">
+<position info="not_deleted" x="109" y="0"/>
 </item>
-<item historyLabel="FiniteAutomata.java" index="4">
+<item historyLabel="Evaluator.java" index="5">
 <position/>
 </item>
-<item historyLabel="DFA.java" index="3">
-<position info="not_deleted" x="451" y="0"/>
-</item>
-<item historyLabel="ASTNode.java" index="2">
+<item historyLabel="Micro-Awk.txt" index="6">
 <position/>
 </item>
-<item historyLabel="DFA.java" index="3">
+<item historyLabel="Evaluator.java" index="5">
+<position info="not_deleted" x="1489" y="0"/>
+</item>
+<item historyLabel="Intepreter.java" index="2">
 <position/>
 </item>
-<item historyLabel="DynamicList.java" index="5">
+<item historyLabel="Evaluator.java" index="5">
+<position info="not_deleted" x="1031" y="0"/>
+</item>
+<item historyLabel="ASTNode.java" index="4">
+<position info="not_deleted" x="1289" y="0"/>
+</item>
+<item historyLabel="Intepreter.java" index="2">
+<position info="not_deleted" x="2448" y="0"/>
+</item>
+<item historyLabel="ASTNode.java" index="4">
+<position info="not_deleted" x="1289" y="0"/>
+</item>
+<item historyLabel="StringInnerNode.java" index="7">
 <position/>
 </item>
-<item historyLabel="DFA.java" index="3">
+<item historyLabel="ASTNode.java" index="4">
+<position info="not_deleted" x="1289" y="0"/>
+</item>
+<item historyLabel="Intepreter.java" index="2">
+<position info="not_deleted" x="3001" y="0"/>
+</item>
+<item historyLabel="ScriptParser.java" index="8">
 <position/>
 </item>
-<item historyLabel="FiniteAutomata.java" index="4">
-<position info="not_deleted" x="135" y="0"/>
-</item>
-<item historyLabel="DynamicList.java" index="5">
+<item historyLabel="ScriptReader.java" index="9">
 <position/>
 </item>
-<item historyLabel="DFA.java" index="3">
-<position info="not_deleted" x="5410" y="0"/>
+<item historyLabel="ScriptParser.java" index="8">
+<position info="not_deleted" x="1788" y="0"/>
 </item>
-<item historyLabel="DynamicList.java" index="5">
+<item historyLabel="Intepreter.java" index="2">
+<position info="not_deleted" x="2326" y="0"/>
+</item>
+<item historyLabel="ScriptParser.java" index="8">
+<position info="not_deleted" x="1788" y="0"/>
+</item>
+<item historyLabel="ScriptParser.java" index="8">
+<position info="not_deleted" x="625" y="1"/>
+</item>
+<item historyLabel="Intepreter.java" index="2">
+<position info="not_deleted" x="2326" y="0"/>
+</item>
+<item historyLabel="ScriptParser.java" index="8">
+<position info="not_deleted" x="625" y="1"/>
+</item>
+<item historyLabel="ScriptParser.java" index="8">
+<position info="not_deleted" x="625" y="1"/>
+</item>
+<item historyLabel="ScriptParser.java" index="8">
+<position info="not_deleted" x="625" y="1"/>
+</item>
+<item historyLabel="ScriptReader.java" index="9">
 <position/>
 </item>
-<item historyLabel="Intepreter.java" index="6">
+<item historyLabel="ScriptReader.java" index="9">
 <position/>
 </item>
-<item historyLabel="Edge.java" index="7">
-<position/>
+<item historyLabel="ScriptParser.java" index="8">
+<position info="not_deleted" x="625" y="1"/>
 </item>
-<item historyLabel="Intepreter.java" index="6">
-<position info="not_deleted" x="214" y="0"/>
+<item historyLabel="ScriptReader.java" index="9">
+<position info="not_deleted" x="1688" y="0"/>
 </item>
-<item historyLabel="Micro-Awk.txt" index="8">
-<position/>
+<item historyLabel="ScriptReader.java" index="9">
+<position info="not_deleted" x="1424" y="0"/>
 </item>
-<item historyLabel="Intepreter.java" index="6">
-<position info="not_deleted" x="214" y="0"/>
+<item historyLabel="ScriptReader.java" index="9">
+<position info="not_deleted" x="417" y="0"/>
 </item>
-<item historyLabel="DynamicList.java" index="5">
-<position info="not_deleted" x="197" y="0"/>
+<item historyLabel="ScriptParser.java" index="8">
+<position info="not_deleted" x="564" y="0"/>
 </item>
-<item historyLabel="FiniteAutomata.java" index="4">
-<position info="not_deleted" x="135" y="0"/>
+<item historyLabel="ScriptReader.java" index="9">
+<position info="not_deleted" x="417" y="0"/>
 </item>
-<item historyLabel="DynamicList.java" index="5">
-<position info="not_deleted" x="197" y="0"/>
+<item historyLabel="ScriptReader.java" index="9">
+<position info="not_deleted" x="1359" y="0"/>
 </item>
-<item historyLabel="Intepreter.java" index="6">
-<position info="not_deleted" x="214" y="0"/>
+<item historyLabel="ScriptParser.java" index="8">
+<position info="not_deleted" x="629" y="1"/>
 </item>
-<item historyLabel="Intepreter.java" index="6">
-<position/>
+<item historyLabel="Micro-Awk.txt" index="6">
+<position info="not_deleted" x="5191" y="0"/>
 </item>
-<item historyLabel="ASTNode.java" index="2">
-<position info="not_deleted" x="947" y="11"/>
+<item historyLabel="ScriptReader.java" index="9">
+<position info="not_deleted" x="443" y="0"/>
 </item>
-<item historyLabel="ASTNode.java" index="2">
-<position info="not_deleted" x="1481" y="0"/>
+<item historyLabel="Intepreter.java" index="2">
+<position info="not_deleted" x="2326" y="0"/>
 </item>
-<item historyLabel="ASTNode.java" index="2">
-<position info="not_deleted" x="1507" y="0"/>
+<item historyLabel="Micro-Awk.txt" index="6">
+<position info="not_deleted" x="5191" y="0"/>
 </item>
-<item historyLabel="ASTNode.java" index="2">
-<position info="not_deleted" x="1178" y="0"/>
+<item historyLabel="ScriptParser.java" index="8">
+<position info="not_deleted" x="629" y="0"/>
 </item>
-<item historyLabel="Intepreter.java" index="6">
-<position info="not_deleted" x="492" y="0"/>
+<item historyLabel="ScriptParser.java" index="8">
+<position info="not_deleted" x="623" y="0"/>
 </item>
-<item historyLabel="DynamicList.java" index="5">
-<position info="not_deleted" x="65" y="0"/>
+<item historyLabel="Intepreter.java" index="2">
+<position info="not_deleted" x="206" y="0"/>
 </item>
-<item historyLabel="DFA.java" index="3">
-<position info="not_deleted" x="5410" y="0"/>
+<item historyLabel="ScriptParser.java" index="8">
+<position info="not_deleted" x="623" y="0"/>
 </item>
-<item historyLabel="ASTNode.java" index="9">
-<position/>
+<item historyLabel="Intepreter.java" index="2">
+<position info="not_deleted" x="206" y="0"/>
 </item>
-<item historyLabel="DFA.java" index="3">
-<position/>
+<item historyLabel="ScriptReader.java" index="9">
+<position info="not_deleted" x="427" y="0"/>
 </item>
-<item active="true" historyLabel="DynamicList.java" index="10">
+<item historyLabel="Micro-Awk.txt" index="6">
+<position info="not_deleted" x="5064" y="0"/>
+</item>
+<item historyLabel="ASTNode.java" index="4">
+<position info="not_deleted" x="1225" y="0"/>
+</item>
+<item historyLabel="Evaluator.java" index="5">
+<position info="not_deleted" x="1001" y="0"/>
+</item>
+<item active="true" historyLabel="Intepreter.java" index="2">
 <position/>
 </item>
 </navigationHistory>
@@ -370,17 +417,32 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Intepreter.java" tooltip="mawk/cs3240/sp09/MicroAWKIntepreter/Intepreter.java">
+<persistable path="/mawk/cs3240/sp09/MicroAWKIntepreter/Intepreter.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ScriptReader.java" tooltip="mawk/cs3240/sp09/MicroAWKIntepreter/ScriptReader.java">
+<persistable path="/mawk/cs3240/sp09/MicroAWKIntepreter/ScriptReader.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ScriptParser.java" tooltip="mawk/cs3240/sp09/MicroAWKIntepreter/ScriptParser.java">
+<persistable path="/mawk/cs3240/sp09/MicroAWKIntepreter/ScriptParser.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="StringInnerNode.java" tooltip="mawk/cs3240/sp09/AbstractSyntaxTree/StringInnerNode.java">
+<persistable path="/mawk/cs3240/sp09/AbstractSyntaxTree/StringInnerNode.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="Micro-Awk.txt" tooltip="mawk/Micro-Awk.txt">
 <persistable path="/mawk/Micro-Awk.txt"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Evaluator.java" tooltip="mawk/cs3240/sp09/MicroAWKIntepreter/Evaluator.java">
+<persistable path="/mawk/cs3240/sp09/MicroAWKIntepreter/Evaluator.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="AdjMatrix.java" tooltip="mawk/cs3240/sp09/RegularLanguage/AdjMatrix.java">
+<persistable path="/mawk/cs3240/sp09/RegularLanguage/AdjMatrix.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.systemExternalEditor" name="Languages Micro-AWK project.pdf" tooltip="mawk/Languages Micro-AWK project.pdf">
 <persistable path="/mawk/Languages Micro-AWK project.pdf"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Edge.java" tooltip="mawk/cs3240/sp09/RegularLanguage/Edge.java">
 <persistable path="/mawk/cs3240/sp09/RegularLanguage/Edge.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Intepreter.java" tooltip="mawk/cs3240/sp09/MicroAWKIntepreter/Intepreter.java">
-<persistable path="/mawk/cs3240/sp09/MicroAWKIntepreter/Intepreter.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FiniteAutomata.java" tooltip="mawk/cs3240/sp09/RegularLanguage/FiniteAutomata.java">
 <persistable path="/mawk/cs3240/sp09/RegularLanguage/FiniteAutomata.java"/>

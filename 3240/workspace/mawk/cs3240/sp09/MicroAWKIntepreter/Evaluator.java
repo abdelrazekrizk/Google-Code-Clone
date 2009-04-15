@@ -81,7 +81,7 @@ public class Evaluator {
 				line = removeFunction(node.leftChild, line);
 				break;
 			default:
-				// TODO: throw error
+				error();
 				break;
 			}
 			break;
@@ -90,7 +90,7 @@ public class Evaluator {
 			// do nothing
 			return line;
 		default:
-			// TODO: throw error
+			error();
 			break;
 		}
 		return line;
@@ -137,8 +137,8 @@ public class Evaluator {
 			}
 			return number;
 		} else {
-			// TODO: throw error
-			return -5;
+			error();
+			return -1;
 		}
 	}
 
@@ -165,7 +165,7 @@ public class Evaluator {
 		case Nine:
 			return 9;
 		default:
-			// TODO: error
+			error();
 			break;
 		}
 		return -1;
@@ -178,7 +178,7 @@ public class Evaluator {
 			StringInnerNode inner = (StringInnerNode)node.leftChild.leftChild;
 			System.out.println(inner.getValue());
 		} else {
-			// TODO: throw error
+			error();
 		}
 	}
 
@@ -218,7 +218,7 @@ public class Evaluator {
 		case C:
 			return 'c';
 		default:
-			System.err.println("Evaluator.character error");
+			error();
 			return (char)-1;
 		}
 	}
@@ -247,6 +247,11 @@ public class Evaluator {
 			executeBegin(node.rightChild);
 			break;
 		}
+	}
+	
+	private static void error(){
+		System.err.println("Evaluation error.");
+		assert(false);
 	}
 	
 }

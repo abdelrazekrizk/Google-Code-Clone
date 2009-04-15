@@ -68,7 +68,6 @@ public class DFA implements FiniteAutomata {
 			}
 		}
 		return;
-		// TODO: Minimize DFA?
 	}
 	
 	/**

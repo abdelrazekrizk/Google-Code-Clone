@@ -22,7 +22,7 @@ public class ScriptParser {
 		} catch(Exception e){
 			System.err.println("Parse error: " + e.getMessage());
 			e.printStackTrace();
-			System.exit(0);
+			programNode.setLeftChild(null);
 		}
 		if(reader.token != (char)-1){
 			programNode.setRightChild(program());
