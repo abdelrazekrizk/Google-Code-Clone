@@ -39,6 +39,12 @@ public class ScriptParser {
 			case 'E':
 				statementNode.setLeftChild(end());
 				break;
+			case 'w':
+				statementNode.setLeftChild(whileLoop());
+				break;
+			case 'f':
+				statementNode.setLeftChild(forLoop());
+				break;
 			case '{':
 				reader.match('{');
 				statementNode.setLeftChild(funcBlock());
@@ -53,7 +59,7 @@ public class ScriptParser {
 		}
 		return statementNode;
 	}
-
+	
 	public ASTNode regex() throws MawkParserException{
 		ASTNode regexNode = new RegexNode(ASTNode.NodeType.Regex);
 		regexNode.setLeftChild(term());
@@ -174,6 +180,31 @@ public class ScriptParser {
 			break;
 		}
 		return functionNode;
+	}
+	
+	public ASTNode loopBlock() throws MawkParserException {
+		ASTNode loopBlockNode = new ASTNode(ASTNode.NodeType.LoopBlock);
+		loopBlockNode.setLeftChild(regex());
+		reader.match('{');
+		loopBlockNode.setRightChild(funcBlock());
+		reader.match('}');
+		return loopBlockNode;
+	}
+	
+	public ASTNode whileLoop() throws MawkParserException {
+		ASTNode whileNode = new ASTNode(ASTNode.NodeType.WhileLoop);
+		reader.matchString("while{");
+		whileNode.setLeftChild(loopBlock());
+		reader.match('}');
+		return whileNode;
+	}
+	
+	public ASTNode forLoop() throws MawkParserException {
+		ASTNode forNode = new ASTNode(ASTNode.NodeType.ForLoop);
+		reader.matchString("for{");
+		forNode.setLeftChild(loopBlock());
+		reader.match('}');
+		return forNode;
 	}
 
 	public ASTNode substringFunction() throws MawkParserException {

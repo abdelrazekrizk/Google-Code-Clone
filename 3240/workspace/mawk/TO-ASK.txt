@@ -1,0 +1,2 @@
+Can there be nested loops? Currently, we're assuming not.
+What exactly is in a loop body? Currently, we're assuming that only regex/func-block pairs are allowed.
