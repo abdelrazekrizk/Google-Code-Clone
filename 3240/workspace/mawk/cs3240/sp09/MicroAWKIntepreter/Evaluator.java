@@ -77,18 +77,68 @@ public class Evaluator {
 		case Function:
 			switch(node.leftChild.type){
 			case SubstringFunction:
+				if(Intepreter.options.contains(Options.DEBUG)) {
+					System.out.print("substring(");
+					System.out.print(integer(node.leftChild.leftChild));
+					System.out.print(",");
+					if(integer(node.leftChild.rightChild) == -1) {
+						System.out.print("END");
+					}
+					else {
+						System.out.print(integer(node.leftChild.rightChild));
+					}
+					System.out.print(") : ");
+					System.out.println(line);
+				}
 				line = substringFunction(node.leftChild, line);
 				break;
 			case InsertFunction:
+				if(Intepreter.options.contains(Options.DEBUG)) {
+					System.out.print("insert(");
+					if(integer(node.leftChild.leftChild) == -1) {
+						System.out.print("END");
+					}
+					else {
+						System.out.print(integer(node.leftChild.leftChild));
+					}
+					System.out.print(",");
+					System.out.print(character(node.leftChild.rightChild));
+					System.out.print(") : ");
+					System.out.println(line);
+				}
 				line = insertFunction(node.leftChild, line);
 				break;
 			case PrintFunction:
+				if(Intepreter.options.contains(Options.DEBUG)) {
+					System.out.print("print");
+					System.out.print(" : ");
+					if(node.leftChild.leftChild.type == NodeType.Line) {
+						System.out.println(line);
+					} else if (node.leftChild.leftChild.type == NodeType.String) {
+						StringInnerNode inner = (StringInnerNode)node.leftChild.leftChild.leftChild;
+						System.out.println(inner.getValue());
+					}
+				}
 				printFunction(node.leftChild, line);
 				break;
 			case ReplaceFunction:
+				if(Intepreter.options.contains(Options.DEBUG)) {
+					System.out.print("replace(");
+					System.out.print(character(node.leftChild.leftChild));
+					System.out.print(",");
+					System.out.print(character(node.leftChild.rightChild));
+					System.out.print(") : ");
+					System.out.println(line);
+				}
 				line = replaceFunction(node.leftChild, line);
 				break;
 			case RemoveFunction:
+				if(Intepreter.options.contains(Options.DEBUG)) {
+					System.out.print("insert(");
+					System.out.print(character(node.leftChild.leftChild));
+					System.out.print(") : ");
+					System.out.println(line);
+				}
 				line = removeFunction(node.leftChild, line);
 				break;
 			default:
@@ -183,13 +233,15 @@ public class Evaluator {
 	}
 
 	private static void printFunction(ASTNode node, String line) {
-		if(node.leftChild.type == NodeType.Line){
-			System.out.println(line);
-		} else if (node.leftChild.type == NodeType.String){
-			StringInnerNode inner = (StringInnerNode)node.leftChild.leftChild;
-			System.out.println(inner.getValue());
-		} else {
-			error();
+		if(!Intepreter.options.contains(Options.DEBUG)) {
+			if(node.leftChild.type == NodeType.Line){
+				System.out.println(line);
+			} else if (node.leftChild.type == NodeType.String){
+				StringInnerNode inner = (StringInnerNode)node.leftChild.leftChild;
+				System.out.println(inner.getValue());
+			} else {
+				error();
+			}
 		}
 	}
 
