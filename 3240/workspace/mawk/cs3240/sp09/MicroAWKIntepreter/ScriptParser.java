@@ -221,7 +221,7 @@ public class ScriptParser {
 		substringFunctionNode.setLeftChild(integer());
 		reader.match(',');
 		if(reader.token == 'E'){
-			reader.matchString("END");
+			reader.matchString("EOL");
 			substringFunctionNode.setRightChild(new ASTNode(ASTNode.NodeType.EndIndex));
 		} else {
 			substringFunctionNode.setRightChild(integer());
@@ -320,7 +320,7 @@ public class ScriptParser {
 		ASTNode insertFunctionNode = new ASTNode(ASTNode.NodeType.InsertFunction);
 		reader.matchString("insert(");
 		if(reader.token == 'E'){
-			reader.matchString("END");
+			reader.matchString("EOL");
 			insertFunctionNode.setLeftChild(new ASTNode(ASTNode.NodeType.EndIndex));
 		} else {
 			insertFunctionNode.setLeftChild(integer());
