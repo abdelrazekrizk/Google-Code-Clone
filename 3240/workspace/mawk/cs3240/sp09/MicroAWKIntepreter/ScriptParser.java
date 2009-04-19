@@ -17,12 +17,19 @@ public class ScriptParser {
 		ASTNode programNode = new ASTNode(ASTNode.NodeType.Program);
 		try{
 			programNode.setLeftChild(statement());
-		} catch(Exception e){
+		} catch(MawkParserException e){
+			// TODO: figure out a way to print out the partial AST to the error point.
+			// Probably have to link up nodes before doing any logic that might cause errors.
 			System.err.println("Parse error: " + e.getMessage());
-			e.printStackTrace();
+			System.err.println("Discarding rest of sentence...");
 			programNode.setLeftChild(null);
+			try {
+				reader.skipAheadToNextProgramLine();
+			} catch(InvalidStatementBlock ex){
+				System.err.println("Invalid end of block (no closing bracket). Discarding rest of program...");
+			}
 		}
-		if(reader.token != (char)-1){
+		if(reader.token != (char)-1){ // if not end of file
 			programNode.setRightChild(program());
 		}
 		return programNode;

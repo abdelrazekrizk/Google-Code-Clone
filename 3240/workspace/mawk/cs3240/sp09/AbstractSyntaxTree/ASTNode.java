@@ -45,12 +45,16 @@ public class ASTNode {
 	
 	public void setLeftChild(ASTNode node){
 		leftChild = node;
-		node.parent = this;
+		if(node != null){
+			node.parent = this;
+		}
 	}
 	
 	public void setRightChild(ASTNode node){
 		rightChild = node;
-		node.parent = this;
+		if(node != null){
+			node.parent = this;
+		}
 	}
 	
 	public String printString(String filler, boolean moreChildren){

@@ -17,6 +17,7 @@ public class ScriptReader {
 			if(token != ' ' && token != '\r' && token != '\n' && token != '\t' && (int)token != 10)
 				return token;
 		}
+		// end of file.
 		return (char)-1;
 	}
 	
@@ -25,6 +26,7 @@ public class ScriptReader {
 			token = script.charAt(position++);
 			return token;
 		}
+		// end of file.
 		return (char)-1;
 	}
 	
@@ -53,6 +55,23 @@ public class ScriptReader {
 			if (!match(string.charAt(i)))
 				return false;
 		return true;
+	}
+
+	/**
+	 * This method should skip the reader ahead to the next program line.
+	 * A program line ends on a closing brace "}", so the program skips ahead
+	 * to the next closing brace. 
+	 * @throws InvalidStatementBlock 
+	 */
+	public void skipAheadToNextProgramLine() throws InvalidStatementBlock {
+		char c;
+		while((c = getchar()) != '}'){
+			if(c == (char)-1)
+				throw new InvalidStatementBlock();
+		}
+		// grab the character after the closing bracket.
+		getchar();
+			
 	}
 	
 }
