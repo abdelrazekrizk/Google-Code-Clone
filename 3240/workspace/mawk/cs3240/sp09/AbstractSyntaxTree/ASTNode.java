@@ -4,6 +4,7 @@ public class ASTNode {
 	public static enum NodeType { 
 		Program, 
 		Statement,
+		RFPair,
 		LoopBlock,
 		FunctionBlock,
 		Function,

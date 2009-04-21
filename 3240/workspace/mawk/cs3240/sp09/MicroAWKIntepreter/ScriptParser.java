@@ -37,7 +37,7 @@ public class ScriptParser {
 
 	public ASTNode statement() throws MawkSyntaxException {
 		ASTNode statementNode = new ASTNode(ASTNode.NodeType.Statement);
-		try{
+		try {
 			switch(reader.token){
 				case 'B': // BEGIN
 					statementNode.setLeftChild(begin());
@@ -57,10 +57,7 @@ public class ScriptParser {
 					reader.match('}');
 					break;
 				default: // sentence with regex
-					statementNode.setLeftChild(regex());
-					reader.match('{');
-					statementNode.setRightChild(funcBlock());
-					reader.match('}');
+					statementNode.setLeftChild(rfPair());
 					break;
 			}
 		} catch (MawkMatchException ex) {
@@ -69,7 +66,7 @@ public class ScriptParser {
 		} catch (MawkSyntaxException ex){
 			statementNode.setLeftChild(ex.getNode());
 			throw new MawkSyntaxException(statementNode, ex.getMessage());
-		} 
+		}
 		return statementNode;
 	}
 	
@@ -231,7 +228,31 @@ public class ScriptParser {
 		return endNode;
 	}
 	
-	public ASTNode funcBlock() throws MawkSyntaxException {
+	public ASTNode rfPair() throws MawkSyntaxException {
+		ASTNode rfPairNode = new ASTNode(ASTNode.NodeType.RFPair);
+		try {
+			try{
+				rfPairNode.setLeftChild(regex());
+			} catch(MawkSyntaxException e) {
+				rfPairNode.setLeftChild(e.getNode());
+				throw new MawkSyntaxException(rfPairNode, e.getMessage());
+			}
+			try {
+				reader.match('{');
+				rfPairNode.setRightChild(funcBlock());
+				reader.match('}');
+			} catch(MawkSyntaxException e) {
+				rfPairNode.setRightChild(e.getNode());
+				throw new MawkSyntaxException(rfPairNode, e.getMessage());
+			}
+		} catch(MawkMatchException e) {
+			rfPairNode.setLeftChild(errorNode());
+			throw new MawkSyntaxException(rfPairNode, e.getMessage());
+		}
+		return rfPairNode;
+	}
+	
+	public ASTNode funcBlock() throws MawkSyntaxException{
 		ASTNode funcBlockNode = new ASTNode(ASTNode.NodeType.FunctionBlock);
 		try {
 			try { // left child try block
@@ -288,23 +309,27 @@ public class ScriptParser {
 	public ASTNode loopBlock() throws MawkSyntaxException  {
 		ASTNode loopBlockNode = new ASTNode(ASTNode.NodeType.LoopBlock);
 		try {
-			try { // left child try block
-				loopBlockNode.setLeftChild(regex());
-			} catch(MawkSyntaxException ex){
-				loopBlockNode.setLeftChild(ex.getNode());
-				throw new MawkSyntaxException(loopBlockNode, ex.getMessage());
+			try {
+				loopBlockNode.setLeftChild(rfPair());
+			} catch(MawkSyntaxException e) {
+				loopBlockNode.setLeftChild(e.getNode());
+				throw new MawkSyntaxException(loopBlockNode, e.getMessage());
 			}
-			reader.match('{');
-			try { // right child try block
-				loopBlockNode.setRightChild(funcBlock());
-			} catch(MawkSyntaxException ex){
-				loopBlockNode.setRightChild(ex.getNode());
-				throw new MawkSyntaxException(loopBlockNode, ex.getMessage());
+			if(reader.token == '}') {
+				//This obviously shouldn't fail
+				reader.match('}');
+				loopBlockNode.setRightChild(null);
+			} else {
+				try {
+					loopBlockNode.setRightChild(loopBlock());
+				} catch(MawkSyntaxException e) {
+					loopBlockNode.setRightChild(e.getNode());
+					throw new MawkSyntaxException(loopBlockNode, e.getMessage());
+				}
 			}
-			reader.match('}');
-		} catch (MawkMatchException ex){
+		} catch(MawkMatchException e) {
 			loopBlockNode.setLeftChild(errorNode());
-			throw new MawkSyntaxException(loopBlockNode, ex.getMessage());
+			throw new MawkSyntaxException(loopBlockNode, e.getMessage());
 		}
 		return loopBlockNode;
 	}
@@ -314,28 +339,23 @@ public class ScriptParser {
 		try {
 			reader.matchString("while");
 			reader.match('(');
-			try { // left node try block
-			whileNode.setLeftChild(regex());
-			} catch(MawkSyntaxException ex){
-				whileNode.setLeftChild(ex.getNode());
-				throw new MawkSyntaxException(whileNode, ex.getMessage());
+			try {
+				whileNode.setLeftChild(regex());
+			} catch(MawkSyntaxException e) {
+				whileNode.setLeftChild(e.getNode());
+				throw new MawkSyntaxException(whileNode, e.getMessage());
 			}
 			reader.match(')');
 			reader.match('{');
-			try { // right node try block
-				// FIXME: this won't do much, you'll keep overwriting the right child for this node.
-				// A CFG is recursive, let loopBlock() take care of the conditional here. - Anthony (repeated below in forLoop())
-				while(reader.token != '}'){
-					whileNode.setRightChild(loopBlock());
-				}
-			} catch(MawkSyntaxException ex){
-				whileNode.setRightChild(ex.getNode());
-				throw new MawkSyntaxException(whileNode, ex.getMessage());
+			try {
+				whileNode.setRightChild(loopBlock());
+			} catch(MawkSyntaxException e) {
+				whileNode.setRightChild(e.getNode());
+				throw new MawkSyntaxException(whileNode, e.getMessage());
 			}
-			reader.match('}');
-		} catch(MawkMatchException ex) {
+		} catch(MawkMatchException e) {
 			whileNode.setLeftChild(errorNode());
-			throw new MawkSyntaxException(whileNode, ex.getMessage());
+			throw new MawkSyntaxException(whileNode, e.getMessage());
 		}
 		return whileNode;
 	}
@@ -345,28 +365,23 @@ public class ScriptParser {
 		try {
 			reader.matchString("for");
 			reader.match('(');
-			try { // left node try block
+			try {
 				forNode.setLeftChild(integer());
-			} catch(MawkSyntaxException ex){
-				forNode.setLeftChild(ex.getNode());
-				throw new MawkSyntaxException(forNode, ex.getMessage());
+			} catch(MawkSyntaxException e){
+				forNode.setLeftChild(e.getNode());
+				throw new MawkSyntaxException(forNode, e.getMessage());
 			}
 			reader.match(')');
 			reader.match('{');
 			try {
-				// FIXME: this won't do much, you'll keep overwriting the right child for this node.
-				// A CFG is recursive, let loopBlock() take care of the conditional here. - Anthony (repeated above in whileLoop())
-				while(reader.token != '}') { 
-					forNode.setRightChild(loopBlock());
-				}
-			} catch(MawkSyntaxException ex){
+				forNode.setRightChild(loopBlock());
+			} catch(MawkSyntaxException ex) {
 				forNode.setRightChild(ex.getNode());
 				throw new MawkSyntaxException(forNode, ex.getMessage());
 			}
-			reader.match('}');
-		} catch (MawkMatchException ex){
+		} catch(MawkMatchException e) {
 			forNode.setLeftChild(errorNode());
-			throw new MawkSyntaxException(forNode, ex.getMessage());
+			throw new MawkSyntaxException(forNode, e.getMessage());
 		}
 		return forNode;
 	}

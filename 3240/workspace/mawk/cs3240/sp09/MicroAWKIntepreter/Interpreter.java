@@ -1,16 +1,14 @@
 package cs3240.sp09.MicroAWKIntepreter;
-import java.util.EnumSet;
 import java.io.*;
+import java.util.EnumSet;
 
 import cs3240.sp09.AbstractSyntaxTree.ASTNode;
 import cs3240.sp09.AbstractSyntaxTree.RegexNode;
 import cs3240.sp09.AbstractSyntaxTree.ASTNode.NodeType;
 import cs3240.sp09.DataStrucutres.DynamicList;
-import cs3240.sp09.RegularLanguage.DFA;
-import cs3240.sp09.RegularLanguage.NFA;
 
 
-public class Intepreter {
+public class Interpreter {
 	static enum Options {AST, DFA, NFA, DEBUG };
 	static EnumSet<Options> options = EnumSet.noneOf(Options.class);
 	static String scriptFile;

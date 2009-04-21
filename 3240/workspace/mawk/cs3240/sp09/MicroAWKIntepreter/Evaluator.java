@@ -2,7 +2,7 @@ package cs3240.sp09.MicroAWKIntepreter;
 import cs3240.sp09.AbstractSyntaxTree.*;
 import cs3240.sp09.AbstractSyntaxTree.ASTNode.NodeType;
 import cs3240.sp09.DataStrucutres.DynamicList;
-import cs3240.sp09.MicroAWKIntepreter.Intepreter.Options;
+import cs3240.sp09.MicroAWKIntepreter.Interpreter.Options;
 import cs3240.sp09.RegularLanguage.*;
 
 /**
@@ -34,11 +34,12 @@ public class Evaluator {
 		if(node.type == NodeType.Regex){
 			RegexNode rex = (RegexNode)node;
 			rex.nfa = new NFA(rex);
-			if(Intepreter.options.contains(Options.NFA)) {
+			if(Interpreter.options.contains(Options.NFA)) {
 				System.out.println(rex.nfa);
 			}
 			rex.dfa = new DFA(rex.nfa);
-			if(Intepreter.options.contains(Options.DFA)) {
+			System.err.println();
+			if(Interpreter.options.contains(Options.DFA)) {
 				System.out.println(rex.dfa);
 			}
 		} else { // don't really care to evaluate regex node's children.
@@ -60,13 +61,21 @@ public class Evaluator {
 			line = execute(node.rightChild, line);
 			break;
 		case Statement:
-			if(node.leftChild.type == NodeType.Regex){
-				RegexNode regexNode = (RegexNode)node.leftChild;
-				if(regexNode.dfa.matches(line)){
-					line = execute(node.rightChild, line);
-				}
-			} else if (node.leftChild.type == NodeType.FunctionBlock){
+			switch(node.leftChild.type) {
+			case RFPair:
+			case FunctionBlock:
+			case WhileLoop:
+			case ForLoop:
 				line = execute(node.leftChild, line);
+				break;
+			default:
+				break;
+			}
+			break;
+		case RFPair:
+			RegexNode regexNode = (RegexNode)node.leftChild;
+			if(regexNode.dfa.matches(line)){
+				line = execute(node.rightChild, line);
 			}
 			break;
 		case FunctionBlock:
@@ -77,7 +86,7 @@ public class Evaluator {
 		case Function:
 			switch(node.leftChild.type){
 			case SubstringFunction:
-				if(Intepreter.options.contains(Options.DEBUG)) {
+				if(Interpreter.options.contains(Options.DEBUG)) {
 					System.out.print("substring(");
 					System.out.print(integer(node.leftChild.leftChild));
 					System.out.print(",");
@@ -93,7 +102,7 @@ public class Evaluator {
 				line = substringFunction(node.leftChild, line);
 				break;
 			case InsertFunction:
-				if(Intepreter.options.contains(Options.DEBUG)) {
+				if(Interpreter.options.contains(Options.DEBUG)) {
 					System.out.print("insert(");
 					if(integer(node.leftChild.leftChild) == -1) {
 						System.out.print("END");
@@ -109,7 +118,7 @@ public class Evaluator {
 				line = insertFunction(node.leftChild, line);
 				break;
 			case PrintFunction:
-				if(Intepreter.options.contains(Options.DEBUG)) {
+				if(Interpreter.options.contains(Options.DEBUG)) {
 					System.out.print("print");
 					System.out.print(" : ");
 					if(node.leftChild.leftChild.type == NodeType.Line) {
@@ -122,7 +131,7 @@ public class Evaluator {
 				printFunction(node.leftChild, line);
 				break;
 			case ReplaceFunction:
-				if(Intepreter.options.contains(Options.DEBUG)) {
+				if(Interpreter.options.contains(Options.DEBUG)) {
 					System.out.print("replace(");
 					System.out.print(character(node.leftChild.leftChild));
 					System.out.print(",");
@@ -133,7 +142,7 @@ public class Evaluator {
 				line = replaceFunction(node.leftChild, line);
 				break;
 			case RemoveFunction:
-				if(Intepreter.options.contains(Options.DEBUG)) {
+				if(Interpreter.options.contains(Options.DEBUG)) {
 					System.out.print("insert(");
 					System.out.print(character(node.leftChild.leftChild));
 					System.out.print(") : ");
@@ -144,6 +153,45 @@ public class Evaluator {
 			default:
 				error();
 				break;
+			}
+			break;
+		case WhileLoop:
+			RegexNode whileRegexNode = (RegexNode)node.leftChild;
+			if(Interpreter.options.contains(Options.DEBUG)) {
+				System.out.println("while(" +
+						             line +
+						             ")");
+			}
+			//FIXME is this correct?
+			ASTNode whileLoopNode = (ASTNode)node.rightChild;
+			while(whileRegexNode.dfa.matches(line)) {
+				ASTNode rfPairNode = whileLoopNode.leftChild;
+				line = execute(rfPairNode, line);
+				
+				// Go to next node in loop, restarting if at end
+				whileLoopNode = whileLoopNode.rightChild;
+				if(whileLoopNode == null) {
+					whileLoopNode = node.rightChild;
+				}
+			}
+			break;
+		case ForLoop:
+			int count = integer(node.leftChild);
+			if(Interpreter.options.contains(Options.DEBUG)) {
+				System.out.println("for(" +
+						             count +
+						             ")");
+			}
+			ASTNode forLoopNode = (ASTNode)node.rightChild;
+			for(int i = 0; i < count; i++) {
+				ASTNode rfPairNode = forLoopNode.leftChild;
+				line = execute(rfPairNode, line);
+				
+				// Go to next node in loop, restarting if at end
+				forLoopNode = forLoopNode.rightChild;
+				if(forLoopNode == null) {
+					forLoopNode = node.rightChild;
+				}
 			}
 			break;
 		case Begin:
@@ -233,7 +281,7 @@ public class Evaluator {
 	}
 
 	private static void printFunction(ASTNode node, String line) {
-		if(!Intepreter.options.contains(Options.DEBUG)) {
+		if(!Interpreter.options.contains(Options.DEBUG)) {
 			if(node.leftChild.type == NodeType.Line){
 				System.out.println(line);
 			} else if (node.leftChild.type == NodeType.String){
@@ -323,8 +371,11 @@ public class Evaluator {
 	}
 	
 	private static void error(){
-		System.err.println("Evaluation error.");
-		assert(false);
+		errorIf(false);
+	}
+	
+	private static void errorIf(boolean test) {
+		assert test : "Evaluation error!";
 	}
 	
 }
