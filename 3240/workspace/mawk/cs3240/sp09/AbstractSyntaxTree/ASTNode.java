@@ -31,7 +31,8 @@ public class ASTNode {
 		Line,
 		StringCharacter, 
 		Metacharacter, 
-		Star, OneOrMore, Optional
+		Star, OneOrMore, Optional, 
+		Error
 	};
 	
 	public NodeType type;
