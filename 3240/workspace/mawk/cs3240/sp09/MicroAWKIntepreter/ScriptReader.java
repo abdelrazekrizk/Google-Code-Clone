@@ -1,5 +1,9 @@
 package cs3240.sp09.MicroAWKIntepreter;
 
+/**
+ * Script reading class - reads in tokens while preserving the nature of a Recursive Descent
+ * parser (ie, single token storage, no peeking). 
+ */
 public class ScriptReader {
 	public int position;
 	public String script;

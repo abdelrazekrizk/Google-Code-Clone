@@ -5,6 +5,9 @@ import cs3240.sp09.AbstractSyntaxTree.ASTNode.NodeType;
 import cs3240.sp09.DataStrucutres.DynamicList;
 import cs3240.sp09.RegularLanguage.Edge.Letter; 
 
+/**
+ * Represents a Nondeterministic Finite Automata.
+ */
 public class NFA implements FiniteAutomata {
 	private AdjMatrix adj;
 	private State startState = null;

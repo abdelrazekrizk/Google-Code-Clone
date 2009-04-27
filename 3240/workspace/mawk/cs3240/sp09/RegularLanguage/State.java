@@ -1,5 +1,8 @@
 package cs3240.sp09.RegularLanguage;
 
+/**
+ * Represents a generic state that can fit within a DFA or NFA.
+ */
 public class State {
 	int index;
 	boolean isFinal;

@@ -1,5 +1,8 @@
 package cs3240.sp09.AbstractSyntaxTree;
 
+/**
+ * Represents a node in our Abstract Syntax Tree.
+ */
 public class ASTNode {
 	public static enum NodeType { 
 		Program, 
@@ -59,6 +62,10 @@ public class ASTNode {
 		}
 	}
 	
+	/**
+	 * Constructs a meaningful string representation of this node and all children nodes.
+	 * When printed to the console it gives a directory structure-like look.
+	 */
 	public String printString(String filler, boolean moreChildren){
 		String str = "";
 		if(moreChildren){
@@ -78,6 +85,9 @@ public class ASTNode {
 		return str;
 	}
 	
+	/**
+	 * Returns a meaningful string representation of this node for printing to the console.
+	 */
 	public String toString(){
 		return printString("", false);
 	}

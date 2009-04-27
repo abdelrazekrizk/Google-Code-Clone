@@ -1,6 +1,10 @@
 package cs3240.sp09.MicroAWKIntepreter;
 import cs3240.sp09.AbstractSyntaxTree.*;
 
+/**
+ * Parses the given script file into an Abstract Syntax Tree. Most functions here correspond to
+ * a CFgrammar in the Micro-Awk.txt CFG specficiation. 
+ */
 public class ScriptParser {
 	
 	private ScriptReader reader;

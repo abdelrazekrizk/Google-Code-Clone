@@ -2,6 +2,10 @@ package cs3240.sp09.MicroAWKIntepreter;
 
 import cs3240.sp09.AbstractSyntaxTree.ASTNode;
 
+/**
+ * Exception thrown for some sort of nested exception - useful in chaining up the execution stack
+ * while preserving error information and tree structure.
+ */
 @SuppressWarnings("serial")
 public class MawkSyntaxException extends Exception {
 	

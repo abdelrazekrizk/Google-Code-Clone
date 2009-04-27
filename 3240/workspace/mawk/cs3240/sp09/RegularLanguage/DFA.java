@@ -3,13 +3,18 @@ package cs3240.sp09.RegularLanguage;
 import cs3240.sp09.DataStrucutres.*;
 import cs3240.sp09.RegularLanguage.Edge.Letter;
 
+/**
+ * Defines a Deterministic Finite Automata.
+ */
 public class DFA implements FiniteAutomata {
 	AdjMatrix adj;
 	State startState;
 	DynamicList<State> states = new DynamicList<State>();
 	DynamicList<State> finalStates = new DynamicList<State>();
 	
-	
+	/**
+	 * Constructs a DFA from the given NFA.
+	 */
 	public DFA(NFA nfa){
 		adj = new AdjMatrix(this);
 		State start = nfa.getStartState();
@@ -95,6 +100,10 @@ public class DFA implements FiniteAutomata {
 		return null;
 	}
 	
+	/**
+	 * Returns the epsilon closure of a set of states within the given NFA - that is, the
+	 * set of states that can be reached from the current set of states with no moves.
+	 */
 	public DynamicList<State> epsilonClosure(NFA nfa, DynamicList<State> nfaStates){
 		DynamicList<State> states = new DynamicList<State>();
 		for(State state : nfaStates){
@@ -108,6 +117,9 @@ public class DFA implements FiniteAutomata {
 		return states;
 	}
 	
+	/**
+	 * Returns the epsilon closure of a state within the given NFA.
+	 */
 	public DynamicList<State> epsilonClosure(NFA nfa, State s1){
 		DynamicList<State> list = new DynamicList<State>();
 		

@@ -17,11 +17,17 @@ public class DynamicList<E> implements java.lang.Iterable<E>{
 		array = new Object[10];
 	}
 	
+	/**
+	 * Retrieves the ith member of this list
+	 */
 	@SuppressWarnings("unchecked")
 	public E get(int i){
 		return (E)array[i];
 	}
 	
+	/**
+	 * Adds the given object to the end of this list
+	 */
 	public void add(E obj){
 		if(array.length == size)
 			resize(size * 2);
@@ -29,7 +35,7 @@ public class DynamicList<E> implements java.lang.Iterable<E>{
 	}
 	
 	/**
-	 * TODO: Testing
+	 * Removes the given index from this list
 	 */
 	public E remove(int i){
 		E item = get(i);
@@ -49,10 +55,17 @@ public class DynamicList<E> implements java.lang.Iterable<E>{
 		array = tmp;
 	}
 
+	/**
+	 * Returns the number of elements in this list.
+	 */
 	public int size() {
 		return size;
 	}
 
+	/**
+	 * Returns whether or not this list contains the given state.
+	 * (specific to state objects.) 
+	 */
 	public boolean contains(State state) {
 		for(int i = 0; i < size; i++){
 			if(array[i].equals(state)){
@@ -80,10 +93,16 @@ public class DynamicList<E> implements java.lang.Iterable<E>{
 		}
 	}
 
+	/**
+	 * Returns the iterator for this list, useful in foreach loops.
+	 */
 	public Iterator<E> iterator() {
 		return new DynamicListIterator<E>();
 	}
 	
+	/**
+	 * The iterator implementation for this class
+	 */
 	private class DynamicListIterator<T> implements java.util.Iterator<T>{
 		
 		private int position;

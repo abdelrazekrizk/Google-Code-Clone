@@ -17,6 +17,9 @@ import cs3240.sp09.RegularLanguage.*;
  */
 public class Evaluator {
 	
+	/**
+	 * The entirety of the intepreter, all program execution stems from this function.
+	 */
 	public static void evaluate(ASTNode root, DynamicList<String> input){
 		evaluateRegexes(root);
 		executeBegin(root);
@@ -29,7 +32,10 @@ public class Evaluator {
 		}
 		executeEnd(root);
 	}
-
+	
+	/**
+	 * Converts a Regex ASTNode into a corresponding NFA and then DFA.
+	 */
 	private static void evaluateRegexes(ASTNode node) {
 		if(node.type == NodeType.Regex){
 			RegexNode rex = (RegexNode)node;
@@ -172,7 +178,6 @@ public class Evaluator {
 						             line +
 						             ")");
 			}
-			//FIXME is this correct?
 			ASTNode whileLoopNode = (ASTNode)node.rightChild;
 			while(whileRegexNode.dfa.matches(line)) {
 				ASTNode rfPairNode = whileLoopNode.leftChild;

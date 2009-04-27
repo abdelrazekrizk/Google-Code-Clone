@@ -3,6 +3,9 @@ package cs3240.sp09.RegularLanguage;
 import cs3240.sp09.DataStrucutres.DynamicList;
 import cs3240.sp09.RegularLanguage.Edge.Letter;
 
+/**
+ * Represents an adjacency matrix for a given DFA or NFA.
+ */
 public class AdjMatrix {
 	DynamicList<Edge>[] array;
 	int stateCount;
