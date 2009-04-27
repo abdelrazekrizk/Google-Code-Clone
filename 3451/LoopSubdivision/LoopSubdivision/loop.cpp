@@ -22,6 +22,13 @@ void modelcpy(model *a, model *b){
 	for each (vertex *v in a->vertices){
 		b->vertices.push_back(new vertex(*v));
 	}
+
+	for (int i = 0; i < a->adjacentFaces.size(); i++){
+		b->adjacentFaces.push_back(*(new vector<int>()));
+		for each(int id in a->adjacentFaces[i]){
+			b->adjacentFaces[i].push_back(id);
+		}
+	}
 }
 
 int getMidpointId(vector<vector<int>> *midpointTable, int v1id, int v2id){
@@ -73,6 +80,14 @@ model* subdivide(model* m){
 		}
 		divided->faces.push_back(middleFace);
 	}
+	// construct adjacent faces table
+	divided->adjacentFaces = *(new vector<vector<int>>(divided->vertices.size()));
+	for (int i = 0; i < divided->faces.size(); i++){
+		vector<int> face = divided->faces[i];
+		for each (int id in face){
+			divided->adjacentFaces[id].push_back(i);
+		}
+	}
 	return divided;
 }
 
@@ -85,12 +100,11 @@ bool vectorContains(vector<int>* connected, int vertexId){
 
 vector<int> connectedVertices(model* m, int vertexId){
 	vector<int> connected;
-	for each(vector<int> face in m->faces){
-		if(vectorContains(&face, vertexId)){
-			for each (int id in face){
-				if(id != vertexId && !vectorContains(&connected, id)){
-					connected.push_back(id);
-				}
+	for each(int i in m->adjacentFaces[vertexId]){
+		vector<int> face = m->faces[i];
+		for each(int id in face){
+			if(id != vertexId && !vectorContains(&connected, id)){
+				connected.push_back(id);
 			}
 		}
 	}
@@ -110,7 +124,7 @@ model* average(model* m){
 	fprintf(stdout, "Averaging vertexes.\n%i vertexes to average...\n", m->vertices.size());
 	model* averaged = new model;
 	modelcpy(m, averaged);
-	for(int i = 0; i < averaged->vertices.size(); i++){
+	for(int i = 0; i < averaged->vertices.size(); i++){ // for each vertex get connected vertices
 		vector<int> connected = connectedVertices(m, i);
 		int n = connected.size();
 		float a = alpha(n);

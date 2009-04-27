@@ -135,11 +135,9 @@ vector<vertex*>* calculateVertexNormals(model* m){
 	for (int i = 0; i < m->vertices.size(); i++){
 		int count = 0;
 		vertex sum;
-		for(int j = 0; j < m->faces.size(); j++){
-			if(faceContains(&m->faces[j], i)){
-				count++;
-				sum = sum + *faceNormals->at(j);
-			}
+		for each(int faceid in m->adjacentFaces[i]){
+			count++;
+			sum = sum + *faceNormals->at(faceid);
 		}
 		normals->push_back(new vertex(sum / (float)count));
 		if(((m->vertices.size() - i) % 500) == 0){
@@ -207,12 +205,14 @@ void specialKeyboard(int key, int x, int y)
 
 int main(int argc, char** argv)
 {
-	// argument fixing for testing
+	// argument fixing for testing 
+	/*
 	argv = new char*[3];
 	argv[0] = "LoopSubdivision.exe";
 	argv[1] = "star.ply";
-	argv[2] = "3";
+	argv[2] = "4";
 	argc = 3;
+	*/
 
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
