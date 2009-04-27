@@ -2,6 +2,8 @@
 #include "PlyReader.h"
 #pragma warning( disable : 4996 ) // unsafe function warning (strtok, strcpy, etc)
 #pragma warning( disable : 4244 ) // double->float loss of data warning
+#pragma warning( disable : 4267 ) // size_t->int loss of data warning
+#pragma warning( disable : 4018 ) // signed/unsigned mismatch warning
 
 ///////////////////////////////////
 // private prototypes
@@ -63,16 +65,12 @@ vertex* readVertex(vector<string> *file, int lineNum){
 vector<int>* readIntArray(vector<string> *file, int lineNum){
 	vector<int> *iv = new vector<int>();
 	string line = file->at(lineNum);
-	char* str = new char[line.length()];
-	strcpy(str, line.c_str());
-	char* piece;
-	piece = strtok(str, " \0");
-	piece = strtok(NULL, " \0");
-	iv->push_back(atoi(piece));
-	piece = strtok(NULL, " \0");
-	iv->push_back(atoi(piece));
-	piece = strtok(NULL, " \0");
-	iv->push_back(atoi(piece));
+	int place1 = line.find(" ");
+	int place2 = line.find(" ", place1 + 1);
+	iv->push_back(atoi(line.substr(place1, place2-place1).c_str()));
+	place1 = line.find(" ", place2 + 1);
+	iv->push_back(atoi(line.substr(place2 + 1, place1 - (place2 + 1)).c_str()));
+	iv->push_back(atoi(line.substr(place1 + 1, line.length() - place1 - 1).c_str()));
 	return iv;
 }
 

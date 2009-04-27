@@ -4,6 +4,7 @@
 #include "stdafx.h"
 #include <gl/glut.h>
 #include <vector>
+#include "windows.h"
 #include "vertex.h"
 #include "PlyReader.h"
 #include "loop.h"
@@ -16,12 +17,14 @@ using namespace std;
 #define WINHEIGHT 600.0
 
 //////////////////////////////////////
-// 'constants'
+// constants
 const float color[] = { .6f, .6f, .6f, 1.0f };
 const float zero[] = { 0.0f, 0.0f, 0.0f, 0.0f };
+const float secondsPerRotation = 5.0f;
 
 //////////////////////////////////////
 // Runtime variables
+float rotation = 0;
 int frame = 0;
 model* baseModel;
 vector<vertex*>* baseFaceNormals;
@@ -81,16 +84,20 @@ void drawModelShadedByVertex(model* m, vector<vertex*>* vertexNormals){
 
 // display loop
 void display(void){
-	frame++;
+	static DWORD lastUpdate = GetTickCount();
+	DWORD now = GetTickCount();
+	rotation += (now - lastUpdate) * (1.0 / 10.0);
+	lastUpdate = now;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
 	glMaterialfv(GL_FRONT, GL_AMBIENT_AND_DIFFUSE, color);
 	glMaterialfv(GL_FRONT, GL_SPECULAR, zero);
 
 	gluLookAt(2, 2, 2, 0, 0, 0, 0, 0, 1);
-	glRotated(frame * .1, 0, 0, 1);
+	glRotated(rotation, 0, 0, 1);
+	//glRotated(frame * .1, 0, 0, 1);
 	//if(frame < 1080 * 2) { // for 3 rotations show original model
-	if(frame < 360 * 10){
+	if(rotation < 360.0f ){
 		drawModelShadedByFace(baseModel, baseFaceNormals);
 	} else {
 		drawModelShadedByVertex(loopModel, loopVertexNormals);
@@ -222,7 +229,7 @@ int main(int argc, char** argv)
 	glutCreateWindow("Loop Subdivision");
 
 	if(argc == 3){
-		string filename = argv[1];
+		string filename = string(argv[1]);
 		int subdivisions = atoi(argv[2]);
 		init(filename, subdivisions);
 	} else {
