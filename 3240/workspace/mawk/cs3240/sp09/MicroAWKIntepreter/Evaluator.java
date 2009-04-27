@@ -122,7 +122,6 @@ public class Evaluator {
 				} else {
 					line = insertFunction(node.leftChild, line);
 				}
-				line = insertFunction(node.leftChild, line);
 				break;
 			case PrintFunction:
 				if(Interpreter.options.contains(Options.DEBUG)) {
