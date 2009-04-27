@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="mawkIntepreter" default="build" basedir=".">
+	<property name="src" location="cs3240" />
+	<property name="build" location="build" />
+	<property name="release" location="release" />
+	
+	<target name="build" depends="jar" />
+	
+	<target name="clean">
+		<echo>Cleaning...</echo>
+		<delete dir="${build}" />
+		<delete dir="${release}" />
+	</target>
+	
+	<target name="init" depends="clean">
+		<mkdir dir="${build}" />
+		<mkdir dir="${release}" />
+	</target>
+	
+	<target name="compile" depends="init">
+		<javac srcdir="${src}" destdir="${build}">
+		</javac>
+	</target>
+	
+	<target name="jar" depends="compile">
+		<jar destfile="${release}\mawk.jar">
+			<fileset dir="${build}" includes="**/*.class" />
+			<manifest>
+				<attribute name="Main-Class" value="cs3240.sp09.MicroAWKIntepreter.Interpreter" />
+			</manifest>
+		</jar>
+	</target>
+	
+	<target name="copyExamples" depends="jar">
+		<copy todir="${release}">
+			<fileset dir="." includes="*.data" />
+			<fileset dir="." includes="*.mawk" />
+		</copy>
+	</target>
+	
+	<target name="example-given" depends="copyExamples">
+		<java jar="${release}/mawk.jar" dir="${release}" fork="true">
+			<arg value="my_script.mawk" />
+			<arg value="-f" />
+			<arg value="my_input.data" />
+		</java>
+	</target>
+	
+	<target name="example-given-ast" depends="copyExamples">
+		<java jar="${release}/mawk.jar" dir="${release}" fork="true">
+			<arg value="-ast" />
+			<arg value="my_script.mawk" />
+			<arg value="-f" />
+			<arg value="my_input.data" />
+		</java>
+	</target>
+	
+	<target name="example-given-dfa" depends="copyExamples">
+		<java jar="${release}/mawk.jar" dir="${release}" fork="true">
+			<arg value="-dfa" />
+			<arg value="my_script.mawk" />
+			<arg value="-f" />
+			<arg value="my_input.data" />
+		</java>
+	</target>
+	
+	<target name="example-given-nfa" depends="copyExamples">
+		<java jar="${release}/mawk.jar" dir="${release}" fork="true">
+			<arg value="-nfa" />
+			<arg value="my_script.mawk" />
+			<arg value="-f" />
+			<arg value="my_input.data" />
+		</java>
+	</target>
+	
+	<target name="example-given-debug" depends="copyExamples">
+		<java jar="${release}/mawk.jar" dir="${release}" fork="true">
+			<arg value="-debug" />
+			<arg value="my_script.mawk" />
+			<arg value="-f" />
+			<arg value="my_input.data" />
+		</java>
+	</target>
+</project>
