@@ -101,4 +101,20 @@
 			<arg value="my_test_input_1.data" />
 		</java>
 	</target>
+	
+	<target name="command-line-data-debug-example" depends="copyExamples">
+		<java jar="${release}/mawk.jar" dir="${release}" fork="true">
+			<arg value="-debug" />
+			<arg value="my_script.mawk" />
+			<arg value="aaabbbbcccb" />
+		</java>
+	</target>
+	
+	<target name="parse-failure-example" depends="copyExamples">
+		<java jar="${release}/mawk.jar" dir="${release}" fork="true">
+			<arg value="my_failing_script.mawk" />
+			<arg value="-f" />
+			<arg value="my_input.data" />
+		</java>
+	</target>
 </project>
