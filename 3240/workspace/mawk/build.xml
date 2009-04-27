@@ -38,7 +38,7 @@
 		</copy>
 	</target>
 	
-	<target name="example-given" depends="copyExamples">
+	<target name="given-example" depends="copyExamples">
 		<java jar="${release}/mawk.jar" dir="${release}" fork="true">
 			<arg value="my_script.mawk" />
 			<arg value="-f" />
@@ -46,7 +46,7 @@
 		</java>
 	</target>
 	
-	<target name="example-given-ast" depends="copyExamples">
+	<target name="given-example-ast" depends="copyExamples">
 		<java jar="${release}/mawk.jar" dir="${release}" fork="true">
 			<arg value="-ast" />
 			<arg value="my_script.mawk" />
@@ -55,7 +55,7 @@
 		</java>
 	</target>
 	
-	<target name="example-given-dfa" depends="copyExamples">
+	<target name="given-example-dfa" depends="copyExamples">
 		<java jar="${release}/mawk.jar" dir="${release}" fork="true">
 			<arg value="-dfa" />
 			<arg value="my_script.mawk" />
@@ -64,7 +64,7 @@
 		</java>
 	</target>
 	
-	<target name="example-given-nfa" depends="copyExamples">
+	<target name="given-example-nfa" depends="copyExamples">
 		<java jar="${release}/mawk.jar" dir="${release}" fork="true">
 			<arg value="-nfa" />
 			<arg value="my_script.mawk" />
@@ -73,12 +73,32 @@
 		</java>
 	</target>
 	
-	<target name="example-given-debug" depends="copyExamples">
+	<target name="given-example-debug" depends="copyExamples">
 		<java jar="${release}/mawk.jar" dir="${release}" fork="true">
 			<arg value="-debug" />
 			<arg value="my_script.mawk" />
 			<arg value="-f" />
 			<arg value="my_input.data" />
+		</java>
+	</target>
+	
+	<target name="given-example-all" depends="copyExamples">
+		<java jar="${release}/mawk.jar" dir="${release}" fork="true">
+			<arg value="-debug" />
+			<arg value="-nfa" />
+			<arg value="-dfa" />
+			<arg value="-ast" />
+			<arg value="my_script.mawk" />
+			<arg value="-f" />
+			<arg value="my_input.data" />
+		</java>
+	</target>
+	
+	<target name="for-while-loop-example" depends="copyExamples">
+		<java jar="${release}/mawk.jar" dir="${release}" fork="true">
+			<arg value="my_test_script_1.mawk" />
+			<arg value="-f" />
+			<arg value="my_test_input_1.data" />
 		</java>
 	</target>
 </project>
