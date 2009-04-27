@@ -32,7 +32,7 @@ public class ASTNode {
 		Line,
 		StringCharacter, 
 		Metacharacter, 
-		Star, OneOrMore, Optional, 
+		Star, OneOrMore, Optional, Capture,
 		Error
 	};
 	

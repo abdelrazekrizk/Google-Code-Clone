@@ -159,6 +159,9 @@ public class ScriptParser {
 			case '?':
 				metacharacterNode.setLeftChild(optional());
 				break;
+			case '#':
+				metacharacterNode.setLeftChild(capture());
+				break;
 			default:
 				throw new MawkSyntaxException(errorNode(), "Invalid metacharacter token: " + reader.token);
 			}
@@ -194,6 +197,15 @@ public class ScriptParser {
 			throw new MawkSyntaxException(errorNode(), e.getMessage());
 		}
 		return optionalNode;
+	}
+	public ASTNode capture() throws MawkSyntaxException {
+		ASTNode captureNode = new ASTNode(ASTNode.NodeType.Capture);
+		try {
+			reader.match('#');
+		} catch (MawkMatchException e) {
+			throw new MawkSyntaxException(errorNode(), e.getMessage());
+		}
+		return captureNode;
 	}
 	
 	public ASTNode begin() throws MawkSyntaxException  {

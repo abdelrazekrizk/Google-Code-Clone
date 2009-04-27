@@ -38,7 +38,7 @@ public class Evaluator {
 				System.out.println(rex.nfa);
 			}
 			rex.dfa = new DFA(rex.nfa);
-			System.err.println();
+			//System.err.println();
 			if(Interpreter.options.contains(Options.DFA)) {
 				System.out.println(rex.dfa);
 			}

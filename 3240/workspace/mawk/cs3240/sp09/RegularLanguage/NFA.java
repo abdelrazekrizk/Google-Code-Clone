@@ -10,9 +10,13 @@ public class NFA implements FiniteAutomata {
 	private State startState = null;
 	private DynamicList<State> states = new DynamicList<State>();
 	private DynamicList<State> finalStates = new DynamicList<State>();
+	private boolean captureOn;
+	private int captureNum;
 	
 	public NFA(){
 		adj = new AdjMatrix(this);
+		captureOn = false;
+		captureNum = 0;
 	}
 	
 	public AdjMatrix getAdjMatrix(){
@@ -85,6 +89,12 @@ public class NFA implements FiniteAutomata {
 			case Optional:
 				copyToSelf(atomNFA.optional());
 				break;
+			case Capture:
+				captureOn = !captureOn;
+				if(captureOn) {
+					captureNum++;
+				}
+				break;
 			default:
 				// impossible case
 				error();
@@ -118,6 +128,12 @@ public class NFA implements FiniteAutomata {
 		this.finalStates = nfa.finalStates;
 		this.startState = nfa.startState;
 		this.states = nfa.states;
+		if(captureOn) {
+			for(State s : states) {
+				s.isCapture = true;
+				s.captureNum = captureNum;
+			}
+		}
 	}
 	
 	/**
