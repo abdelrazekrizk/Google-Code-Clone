@@ -97,9 +97,13 @@ public class Evaluator {
 						System.out.print(integer(node.leftChild.rightChild));
 					}
 					System.out.print(") : ");
-					System.out.println(line);
+					// pdf: after each pair has been interpreted, the modified text should be printed.
+					line = substringFunction(node.leftChild, line);  
+					System.out.println(line); 
+				} else {
+					// not quite dry, but somewhat elegant.
+					line = substringFunction(node.leftChild, line);
 				}
-				line = substringFunction(node.leftChild, line);
 				break;
 			case InsertFunction:
 				if(Interpreter.options.contains(Options.DEBUG)) {
@@ -113,7 +117,10 @@ public class Evaluator {
 					System.out.print(",");
 					System.out.print(character(node.leftChild.rightChild));
 					System.out.print(") : ");
+					line = insertFunction(node.leftChild, line);
 					System.out.println(line);
+				} else {
+					line = insertFunction(node.leftChild, line);
 				}
 				line = insertFunction(node.leftChild, line);
 				break;
@@ -137,18 +144,22 @@ public class Evaluator {
 					System.out.print(",");
 					System.out.print(character(node.leftChild.rightChild));
 					System.out.print(") : ");
+					line = replaceFunction(node.leftChild, line);
 					System.out.println(line);
+				} else {
+					line = replaceFunction(node.leftChild, line);
 				}
-				line = replaceFunction(node.leftChild, line);
 				break;
 			case RemoveFunction:
 				if(Interpreter.options.contains(Options.DEBUG)) {
 					System.out.print("insert(");
 					System.out.print(character(node.leftChild.leftChild));
 					System.out.print(") : ");
+					line = removeFunction(node.leftChild, line);
 					System.out.println(line);
+				} else {
+					line = removeFunction(node.leftChild, line);
 				}
-				line = removeFunction(node.leftChild, line);
 				break;
 			default:
 				error();
