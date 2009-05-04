@@ -1,18 +1,19 @@
 using System;
-using System.Runtime.InteropServices;
+using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
+using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using System.Collections;
 using System.Windows.Forms;
 using Microsoft.DirectX.DirectInput;
 
 namespace WC3Launcher
 {
-    class Program
+    class Program : Form
     {
         #region User32.dll function imports
         [DllImport("user32.dll")]
@@ -60,7 +61,17 @@ namespace WC3Launcher
         #endregion
         #endregion
 
+        [STAThread]
         static void Main(string[] args)
+        {
+            Application.Run(new Program());
+        }
+
+        private NotifyIcon  trayIcon;
+        private ContextMenu trayMenu;
+        private bool running;
+
+        public Program()
         {
             ReadIniFile();
             string path = GetIniValue("path") + "\\war3.exe";
@@ -71,21 +82,62 @@ namespace WC3Launcher
             x = coords[0]; // damn all, no multiple assignment php-style (list($x, $y) = coords;)
             y = coords[1];
 
-            if (File.Exists(path))
-            {
-                GetClipCursor(out oldCursorClipRect);
-                wc3 = StartWC3(path);
+            trayMenu = new ContextMenu();
+            trayMenu.MenuItems.Add("Warcraft WindowMon");
+            trayMenu.MenuItems.Add("Exit", OnExit);
 
-                DInputHook input = new DInputHook(wc3);
-                input.KeyStateChanged += new DInputHook.KeyPressedHandler(OnKeyPressed);
-                WhileWC3Running();
-                SaveSettings();
-                input.Dispose();
-            }
-            else
+            trayIcon = new NotifyIcon();
+            trayIcon.Text = "MyTrayApp";
+            trayIcon.Icon = new Icon(SystemIcons.Shield, 40, 40);
+
+            trayIcon.ContextMenu = trayMenu;
+            trayIcon.Visible = true;
+
+            running = true;
+
+            Thread loop = new Thread(new ThreadStart(LoopThread));
+            loop.Start();
+        }
+
+        public void LoopThread()
+        {
+
+            while (running)
             {
-                MessageBox.Show("Path is not correctly set in the ini file.", "WC3Launcher");
+                if ((wc3 = GetWC3WindowHandle()) != IntPtr.Zero && IsWindowVisible(wc3))
+                {
+                    width = (int)(height * aspect);
+                    MoveWindow(wc3, x, y, width, height, true);
+
+                    DInputHook input = new DInputHook(wc3);
+                    input.KeyStateChanged += new DInputHook.KeyPressedHandler(OnKeyPressed);
+                    WhileWC3Running();
+                    input.Dispose();
+                }
+                Thread.Sleep(1000);
             }
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            Visible = false;
+            ShowInTaskbar = false;
+            base.OnLoad(e);
+        }
+
+        public void OnExit(object sender, EventArgs e)
+        {
+            running = false;
+            Application.Exit();
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                trayIcon.Dispose();
+            }
+            base.Dispose(disposing);
         }
 
         #region Key event handlers
@@ -197,22 +249,6 @@ namespace WC3Launcher
             while (Process.GetProcessesByName("war3").Length == 0) ;
         }
 
-        public static IntPtr StartWC3(string path)
-        {
-            Process.Start(@path, "-window");
-
-            while (true)
-            {
-                IntPtr windowHandle = GetWC3WindowHandle();
-                if (windowHandle != IntPtr.Zero && IsWindowVisible(windowHandle))
-                {
-                    width = (int)(height * aspect);
-                    MoveWindow(windowHandle, x, y, width, height, true);
-                    return windowHandle;
-                }
-            }
-        }
-
         private static void WhileWC3Running()
         {
             while (true)
@@ -273,18 +309,24 @@ namespace WC3Launcher
 
         private static void ReadIniFile()
         {
-            StreamReader reader = File.OpenText(ini);
-            Regex rexComment = new Regex("#(.*)");
-            while (!reader.EndOfStream)
+            try
             {
-                String line = reader.ReadLine();
-                if (line != "" && !rexComment.Match(line).Success) // if the line does not match the form for a commented line
+                StreamReader reader = File.OpenText(ini);
+                Regex rexComment = new Regex("#(.*)");
+                while (!reader.EndOfStream)
                 {
-                    iniContents += line + "\r\n";
+                    String line = reader.ReadLine();
+                    if (line != "" && !rexComment.Match(line).Success) // if the line does not match the form for a commented line
+                    {
+                        iniContents += line + "\r\n";
+                    }
                 }
+                reader.Close();
             }
-            reader.Close();
-            //Console.Write(iniContents);
+            catch (System.IO.FileNotFoundException e)
+            {
+                iniContents = "path=.\r\nheight=1024\r\naspect=4:3\r\ncoords=0,0\r\nstep=10";
+            }
         }
 
         public static void SaveSettings()
@@ -850,129 +892,5 @@ namespace WC3Launcher
 
         #endregion
     }
-    #endregion
-
-    #region Input hooking through User32.dll functions - deprecated
-    /*
-    // A lot of this was ripped/derived from http://www.codeproject.com/KB/system/CSLLKeyboard.aspx (thanks to Emma Burrows for the code and tutorial)
-    class InputHook : IDisposable
-    {
-        IntPtr keyboardHookId = IntPtr.Zero;
-        IntPtr mouseHookId = IntPtr.Zero;
-        HookHandlerDelegate keyboardHook, mouseHook;
-
-        #region Callbacks and event handlers
-        delegate IntPtr HookHandlerDelegate(int nCode, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
-        delegate void KeyboardHookEventHandler(KeyboardHookEventArgs e);
-        event KeyboardHookEventHandler KeyIntercepted;
-
-        public void OnKeyIntercepted(KeyboardHookEventArgs e)
-        {
-            if (KeyIntercepted != null)
-                KeyIntercepted(e);
-        }
-        public class KeyboardHookEventArgs : System.EventArgs
-        {
-
-            private string keyName;
-            private int keyCode;
-
-            /// <summary>
-            /// The name of the key that was pressed.
-            /// </summary>
-            public string KeyName
-            {
-                get { return keyName; }
-            }
-
-            /// <summary>
-            /// The virtual key code of the key that was pressed.
-            /// </summary>
-            public int KeyCode
-            {
-                get { return keyCode; }
-            }
-
-            public KeyboardHookEventArgs(int evtKeyCode)
-            {
-                keyName = ((Keys)evtKeyCode).ToString();
-                keyCode = evtKeyCode;
-            }
-
-        }
-        #endregion
-
-        #region Internal structures returned by windows functions
-        internal struct KBDLLHOOKSTRUCT
-        {
-            public int vkCode;
-            int scanCode;
-            public int flags;
-            int time;
-            int dwExtraInfo;
-        }
-        #endregion
-        
-        private const int WH_KEYBOARD_LL = 13;
-        private const int WH_MOUSE_LL = 14;
-
-        #region Constructor
-        public InputHook()
-        {
-            keyboardHook = new HookHandlerDelegate(KeyboardCallback); 
-            mouseHook = new HookHandlerDelegate(MouseCallback);
-            using (Process curProcess = Process.GetCurrentProcess())
-            {
-                using (ProcessModule curModule = curProcess.MainModule)
-                {
-                    //curModule.
-                    //keyboardHookId = SetWindowsHookEx(WH_KEYBOARD_LL, keyboardHook, GetModuleHandle(curModule.ModuleName), 0);
-                    keyboardHookId = SetWindowsHookEx(WH_KEYBOARD_LL, keyboardHook, IntPtr.Zero, 0);
-                    //mouseHookId = SetWindowsHookEx(WH_MOUSE_LL, mouseHook, GetModuleHandle(curModule.ModuleName), 0);
-                }
-            }
-            Console.WriteLine("Hooks installed.");
-        }
-        #endregion
-
-        private IntPtr KeyboardCallback(int nCode, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam)
-        {
-            OnKeyIntercepted(new KeyboardHookEventArgs(lParam.vkCode));
-            Console.WriteLine("Key intercepted: {0}", (Keys)lParam.vkCode);
-            return CallNextHookEx(keyboardHookId, nCode, wParam, ref lParam);
-        }
-
-        private IntPtr MouseCallback(int nCode, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam)
-        {
-            return CallNextHookEx(mouseHookId, nCode, wParam, ref lParam);
-        }
-
-        #region Windows API dll imports
-        [DllImport("kernel32.dll")]
-        static extern IntPtr GetModuleHandle(string module);
-
-        [DllImport("user32.dll", SetLastError = true)]
-        static extern IntPtr SetWindowsHookEx(int idHook, HookHandlerDelegate callback, IntPtr hMod, uint dwThreadId);
-
-        [DllImport("user32.dll")]
-        static extern bool UnhookWindowsHookEx(IntPtr hhk);
-
-        [DllImport("user32.dll")]
-        static extern IntPtr CallNextHookEx(IntPtr hhk, int nCode, IntPtr wParam, ref KBDLLHOOKSTRUCT lParam);
-
-        [DllImport("user32.dll")]
-        static extern short GetKeyState(int keyCode);
-        #endregion
-
-        #region IDisposable Members
-        public void Dispose()
-        {
-            UnhookWindowsHookEx(keyboardHookId);
-            UnhookWindowsHookEx(mouseHookId);
-            Console.WriteLine("Hooks uninstalled.");
-        }
-        #endregion
-    }
-     */
     #endregion
 }
