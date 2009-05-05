@@ -27,6 +27,9 @@ namespace WC3Launcher
         static extern bool ClipCursor(ref RECT lpRect);
 
         [DllImport("user32.dll")]
+        static extern bool ClipCursor(ref IntPtr lpRect);
+
+        [DllImport("user32.dll")]
         static extern bool GetClipCursor(out RECT lpRect);
 
         [DllImport("user32.dll")]
@@ -67,6 +70,7 @@ namespace WC3Launcher
             Application.Run(new Program());
         }
 
+        #region Program class definition with threading
         private NotifyIcon  trayIcon;
         private ContextMenu trayMenu;
         private bool running;
@@ -83,12 +87,11 @@ namespace WC3Launcher
             y = coords[1];
 
             trayMenu = new ContextMenu();
-            trayMenu.MenuItems.Add("Warcraft WindowMon");
             trayMenu.MenuItems.Add("Exit", OnExit);
 
             trayIcon = new NotifyIcon();
-            trayIcon.Text = "MyTrayApp";
-            trayIcon.Icon = new Icon(SystemIcons.Shield, 40, 40);
+            trayIcon.Text = "Warcraft III Launcher";
+            trayIcon.Icon = new Icon(SystemIcons.Information, 40, 40);
 
             trayIcon.ContextMenu = trayMenu;
             trayIcon.Visible = true;
@@ -111,6 +114,7 @@ namespace WC3Launcher
 
                     DInputHook input = new DInputHook(wc3);
                     input.KeyStateChanged += new DInputHook.KeyPressedHandler(OnKeyPressed);
+                    trayIcon.Icon = new Icon(SystemIcons.Shield, 40, 40);
                     WhileWC3Running();
                     input.Dispose();
                 }
@@ -139,9 +143,10 @@ namespace WC3Launcher
             }
             base.Dispose(disposing);
         }
+        #endregion
 
         #region Key event handlers
-        public static void OnKeyPressed(List<Key> now, List<Key> old)
+        public void OnKeyPressed(List<Key> now, List<Key> old)
         {
             //printkeypresses(now, old);
             if (now.Contains(Key.LeftControl) && now.Contains(Key.LeftShift))
@@ -173,21 +178,28 @@ namespace WC3Launcher
             }
         }
 
-        public static void ToggleMouseLock()
+        public void ToggleMouseLock()
         {
             locked ^= true;
             if (!locked)
-                ClipCursor(ref oldCursorClipRect);
+            {
+                trayIcon.Icon = new Icon(SystemIcons.Error, 40, 40);
+                IntPtr zero = IntPtr.Zero;
+                ClipCursor(ref zero);
+            }
             else
+            {
+                trayIcon.Icon = new Icon(SystemIcons.Shield, 40, 40);
                 ConstrainMouseToWC3();
+            }
         }
 
-        private static bool JustPressed(Key k, List<Key> now, List<Key> old)
+        private bool JustPressed(Key k, List<Key> now, List<Key> old)
         {
             return now.Contains(k) && !old.Contains(k);
         }
 
-        private static void printkeypresses(List<Key> now, List<Key> old)
+        private void printkeypresses(List<Key> now, List<Key> old)
         {
             foreach (Key k in now)
             {
@@ -207,7 +219,7 @@ namespace WC3Launcher
         #endregion
 
         #region Mouse Constraining
-        public static void ConstrainMouseToWC3()
+        public void ConstrainMouseToWC3()
         {
             IntPtr windowHandle = GetWC3WindowHandle();
             if (windowHandle != IntPtr.Zero && IsWindowVisible(windowHandle))
@@ -221,14 +233,14 @@ namespace WC3Launcher
             }
         }
 
-        public static RECT GetWC3WindowRect()
+        public RECT GetWC3WindowRect()
         {
             RECT windowRect;
             GetWindowRect(GetWC3WindowHandle(), out windowRect);
             return windowRect;
         }
 
-        public static void UpdateWC3WindowMetrics()
+        public void UpdateWC3WindowMetrics()
         {
             RECT windowRect = GetWC3WindowRect();
             x = windowRect.Left;
@@ -237,19 +249,19 @@ namespace WC3Launcher
             width = (int)(height * aspect);
         }
 
-        private static void UnconstrainMouse(RECT oldBounds)
+        private void UnconstrainMouse(RECT oldBounds)
         {
             ClipCursor(ref oldBounds);
         }
         #endregion
 
         #region Warcraft 3 Running
-        private static void WaitForWC3Start()
+        private void WaitForWC3Start()
         {
             while (Process.GetProcessesByName("war3").Length == 0) ;
         }
 
-        private static void WhileWC3Running()
+        private void WhileWC3Running()
         {
             while (true)
             {
@@ -270,7 +282,7 @@ namespace WC3Launcher
             }
         }
 
-        public static IntPtr GetWC3WindowHandle()
+        public IntPtr GetWC3WindowHandle()
         {
             Process[] processes = Process.GetProcessesByName("war3");
             if (processes.Length > 0)
@@ -281,7 +293,7 @@ namespace WC3Launcher
         #endregion
 
         #region ini management
-        public static string GetIniValue(string iniTag)
+        public string GetIniValue(string iniTag)
         {
             Regex rex = new Regex(String.Format("{0}=(.*)\r\n", iniTag));
             Match result = rex.Match(iniContents);
@@ -295,7 +307,7 @@ namespace WC3Launcher
             }
         }
 
-        public static int ParseInt(string i)
+        public int ParseInt(string i)
         {
             if (i != "")
             {
@@ -307,7 +319,7 @@ namespace WC3Launcher
             }
         }
 
-        private static void ReadIniFile()
+        private void ReadIniFile()
         {
             try
             {
@@ -329,7 +341,7 @@ namespace WC3Launcher
             }
         }
 
-        public static void SaveSettings()
+        public void SaveSettings()
         {
             StreamReader reader = File.OpenText(ini);
             String contents = reader.ReadToEnd();
@@ -343,7 +355,7 @@ namespace WC3Launcher
             writer.Close();
         }
 
-        private static float ParseAspect(string aspect)
+        private float ParseAspect(string aspect)
         { 
             // the input string should be in the form {width}:{height}, ie 4:3
             Regex rex = new Regex("^([0-9]*):([0-9]*)$");
@@ -361,7 +373,7 @@ namespace WC3Launcher
             }
         }
 
-        public static int[] ParseCoords(string coords)
+        public int[] ParseCoords(string coords)
         {
             Regex rex = new Regex("^([0-9]*),([0-9]*)$");
             Match match = rex.Match(coords);
@@ -811,17 +823,13 @@ namespace WC3Launcher
             keyboard.SetCooperativeLevel(wc3, CooperativeLevelFlags.NonExclusive | CooperativeLevelFlags.Background);
             keyboard.SetEventNotification(keyboardUpdated);
 
-            //mouse = new Device(SystemGuid.Mouse);
             mouseUpdated = new AutoResetEvent(false);
-            //mouse.SetCooperativeLevel(wc3, CooperativeLevelFlags.NonExclusive | CooperativeLevelFlags.Background);
-            //mouse.SetEventNotification(mouseUpdated);
 
             appShutdown = new ManualResetEvent(false);
             
             threadloop = new Thread(new ThreadStart(ThreadFunction));
             threadloop.Start();
             keyboard.Acquire();
-            //mouse.Acquire();
         }
 
         public void ThreadFunction()
@@ -879,7 +887,6 @@ namespace WC3Launcher
                     pressedKeys += String.Format("MOUSE{0} ", i);
                 }
             }
-            //Console.WriteLine(mouse.CurrentMouseState.Z + " " + pressedKeys);
         }
 
         #region IDisposable Members
