@@ -11,12 +11,8 @@ namespace Asuah.WarcraftPCap
     // BNETDocs: Redux software written by Don Cullen AKA Kyro
     // Original BNETDocs content compiled by Arta & Skywing
 
-    public enum PacketIDConstants : byte
+    public enum BattleNetPacketID : byte
     {
-
-	    // Battle.net Messages Constants
-	    // -------------------
-
 	    Null = 0x00,
 	    StopAdv = 0x02,
 	    ServerList = 0x04,
@@ -118,8 +114,28 @@ namespace Asuah.WarcraftPCap
 	    ClanMemberInformation = 0x82
     }
 
+    public enum ChatEventID : byte
+    {
+        ShowUser = 0x01,
+        Join = 0x02,
+        Leave = 0x03,
+        Whisper = 0x04,
+        Talk = 0x05,
+        Broadcast = 0x06,
+        Channel = 0x07,
+        UserFlags = 0x09,
+        WhisperSent = 0x0A,
+        ChannelFull = 0x0D,
+        ChannelDoesNotExist = 0x0E,
+        ChannelRestricted = 0x0F,
+        Info = 0x12,
+        Error = 0x13,
+        Emote = 0x17
+    }
+
     public partial class Constants
     {
         public const int MAX_PACKET_ID = 0x83;
+        public const int MAX_CHAT_EVENT_ID = 0x18;
     }
 }

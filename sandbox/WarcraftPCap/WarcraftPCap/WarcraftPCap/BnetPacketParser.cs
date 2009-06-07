@@ -9,13 +9,13 @@ namespace Asuah.WarcraftPCap
 {
     class BnetPacketParser
     {
-        public PacketEventHolder[] eventHolders = new PacketEventHolder[Constants.MAX_PACKET_ID];
+        public PacketEvent[] Events = new PacketEvent[Constants.MAX_PACKET_ID];
 
         public BnetPacketParser()
         {
-            for (int i = 0; i < eventHolders.Length; i++)
+            for (int i = 0; i < Events.Length; i++)
             {
-                eventHolders[i] = new PacketEventHolder();
+                Events[i] = new PacketEvent();
             }
         }
 
@@ -23,23 +23,17 @@ namespace Asuah.WarcraftPCap
         {
             if (e.Packet.Data.Length > 1)
             {
-                PacketIDConstants id = (PacketIDConstants)e.Packet.Data[1];
-                /*
-                const int headingSize = 15;
-                string message = String.Format("{0}>", id.ToString());
-                for (int i = 0; i < headingSize - message.ToString().Length; i++)
-                    Console.Write(" ");
-                Console.WriteLine(message); */
+                BattleNetPacketID id = (BattleNetPacketID)e.Packet.Data[1];
 
-                if ((int)id < eventHolders.Length)
+                if ((int)id < Events.Length)
                 {
-                    eventHolders[(int)id].DoEvent(sender, e);
+                    Events[(int)id].DoEvent(sender, e);
                 }
             }
         }
     }
 
-    class PacketEventHolder
+    class PacketEvent
     {
         public delegate void PacketEventHandler(object sender, PcapCaptureEventArgs args);
 
