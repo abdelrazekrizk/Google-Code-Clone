@@ -9,7 +9,6 @@ namespace Asuah.WarcraftPCap
 {
     class Program
     {
-        
         static void Main(string[] args)
         {
             Console.WriteLine("SharpPcap Version: {0}", SharpPcap.Version.VersionString);

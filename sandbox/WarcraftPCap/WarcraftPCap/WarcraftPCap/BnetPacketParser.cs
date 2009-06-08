@@ -46,7 +46,7 @@ namespace Asuah.WarcraftPCap
 
         public void RegisterEvent(PacketEventHandler handler)
         {
-            Event += new PacketEventHandler(handler);
+            Event += handler;
         }
     }
 }
