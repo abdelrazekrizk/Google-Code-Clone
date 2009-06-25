@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
+using Asuah.WarcraftPCap.Plugins;
 using SharpPcap;
 
 namespace Asuah.WarcraftPCap
@@ -33,7 +36,12 @@ namespace Asuah.WarcraftPCap
 
         public static void RegisterPlugins(BnetPacketParser parser)
         {
-            new ChatMessagePacket(parser);
+            Process wc3p = Process.GetProcessesByName("war3")[0];
+            IntPtr wc3 = wc3p.MainWindowHandle;
+            DInputHook diHook = new DInputHook(wc3);
+
+            new THRGamesList(parser, diHook);
+            new AutoSpoof(parser, diHook);
         }
 
         public static PcapDevice AskForDevice()

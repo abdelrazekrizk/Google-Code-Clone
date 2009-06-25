@@ -10,6 +10,7 @@ namespace Asuah.WarcraftPCap
     class BnetPacketParser
     {
         public PacketEvent[] Events = new PacketEvent[Constants.MAX_PACKET_ID];
+        public ChatMessagePacketHandler chatMessageHandler;
 
         public BnetPacketParser()
         {
@@ -17,6 +18,8 @@ namespace Asuah.WarcraftPCap
             {
                 Events[i] = new PacketEvent();
             }
+
+            chatMessageHandler = new ChatMessagePacketHandler(this);
         }
 
         public void OnPacketArrival(object sender, PcapCaptureEventArgs e)
@@ -49,4 +52,6 @@ namespace Asuah.WarcraftPCap
             Event += handler;
         }
     }
+
+
 }

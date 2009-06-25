@@ -50,6 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Accessibility" />
+    <Reference Include="Microsoft.DirectX.DirectInput, Version=1.0.2902.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -66,12 +67,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BnetPacketParser.cs" />
-    <Compile Include="ChatMessagePacket.cs" />
-    <Compile Include="IWarcraftPcapPlugin.cs" />
+    <Compile Include="Libs\Packets\BnetPacketParser.cs" />
+    <Compile Include="Libs\Packets\ChatMessagePacketHandler.cs" />
+    <Compile Include="Libs\DirectInput\DInputHook.cs">
+    </Compile>
     <Compile Include="Libs\EnumLib.cs" />
-    <Compile Include="PacketID.cs" />
-    <Compile Include="PacketReader.cs" />
+    <Compile Include="Libs\Packets\PacketID.cs" />
+    <Compile Include="Libs\Packets\PacketReader.cs" />
+    <Compile Include="Plugins\AutoSpoof.cs" />
+    <Compile Include="Plugins\THRGamesList.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
