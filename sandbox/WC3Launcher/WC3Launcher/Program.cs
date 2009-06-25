@@ -61,6 +61,7 @@ namespace WC3Launcher
         static IntPtr wc3;
         static bool locked = true;
         static RECT oldCursorClipRect;
+        static DInputHook diHook;
         #endregion
         #endregion
 
@@ -104,19 +105,19 @@ namespace WC3Launcher
 
         public void LoopThread()
         {
-
             while (running)
             {
                 if ((wc3 = GetWC3WindowHandle()) != IntPtr.Zero && IsWindowVisible(wc3))
                 {
                     width = (int)(height * aspect);
                     MoveWindow(wc3, x, y, width, height, true);
-
-                    DInputHook input = new DInputHook(wc3);
-                    input.KeyStateChanged += new DInputHook.KeyPressedHandler(OnKeyPressed);
+                    if (diHook != null) diHook.Dispose();
+                    diHook = new DInputHook(wc3);
+                    diHook.KeyStateChanged += new DInputHook.KeyPressedHandler(OnKeyPressed);
                     trayIcon.Icon = new Icon(SystemIcons.Shield, 40, 40);
                     WhileWC3Running();
-                    input.Dispose();
+                    diHook.Dispose();
+                    trayIcon.Icon = new Icon(SystemIcons.Information, 40, 40);
                 }
                 Thread.Sleep(1000);
             }
@@ -132,6 +133,7 @@ namespace WC3Launcher
         public void OnExit(object sender, EventArgs e)
         {
             running = false;
+            diHook.Dispose();
             Application.Exit();
         }
 
@@ -148,30 +150,6 @@ namespace WC3Launcher
         #region Key event handlers
         public void OnKeyPressed(List<Key> now, List<Key> old)
         {
-            //printkeypresses(now, old);
-            if (now.Contains(Key.LeftControl) && now.Contains(Key.LeftShift))
-            {
-                UpdateWC3WindowMetrics();
-                if (JustPressed(Key.Equals, now, old))
-                {
-                    height += step;
-                    width = (int)(height * aspect);
-                }
-                else if (JustPressed(Key.Minus, now, old))
-                {
-                    height -= step;
-                    width = (int)(height * aspect);
-                }
-                else if (JustPressed(Key.Left, now, old))
-                    x -= step;
-                else if (JustPressed(Key.Right, now, old))
-                    x += step;
-                else if (JustPressed(Key.Up, now, old))
-                    y -= step;
-                else if (JustPressed(Key.Down, now, old))
-                    y += step;
-                MoveWindow(wc3, x, y, width, height, true);
-            }
             if (JustPressed(Key.F7, now, old))
             {
                 ToggleMouseLock();
@@ -799,105 +777,4 @@ namespace WC3Launcher
         #endregion
         #endregion
     }
-
-    #region Input hooking through DirectX
-
-    [ComVisibleAttribute(false), System.Security.SuppressUnmanagedCodeSecurity()]
-    public class DInputHook : IDisposable
-    {
-        Device keyboard, mouse;
-        AutoResetEvent keyboardUpdated;
-        AutoResetEvent mouseUpdated;
-        ManualResetEvent appShutdown;
-        Thread threadloop;
-        List<Key> keyBuffer = new List<Key>();
-
-        public delegate void KeyPressedHandler(List<Key> now, List<Key> buffer);
-
-        public event KeyPressedHandler KeyStateChanged;
-
-        public DInputHook(IntPtr wc3)
-        {
-            keyboard = new Device(SystemGuid.Keyboard);
-            keyboardUpdated = new AutoResetEvent(false);
-            keyboard.SetCooperativeLevel(wc3, CooperativeLevelFlags.NonExclusive | CooperativeLevelFlags.Background);
-            keyboard.SetEventNotification(keyboardUpdated);
-
-            mouseUpdated = new AutoResetEvent(false);
-
-            appShutdown = new ManualResetEvent(false);
-            
-            threadloop = new Thread(new ThreadStart(ThreadFunction));
-            threadloop.Start();
-            keyboard.Acquire();
-        }
-
-        public void ThreadFunction()
-        {
-            WaitHandle[] handles = { keyboardUpdated, mouseUpdated, appShutdown };
-            while (true)
-            {
-                int index = WaitHandle.WaitAny(handles);
-                if (index == 0)
-                {
-                    UpdateKeyboardState();
-                }
-                if (index == 1)
-                {
-                    UpdateMouseState();
-                }
-                else if (index == 2)
-                {
-                    return;
-                }
-            }
-        }
-
-        public void UpdateKeyboardState()
-        {
-            string pressedKeys = "";
-            List<Key> pressed = new List<Key>();
-            foreach (Key k in keyboard.GetPressedKeys())
-            {
-                pressedKeys += k.ToString() + " ";
-                pressed.Add(k);
-            }
-            
-            // fire event here
-            OnKeyStateChanged(pressed, keyBuffer);
-
-            //Console.WriteLine(pressedKeys);
-            keyBuffer = pressed;
-        }
-
-        public void OnKeyStateChanged(List<Key> now, List<Key> old)
-        {
-            if (KeyStateChanged != null)
-                KeyStateChanged(now, old);
-        }
-
-        public void UpdateMouseState()
-        {
-            string pressedKeys = "";
-            byte[] buttons = mouse.CurrentMouseState.GetMouseButtons();
-            for (int i = 0; i < buttons.Length; i++)
-            {
-                if ((buttons[i] & 128) == 128)
-                {
-                    pressedKeys += String.Format("MOUSE{0} ", i);
-                }
-            }
-        }
-
-        #region IDisposable Members
-
-        public void Dispose()
-        {
-            threadloop.Abort();
-            keyboard.Unacquire();
-        }
-
-        #endregion
-    }
-    #endregion
 }
