@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :forum_categories
+
   map.resources :news_posts
 
   map.logout '/logout', :controller => 'sessions', :action => 'destroy'
@@ -8,6 +10,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
 
   map.resource :session
+  
+  map.forum '/forum', :controller => 'forum_categories', :action => 'index'
 
   # The priority is based upon order of creation: first created -> highest priority.
 

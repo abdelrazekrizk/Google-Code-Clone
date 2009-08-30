@@ -2,8 +2,17 @@
 
 <% @news_posts.each do |news_post| %>
 <div>
-	<h2 style="display: inline;"><%=h news_post.title %></h2> 
-	<h4 style="display: inline;"><%= news_post.created_at.strftime("%B %I, %Y (%X)") %></h4>
-	<p><%= news_post.contents %></p>
+	<h2 style="display: inline;">
+		<%= link_to h(news_post.title), :action => :show, :id => news_post.id %>
+	</h2>
+	 
+	<h4 style="display: inline;">
+		<%= news_post.created_at.strftime("%B %d, %Y (%X)") %>
+	</h4>
+	
+	<p>
+		<%= news_post.contents[0,400] + "..." %> 
+		<%= link_to "[more]", :action => :show, :id => news_post.id %>
+	</p>
 </div>
 <% end %>

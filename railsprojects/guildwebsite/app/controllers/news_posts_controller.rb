@@ -45,8 +45,10 @@ class NewsPostsController < ApplicationController
     redirect_to(news_posts_url)
   end
   
+  private 
+  
   def check_admin
-    unless !@current_user.nil? and @current_user.has_permission :admin
+    unless logged_in? and current_user.has_permission :admin
       redirect_to :action => :index
     end
   end

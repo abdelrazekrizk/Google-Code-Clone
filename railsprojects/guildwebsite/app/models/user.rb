@@ -49,12 +49,9 @@ class User < ActiveRecord::Base
   end
   
   def has_permission(permission)
-    return true
-    !UserPermissions.find(:all, :user => self, :permission => permission).empty?
+    UserPermissions.find_by_user_id_and_permission(self, permission)
   end
   
   protected
-    
-
-
+  
 end

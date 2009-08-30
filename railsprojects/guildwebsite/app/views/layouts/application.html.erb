@@ -3,8 +3,7 @@
 <html>
 	<head>
 		<title><%=h yield(:title) || 'Guild Website' %></title>
-  		<%= stylesheet_link_tag 'scaffold', 'styles' %>
-		<% # <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/reset/reset-min.css"> %> 
+  		<%= stylesheet_link_tag 'scaffold', 'styles' %> 
 	</head>
 	<body>
 		<div class="container">
@@ -18,9 +17,13 @@
 			</div>
 			<div style="clear: both;" />
 			
-			<div> <% # todo: change this into a javascript dropdownmenu %>
+			<div>
 				<div style="float: left; width: 400px;">
-					 <%= link_to 'News', :controller => 'news_posts' %> | <%= link_to 'Forum', :controller => :forum %>
+					 <%= link_to 'News', :controller => 'news_posts' %> | 
+					 <%= link_to 'Forum', :controller => :forum %>
+					 <% if logged_in? and current_user.has_permission :admin then %> | 
+					 	<%= link_to 'New News Post', :controller => 'news_posts', :action => 'new' %>
+					 <% end %>
 				</div>
 				<div style="float: right; width: 400px; text-align: right;">
 					<%= render :partial => "users/user_bar.html.erb" %>
