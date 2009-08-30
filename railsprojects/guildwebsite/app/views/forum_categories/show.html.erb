@@ -1,18 +1,12 @@
-<p>
-  <b>Name:</b>
-  <%=h @forum_category.name %>
-</p>
+<h2>
+  <%=h @forum_category.name %> <br />
+</h2>
 
-<p>
-  <b>Description:</b>
-  <%=h @forum_category.description %>
-</p>
-
-<p>
-  <b>Parent:</b>
-  <%=h @forum_category.parent %>
-</p>
-
-
-<%= link_to 'Edit', edit_forum_category_path(@forum_category) %> |
-<%= link_to 'Back', forum_categories_path %>
+<% @forum_category.forum_topics.find(:all, :order => "updated_at DESC", :limit => 3).each do |topic| %>
+	<div>
+		<h3 style="display: inline;"><%=h topic.name %></h3>
+		<p style="display: inline;">
+			<%=h topic.user.login %> <%=h topic.updated_at.to_s(:standard) %>
+		</p>
+	</div>
+<% end %>

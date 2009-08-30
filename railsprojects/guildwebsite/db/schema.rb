@@ -19,6 +19,14 @@ ActiveRecord::Schema.define(:version => 99999999999999) do
     t.datetime "updated_at"
   end
 
+  create_table "forum_topics", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "forum_category_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "news_posts", :force => true do |t|
     t.string   "title"
     t.string   "image"

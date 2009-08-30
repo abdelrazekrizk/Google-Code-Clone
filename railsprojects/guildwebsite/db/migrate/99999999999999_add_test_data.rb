@@ -29,6 +29,15 @@ class AddTestData < ActiveRecord::Migration
     cat2.name = "Off-topic"
     cat2.description = "Off-topic chatter goes here"
     cat2.save
+    
+    (1..5).each do |i|
+      top = ForumTopic.new
+      top.name = "Example Topic #{i} in General"
+      top.user = user
+      top.forum_category = cat
+      top.updated_at = Time.at(Time.now.to_i + i)
+      top.save
+    end
   end
 
   def self.down

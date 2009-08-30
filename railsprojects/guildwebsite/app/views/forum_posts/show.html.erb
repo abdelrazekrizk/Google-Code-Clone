@@ -1,0 +1,23 @@
+<p>
+  <b>User:</b>
+  <%=h @forum_post.user %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @forum_post.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%=h @forum_post.content %>
+</p>
+
+<p>
+  <b>Forum topic:</b>
+  <%=h @forum_post.forum_topic %>
+</p>
+
+
+<%= link_to 'Edit', edit_forum_post_path(@forum_post) %> |
+<%= link_to 'Back', forum_posts_path %>
