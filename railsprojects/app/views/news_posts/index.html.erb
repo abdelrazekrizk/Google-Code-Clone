@@ -1,9 +1,0 @@
-<% content_for :title, "News Posts" %>
-
-<% @news_posts.each do |news_post| %>
-<div>
-	<h2 style="display: inline;"><%=h news_post.title %></h2> 
-	<h4 style="display: inline;"><%= news_post.created_at.strftime("%B %I, %Y (%X)") %></h4>
-	<p><%= news_post.contents %></p>
-</div>
-<% end %>
