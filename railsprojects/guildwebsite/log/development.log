@@ -8680,3 +8680,1829 @@ Rendering forum_categories/show
   [4;36;1mUserPermissions Load (0.3ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
 Rendered users/_user_bar (0.5ms)
 Completed in 68ms (View: 48, DB: 5) | 200 OK [http://localhost/forum_categories/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 16:47:09) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForumCategory Columns (45.1ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mForumCategory Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC LIMIT 3[0m
+  [4;36;1mForumTopic Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mUser Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.7ms)
+Completed in 122ms (View: 65, DB: 49) | 200 OK [http://localhost/forum_categories/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 16:48:00) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumCategory Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mForumCategory Load (0.1ms)[0m   [0mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC LIMIT 3[0m
+  [4;35;1mForumTopic Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (12.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (6.6ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.7ms)
+Completed in 148ms (View: 98, DB: 23) | 200 OK [http://localhost/forum_categories/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 16:48:02) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mForumTopic Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (94.6ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;35;1mUser Columns (1.5ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mForumCategory Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mForumCategory Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+  [4;35;1mUser Load (3.7ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (4.1ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (10.8ms)
+Completed in 257ms (View: 129, DB: 106) | 200 OK [http://localhost/forum_topics/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 16:48:52) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumCategory Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mForumCategory Load (0.1ms)[0m   [0mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC LIMIT 3[0m
+  [4;35;1mForumTopic Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 81ms (View: 69, DB: 4) | 200 OK [http://localhost/forum_categories/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 16:48:57) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mForumTopic Columns (7.8ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mForumCategory Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mForumCategory Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (2.3ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 101ms (View: 68, DB: 13) | 200 OK [http://localhost/forum_topics/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 16:50:36) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumCategory Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mForumCategory Load (0.1ms)[0m   [0mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC LIMIT 3[0m
+  [4;35;1mForumTopic Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 58ms (View: 46, DB: 4) | 200 OK [http://localhost/forum_categories/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 16:50:39) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mForumTopic Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+
+ActionView::TemplateError (undefined method `forum_posts' for #<ForumTopic:0xb6851888>) on line #1 of app/views/forum_topics/show.html.erb:
+1: <% @forum_topic.forum_posts.each do |post| %>
+2: <p>A post!</p>
+3: <% end %>
+4: 
+
+    app/views/forum_topics/show.html.erb:1
+    app/controllers/forum_topics_controller.rb:18:in `show'
+
+Rendered rescues/_trace (86.8ms)
+Rendered rescues/_request_and_response (1.9ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 16:51:01) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mForumTopic Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;35;1mForumPost Load (0.0ms)[0m   [0mMysql::Error: Table 'guildwebsite_development.forum_posts' doesn't exist: SELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 5) [0m
+
+ActionView::TemplateError (Mysql::Error: Table 'guildwebsite_development.forum_posts' doesn't exist: SELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 5) ) on line #1 of app/views/forum_topics/show.html.erb:
+1: <% @forum_topic.forum_posts.each do |post| %>
+2: <p>A post!</p>
+3: <% end %>
+4: 
+
+    app/views/forum_topics/show.html.erb:1
+    app/controllers/forum_topics_controller.rb:18:in `show'
+
+Rendered rescues/_trace (251.5ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (77.0ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (6.5ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090829163902)
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (44.5ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(40), `name` varchar(100) DEFAULT '', `email` varchar(100), `crypted_password` varchar(40), `salt` varchar(40), `created_at` datetime, `updated_at` datetime, `remember_token` varchar(40), `remember_token_expires_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (7.8ms)[0m   [0mCREATE UNIQUE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829163902')[0m
+Migrating to CreateNewsPosts (20090829165231)
+  [4;35;1mSQL (4.3ms)[0m   [0mCREATE TABLE `news_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `image` varchar(255), `contents` text, `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829165231')[0m
+Migrating to CreateUserPermissions (20090829232815)
+  [4;35;1mSQL (3.2ms)[0m   [0mCREATE TABLE `user_permissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `permission` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829232815')[0m
+Migrating to CreateForumCategories (20090830183104)
+  [4;35;1mSQL (9.0ms)[0m   [0mCREATE TABLE `forum_categories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `parent` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830183104')[0m
+Migrating to CreateForumTopics (20090830185757)
+  [4;35;1mSQL (6.3ms)[0m   [0mCREATE TABLE `forum_topics` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `name` varchar(255), `forum_category_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830185757')[0m
+Migrating to CreateForumPosts (20090830192706)
+  [4;35;1mSQL (3.5ms)[0m   [0mCREATE TABLE `forum_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `title` varchar(255), `content` text, `forum_topic_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830192706')[0m
+Migrating to AddTestData (99999999999999)
+  [4;35;1mUser Columns (11.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`login` = BINARY 'domia') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY 'asuah@gatech.edu') LIMIT 1[0m
+  [4;35;1mUser Create (0.9ms)[0m   [0mINSERT INTO `users` (`name`, `salt`, `created_at`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `remember_token`, `login`, `email`) VALUES('', '1bb2b072a69e8cec544273d489131624a57ce153', '2009-08-30 20:51:19', 'f1b14cc49d1b38ad91e257eaaafe024585f98869', NULL, '2009-08-30 20:51:19', NULL, 'domia', 'asuah@gatech.edu')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mNewsPost Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `news_posts`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.4ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 20:51:20', 'Lorem Ipsum 1', '2009-08-30 20:51:19', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mNewsPost Create (0.2ms)[0m   [0;1mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 20:51:21', 'Lorem Ipsum 2', '2009-08-30 20:51:19', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.2ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 20:51:22', 'Lorem Ipsum 3', '2009-08-30 20:51:19', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mNewsPost Create (0.2ms)[0m   [0;1mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 20:51:23', 'Lorem Ipsum 4', '2009-08-30 20:51:19', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.2ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 20:51:24', 'Lorem Ipsum 5', '2009-08-30 20:51:19', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUserPermissions Create (0.2ms)[0m   [0mINSERT INTO `user_permissions` (`created_at`, `updated_at`, `user_id`, `permission`) VALUES('2009-08-30 20:51:19', '2009-08-30 20:51:19', 1, '--- :admin\n')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumCategory Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumCategory Create (0.2ms)[0m   [0mINSERT INTO `forum_categories` (`name`, `parent`, `created_at`, `updated_at`, `description`) VALUES('General', NULL, '2009-08-30 20:51:19', '2009-08-30 20:51:19', 'General chatter goes here')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumCategory Create (0.1ms)[0m   [0;1mINSERT INTO `forum_categories` (`name`, `parent`, `created_at`, `updated_at`, `description`) VALUES('Off-topic', NULL, '2009-08-30 20:51:19', '2009-08-30 20:51:19', 'Off-topic chatter goes here')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mForumTopic Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (0.2ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 1 in General', '2009-08-30 20:51:19', '2009-08-30 20:51:20', 1, 1)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumTopic Create (0.2ms)[0m   [0mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 2 in General', '2009-08-30 20:51:19', '2009-08-30 20:51:21', 1, 1)[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (0.2ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 3 in General', '2009-08-30 20:51:19', '2009-08-30 20:51:22', 1, 1)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumTopic Create (0.2ms)[0m   [0mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 4 in General', '2009-08-30 20:51:19', '2009-08-30 20:51:23', 1, 1)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (0.2ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 5 in General', '2009-08-30 20:51:19', '2009-08-30 20:51:24', 1, 1)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('99999999999999')[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `forum_categories`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `forum_categories`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `forum_posts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `forum_posts`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `forum_posts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mSQL (12.4ms)[0m   [0mdescribe `forum_topics`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `forum_topics`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `news_posts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `news_posts`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `news_posts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `user_permissions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `user_permissions`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (1.2ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 16:51:20) [GET]
+  Parameters: {"id"=>"5"}
+  [4;36;1mForumTopic Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mForumTopic Load (0.2ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;36;1mForumPost Load (0.3ms)[0m   [0;1mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 5) [0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.3ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 62ms (View: 33, DB: 4) | 200 OK [http://localhost/forum_topics/5]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#index (for 127.0.0.1 at 2009-08-30 16:51:27) [GET]
+  [4;35;1mForumCategory Load (0.3ms)[0m   [0mSELECT * FROM `forum_categories` [0m
+Rendering template within layouts/application
+Rendering forum_categories/index
+  [4;36;1mForumCategory Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 53ms (View: 36, DB: 3) | 200 OK [http://localhost/forum]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#index (for 127.0.0.1 at 2009-08-30 16:52:13) [GET]
+  [4;35;1mForumCategory Load (0.1ms)[0m   [0mSELECT * FROM `forum_categories` [0m
+Rendering template within layouts/application
+Rendering forum_categories/index
+  [4;36;1mForumCategory Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 139ms (View: 33, DB: 3) | 200 OK [http://localhost/forum]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 16:52:44) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForumCategory Columns (6.1ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mForumCategory Load (0.3ms)[0m   [0;1mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;35;1mForumTopic Load (0.5ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC LIMIT 3[0m
+  [4;36;1mForumTopic Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 96ms (View: 60, DB: 10) | 200 OK [http://localhost/forum_categories/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 16:53:53) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumCategory Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mForumCategory Load (0.1ms)[0m   [0mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;36;1mForumTopic Load (0.4ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC LIMIT 5[0m
+  [4;35;1mForumTopic Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 80ms (View: 68, DB: 4) | 200 OK [http://localhost/forum_categories/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 16:54:00) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mForumTopic Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;35;1mForumPost Load (4.4ms)[0m   [0mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 5) [0m
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (1.8ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 218ms (View: 189, DB: 10) | 200 OK [http://localhost/forum_topics/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 16:54:39) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumCategory Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mForumCategory Load (0.1ms)[0m   [0mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC LIMIT 5[0m
+  [4;35;1mForumTopic Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 80ms (View: 51, DB: 4) | 200 OK [http://localhost/forum_categories/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 16:54:46) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForumCategory Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mForumCategory Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;35;1mForumTopic Load (0.2ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC LIMIT 3[0m
+  [4;36;1mForumTopic Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 175ms (View: 110, DB: 4) | 200 OK [http://localhost/forum_categories/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for 127.0.0.1 at 2009-08-30 16:54:49) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering users/show
+  [4;36;1mUser Columns (2.8ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 227ms (View: 220, DB: 4) | 200 OK [http://localhost/users/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 16:55:49) [GET]
+  Parameters: {"id"=>"4"}
+  [4;36;1mForumTopic Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mForumTopic Load (0.2ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 4) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;36;1mForumPost Load (0.3ms)[0m   [0;1mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 4) [0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 57ms (View: 44, DB: 3) | 200 OK [http://localhost/forum_topics/4]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 16:55:51) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mForumTopic Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;35;1mForumPost Load (0.1ms)[0m   [0mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 5) [0m
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 64ms (View: 48, DB: 3) | 200 OK [http://localhost/forum_topics/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing NewsPostsController#new (for 127.0.0.1 at 2009-08-30 16:55:53) [GET]
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+  [4;36;1mNewsPost Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `news_posts`[0m
+Rendering template within layouts/application
+Rendering news_posts/new
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 68ms (View: 13, DB: 3) | 200 OK [http://localhost/news_posts/new]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing NewsPostsController#index (for 127.0.0.1 at 2009-08-30 16:55:55) [GET]
+  [4;36;1mNewsPost Load (0.4ms)[0m   [0;1mSELECT * FROM `news_posts` ORDER BY created_at DESC LIMIT 5[0m
+Rendering template within layouts/application
+Rendering news_posts/index
+  [4;35;1mNewsPost Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `news_posts`[0m
+  [4;36;1mUser Columns (5.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (2.0ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 90ms (View: 63, DB: 11) | 200 OK [http://localhost/news_posts]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#index (for 127.0.0.1 at 2009-08-30 16:56:00) [GET]
+  [4;36;1mForumCategory Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_categories` [0m
+Rendering template within layouts/application
+Rendering forum_categories/index
+  [4;35;1mForumCategory Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mUser Columns (12.3ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 65ms (View: 41, DB: 16) | 200 OK [http://localhost/forum]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 16:56:01) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumCategory Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mForumCategory Load (0.1ms)[0m   [0mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;36;1mForumTopic Load (0.7ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC LIMIT 3[0m
+  [4;35;1mForumTopic Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.3ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 120ms (View: 82, DB: 5) | 200 OK [http://localhost/forum_categories/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 16:57:14) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForumCategory Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mForumCategory Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC LIMIT 3[0m
+  [4;36;1mForumTopic Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mUser Columns (1.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (7.5ms)
+Completed in 191ms (View: 163, DB: 5) | 200 OK [http://localhost/forum_categories/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 16:57:14) [GET]
+  Parameters: {"id"=>"5"}
+  [4;36;1mForumTopic Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;36;1mForumPost Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 5) [0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 61ms (View: 47, DB: 3) | 200 OK [http://localhost/forum_topics/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (9.5ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (5.2ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090829163902)
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (4.3ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(40), `name` varchar(100) DEFAULT '', `email` varchar(100), `crypted_password` varchar(40), `salt` varchar(40), `created_at` datetime, `updated_at` datetime, `remember_token` varchar(40), `remember_token_expires_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (15.6ms)[0m   [0mCREATE UNIQUE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829163902')[0m
+Migrating to CreateNewsPosts (20090829165231)
+  [4;35;1mSQL (5.5ms)[0m   [0mCREATE TABLE `news_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `image` varchar(255), `contents` text, `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829165231')[0m
+Migrating to CreateUserPermissions (20090829232815)
+  [4;35;1mSQL (2.9ms)[0m   [0mCREATE TABLE `user_permissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `permission` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829232815')[0m
+Migrating to CreateForumCategories (20090830183104)
+  [4;35;1mSQL (3.8ms)[0m   [0mCREATE TABLE `forum_categories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `parent` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830183104')[0m
+Migrating to CreateForumTopics (20090830185757)
+  [4;35;1mSQL (21.3ms)[0m   [0mCREATE TABLE `forum_topics` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `name` varchar(255), `forum_category_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830185757')[0m
+Migrating to CreateForumPosts (20090830192706)
+  [4;35;1mSQL (8.9ms)[0m   [0mCREATE TABLE `forum_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `title` varchar(255), `content` text, `forum_topic_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830192706')[0m
+Migrating to AddTestData (99999999999999)
+  [4;35;1mUser Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.7ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`login` = BINARY 'domia') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY 'asuah@gatech.edu') LIMIT 1[0m
+  [4;35;1mUser Create (0.3ms)[0m   [0mINSERT INTO `users` (`name`, `salt`, `created_at`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `remember_token`, `login`, `email`) VALUES('', '1693188514c55c034bf15e431117c34008b22413', '2009-08-30 21:00:36', '65971e3a3a51013f5bbebab8e1419a7659697e3b', NULL, '2009-08-30 21:00:36', NULL, 'domia', 'asuah@gatech.edu')[0m
+  [4;36;1mSQL (2.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mNewsPost Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `news_posts`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.4ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:00:38', 'Lorem Ipsum 1', '2009-08-30 21:00:37', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mNewsPost Create (0.2ms)[0m   [0;1mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:00:39', 'Lorem Ipsum 2', '2009-08-30 21:00:37', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.2ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:00:40', 'Lorem Ipsum 3', '2009-08-30 21:00:37', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mNewsPost Create (0.2ms)[0m   [0;1mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:00:41', 'Lorem Ipsum 4', '2009-08-30 21:00:37', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.2ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:00:42', 'Lorem Ipsum 5', '2009-08-30 21:00:37', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUserPermissions Create (0.2ms)[0m   [0mINSERT INTO `user_permissions` (`created_at`, `updated_at`, `user_id`, `permission`) VALUES('2009-08-30 21:00:37', '2009-08-30 21:00:37', 1, '--- :admin\n')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumCategory Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumCategory Create (0.2ms)[0m   [0mINSERT INTO `forum_categories` (`name`, `parent`, `created_at`, `updated_at`, `description`) VALUES('General', NULL, '2009-08-30 21:00:37', '2009-08-30 21:00:37', 'General chatter goes here')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumCategory Create (0.1ms)[0m   [0;1mINSERT INTO `forum_categories` (`name`, `parent`, `created_at`, `updated_at`, `description`) VALUES('Off-topic', NULL, '2009-08-30 21:00:37', '2009-08-30 21:00:37', 'Off-topic chatter goes here')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mForumTopic Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (0.2ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 1 in General', '2009-08-30 21:00:37', '2009-08-30 21:00:38', 1, 1)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumTopic Create (0.2ms)[0m   [0mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 2 in General', '2009-08-30 21:00:37', '2009-08-30 21:00:39', 1, 1)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (0.1ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 3 in General', '2009-08-30 21:00:37', '2009-08-30 21:00:40', 1, 1)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumTopic Create (0.1ms)[0m   [0mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 4 in General', '2009-08-30 21:00:37', '2009-08-30 21:00:41', 1, 1)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (0.1ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 5 in General', '2009-08-30 21:00:37', '2009-08-30 21:00:42', 1, 1)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mForumPost Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mForumTopic Load (0.3ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:00:38', 'Re: Example Topic 1 in General', '2009-08-30 21:00:37', 1, NULL)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:00:39', 'Re: Example Topic 1 in General', '2009-08-30 21:00:37', 1, NULL)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:00:40', 'Re: Example Topic 1 in General', '2009-08-30 21:00:37', 1, NULL)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:00:41', 'Re: Example Topic 1 in General', '2009-08-30 21:00:37', 1, NULL)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:00:42', 'Re: Example Topic 1 in General', '2009-08-30 21:00:37', 1, NULL)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('99999999999999')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `forum_categories`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `forum_categories`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `forum_posts`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `forum_posts`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `forum_topics`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `forum_topics`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `news_posts`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `news_posts`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `news_posts`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `user_permissions`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `user_permissions`[0m
+  [4;36;1mSQL (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 17:00:42) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForumCategory Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mForumCategory Load (0.3ms)[0m   [0;1mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;35;1mForumTopic Load (0.4ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC LIMIT 3[0m
+  [4;36;1mForumTopic Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.5ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 60ms (View: 39, DB: 5) | 200 OK [http://localhost/forum_categories/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 17:01:28) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumCategory Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mForumCategory Load (0.1ms)[0m   [0mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;36;1mForumTopic Load (0.5ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC[0m
+  [4;35;1mForumTopic Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mUser Columns (6.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 181ms (View: 157, DB: 10) | 200 OK [http://localhost/forum_categories/1]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:01:33) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForumTopic Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;35;1mForumPost Load (0.4ms)[0m   [0mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 1) [0m
+  [4;36;1mForumPost Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 64ms (View: 49, DB: 4) | 200 OK [http://localhost/forum_topics/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (12.3ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (5.8ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090829163902)
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (4.1ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(40), `name` varchar(100) DEFAULT '', `email` varchar(100), `crypted_password` varchar(40), `salt` varchar(40), `created_at` datetime, `updated_at` datetime, `remember_token` varchar(40), `remember_token_expires_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (15.5ms)[0m   [0mCREATE UNIQUE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829163902')[0m
+Migrating to CreateNewsPosts (20090829165231)
+  [4;35;1mSQL (4.0ms)[0m   [0mCREATE TABLE `news_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `image` varchar(255), `contents` text, `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829165231')[0m
+Migrating to CreateUserPermissions (20090829232815)
+  [4;35;1mSQL (3.5ms)[0m   [0mCREATE TABLE `user_permissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `permission` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829232815')[0m
+Migrating to CreateForumCategories (20090830183104)
+  [4;35;1mSQL (3.7ms)[0m   [0mCREATE TABLE `forum_categories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `parent` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (6.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830183104')[0m
+Migrating to CreateForumTopics (20090830185757)
+  [4;35;1mSQL (3.9ms)[0m   [0mCREATE TABLE `forum_topics` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `name` varchar(255), `forum_category_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830185757')[0m
+Migrating to CreateForumPosts (20090830192706)
+  [4;35;1mSQL (4.5ms)[0m   [0mCREATE TABLE `forum_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `title` varchar(255), `content` text, `forum_topic_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.3ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830192706')[0m
+Migrating to AddTestData (99999999999999)
+  [4;35;1mUser Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`login` = BINARY 'domia') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY 'asuah@gatech.edu') LIMIT 1[0m
+  [4;35;1mUser Create (0.3ms)[0m   [0mINSERT INTO `users` (`name`, `salt`, `created_at`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `remember_token`, `login`, `email`) VALUES('', 'd81167fb052930c67b9d04ff44970ae9d5f60bae', '2009-08-30 21:03:27', '331bad46e581a489e5f323c370d61fd78b6dc8d6', NULL, '2009-08-30 21:03:27', NULL, 'domia', 'asuah@gatech.edu')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mNewsPost Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `news_posts`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.4ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:03:28', 'Lorem Ipsum 1', '2009-08-30 21:03:27', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mNewsPost Create (0.2ms)[0m   [0;1mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:03:29', 'Lorem Ipsum 2', '2009-08-30 21:03:27', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.2ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:03:30', 'Lorem Ipsum 3', '2009-08-30 21:03:27', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mNewsPost Create (0.2ms)[0m   [0;1mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:03:31', 'Lorem Ipsum 4', '2009-08-30 21:03:27', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;35;1mSQL (0.9ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.2ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:03:32', 'Lorem Ipsum 5', '2009-08-30 21:03:27', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (1.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUserPermissions Create (0.2ms)[0m   [0mINSERT INTO `user_permissions` (`created_at`, `updated_at`, `user_id`, `permission`) VALUES('2009-08-30 21:03:27', '2009-08-30 21:03:27', 1, '--- :admin\n')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumCategory Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumCategory Create (0.2ms)[0m   [0mINSERT INTO `forum_categories` (`name`, `parent`, `created_at`, `updated_at`, `description`) VALUES('General', NULL, '2009-08-30 21:03:27', '2009-08-30 21:03:27', 'General chatter goes here')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumCategory Create (0.2ms)[0m   [0;1mINSERT INTO `forum_categories` (`name`, `parent`, `created_at`, `updated_at`, `description`) VALUES('Off-topic', NULL, '2009-08-30 21:03:27', '2009-08-30 21:03:27', 'Off-topic chatter goes here')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mForumTopic Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (0.2ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 1 in General', '2009-08-30 21:03:28', '2009-08-30 21:03:29', 1, 1)[0m
+  [4;35;1mSQL (14.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumTopic Create (0.2ms)[0m   [0mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 2 in General', '2009-08-30 21:03:28', '2009-08-30 21:03:30', 1, 1)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (1.3ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 3 in General', '2009-08-30 21:03:28', '2009-08-30 21:03:31', 1, 1)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (5.2ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumTopic Create (0.3ms)[0m   [0mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 4 in General', '2009-08-30 21:03:28', '2009-08-30 21:03:32', 1, 1)[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (9.0ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 5 in General', '2009-08-30 21:03:28', '2009-08-30 21:03:33', 1, 1)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mForumPost Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mForumTopic Load (0.3ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.3ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:03:29', 'Re: Example Topic 1 in General', '2009-08-30 21:03:28', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:03:30', 'Re: Example Topic 1 in General', '2009-08-30 21:03:28', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:03:31', 'Re: Example Topic 1 in General', '2009-08-30 21:03:28', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:03:32', 'Re: Example Topic 1 in General', '2009-08-30 21:03:28', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:03:33', 'Re: Example Topic 1 in General', '2009-08-30 21:03:28', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('99999999999999')[0m
+  [4;36;1mSQL (9.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `forum_categories`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `forum_categories`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `forum_posts`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `forum_posts`[0m
+  [4;35;1mSQL (9.0ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `forum_topics`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `forum_topics`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `news_posts`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `news_posts`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `news_posts`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `user_permissions`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `user_permissions`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mdescribe `users`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `users`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:07:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForumTopic Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;35;1mForumPost Load (0.4ms)[0m   [0mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 1) [0m
+  [4;36;1mForumPost Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.3ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.3ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 68ms (View: 49, DB: 5) | 200 OK [http://localhost/forum_topics/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:08:14) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumTopic Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;36;1mForumPost Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 1) [0m
+  [4;35;1mForumPost Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_posts`[0m
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 179ms (View: 161, DB: 4) | 200 OK [http://localhost/forum_topics/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:08:35) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForumTopic Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;35;1mForumPost Load (0.1ms)[0m   [0mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 1) [0m
+  [4;36;1mForumPost Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mUser Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 65ms (View: 46, DB: 4) | 200 OK [http://localhost/forum_topics/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:09:01) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumTopic Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;36;1mForumPost Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 1) [0m
+  [4;35;1mForumPost Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_posts`[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 69ms (View: 56, DB: 4) | 200 OK [http://localhost/forum_topics/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:09:38) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForumTopic Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;35;1mForumPost Load (0.1ms)[0m   [0mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 1) [0m
+  [4;36;1mForumPost Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mUser Columns (5.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.8ms)
+Completed in 183ms (View: 64, DB: 9) | 200 OK [http://localhost/forum_topics/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing NewsPostsController#index (for 127.0.0.1 at 2009-08-30 17:09:52) [GET]
+  [4;36;1mNewsPost Load (0.5ms)[0m   [0;1mSELECT * FROM `news_posts` ORDER BY created_at DESC LIMIT 5[0m
+Rendering template within layouts/application
+Rendering news_posts/index
+  [4;35;1mNewsPost Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `news_posts`[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (2.1ms)
+Completed in 51ms (View: 40, DB: 3) | 200 OK [http://localhost/news_posts]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#index (for 127.0.0.1 at 2009-08-30 17:09:54) [GET]
+  [4;36;1mForumCategory Load (0.3ms)[0m   [0;1mSELECT * FROM `forum_categories` [0m
+Rendering template within layouts/application
+Rendering forum_categories/index
+  [4;35;1mForumCategory Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mUser Columns (2.2ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.7ms)
+Completed in 45ms (View: 30, DB: 6) | 200 OK [http://localhost/forum]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 17:09:55) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumCategory Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mForumCategory Load (0.3ms)[0m   [0mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;36;1mForumTopic Load (0.5ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC[0m
+  [4;35;1mForumTopic Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mUser Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 201ms (View: 183, DB: 5) | 200 OK [http://localhost/forum_categories/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:09:58) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mForumTopic Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.3ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;35;1mForumPost Load (0.7ms)[0m   [0mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 5) [0m
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.8ms)
+Completed in 61ms (View: 38, DB: 4) | 200 OK [http://localhost/forum_topics/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:10:01) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumTopic Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;36;1mForumPost Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 1) [0m
+  [4;35;1mForumPost Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_posts`[0m
+  [4;36;1mUser Columns (6.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 120ms (View: 71, DB: 9) | 200 OK [http://localhost/forum_topics/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing NewsPostsController#index (for 127.0.0.1 at 2009-08-30 17:10:36) [GET]
+  [4;35;1mNewsPost Load (0.1ms)[0m   [0mSELECT * FROM `news_posts` ORDER BY created_at DESC LIMIT 5[0m
+Rendering template within layouts/application
+Rendering news_posts/index
+  [4;36;1mNewsPost Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `news_posts`[0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 71ms (View: 60, DB: 3) | 200 OK [http://localhost/news_posts]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#index (for 127.0.0.1 at 2009-08-30 17:10:39) [GET]
+  [4;35;1mForumCategory Load (0.1ms)[0m   [0mSELECT * FROM `forum_categories` [0m
+Rendering template within layouts/application
+Rendering forum_categories/index
+  [4;36;1mForumCategory Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 60ms (View: 46, DB: 3) | 200 OK [http://localhost/forum]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 17:10:44) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForumCategory Columns (1.2ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mForumCategory Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC[0m
+  [4;36;1mForumTopic Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Load (0.2ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 58ms (View: 45, DB: 5) | 200 OK [http://localhost/forum_categories/1]
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:10:46) [GET]
+  Parameters: {"id"=>"3"}
+  [4;36;1mForumTopic Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mForumTopic Load (0.5ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 3) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;36;1mForumPost Load (0.4ms)[0m   [0;1mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 3) [0m
+  [4;35;1mUser Columns (6.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 55ms (View: 35, DB: 9) | 200 OK [http://localhost/forum_topics/3]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:10:48) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mForumTopic Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.2ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 2) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;35;1mForumPost Load (0.4ms)[0m   [0mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 2) [0m
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (1.4ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 91ms (View: 57, DB: 4) | 200 OK [http://localhost/forum_topics/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 17:11:24) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumCategory Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mForumCategory Load (0.1ms)[0m   [0mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;36;1mForumTopic Load (0.2ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC[0m
+  [4;35;1mForumTopic Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 80ms (View: 46, DB: 4) | 200 OK [http://localhost/forum_categories/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:11:26) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForumTopic Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+
+ActionView::TemplateError (Couldn't find ForumPost without an ID) on line #1 of app/views/forum_topics/show.html.erb:
+1: <% @forum_topic.forum_posts.find(:order => 'id ASC').each do |post| %>
+2: <div>
+3: 	<h2 style="display: inline;"><%=h post.title %></h2>
+4: 	<p style="display: inline;"><%=h post.user.login %> at <%=h post.created_at.to_s(:standard) %></p>
+
+    app/views/forum_topics/show.html.erb:1
+    app/controllers/forum_topics_controller.rb:18:in `show'
+
+Rendered rescues/_trace (239.6ms)
+Rendered rescues/_request_and_response (0.4ms)
+Rendering rescues/layout (internal_server_error)
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:11:37) [GET]
+  Parameters: {"id"=>"1"}
+  [4;35;1mForumTopic Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;35;1mForumPost Load (0.5ms)[0m   [0mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 1) ORDER BY id ASC[0m
+  [4;36;1mForumPost Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 60ms (View: 46, DB: 5) | 200 OK [http://localhost/forum_topics/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:11:59) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumTopic Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;36;1mForumPost Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 1) ORDER BY id ASC[0m
+  [4;35;1mForumPost Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_posts`[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 63ms (View: 50, DB: 4) | 200 OK [http://localhost/forum_topics/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing NewsPostsController#index (for 127.0.0.1 at 2009-08-30 17:12:14) [GET]
+  [4;35;1mNewsPost Load (0.1ms)[0m   [0mSELECT * FROM `news_posts` ORDER BY created_at DESC LIMIT 5[0m
+Rendering template within layouts/application
+Rendering news_posts/index
+  [4;36;1mNewsPost Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `news_posts`[0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (1.8ms)
+Completed in 215ms (View: 75, DB: 3) | 200 OK [http://localhost/news_posts]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing UsersController#show (for 127.0.0.1 at 2009-08-30 17:12:18) [GET]
+  Parameters: {"id"=>"1"}
+Rendering template within layouts/application
+Rendering users/show
+  [4;35;1mUser Columns (2.3ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (4.9ms)
+Completed in 52ms (View: 38, DB: 4) | 200 OK [http://localhost/users/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing NewsPostsController#index (for 127.0.0.1 at 2009-08-30 17:12:21) [GET]
+  [4;35;1mNewsPost Load (0.1ms)[0m   [0mSELECT * FROM `news_posts` ORDER BY created_at DESC LIMIT 5[0m
+Rendering template within layouts/application
+Rendering news_posts/index
+  [4;36;1mNewsPost Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `news_posts`[0m
+  [4;35;1mUser Columns (1.0ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 148ms (View: 100, DB: 3) | 200 OK [http://localhost/news_posts]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing NewsPostsController#show (for 127.0.0.1 at 2009-08-30 17:12:23) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mNewsPost Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `news_posts`[0m
+  [4;36;1mNewsPost Load (0.3ms)[0m   [0;1mSELECT * FROM `news_posts` WHERE (`news_posts`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering news_posts/show
+  [4;35;1mUser Columns (7.8ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 126ms (View: 100, DB: 10) | 200 OK [http://localhost/news_posts/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#index (for 127.0.0.1 at 2009-08-30 17:12:26) [GET]
+  [4;36;1mForumCategory Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_categories` [0m
+Rendering template within layouts/application
+Rendering forum_categories/index
+  [4;35;1mForumCategory Columns (2.0ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (1.9ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 74ms (View: 59, DB: 6) | 200 OK [http://localhost/forum]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 17:12:27) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumCategory Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mForumCategory Load (0.1ms)[0m   [0mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC[0m
+  [4;35;1mForumTopic Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mUser Columns (15.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 89ms (View: 63, DB: 18) | 200 OK [http://localhost/forum_categories/1]
+  [4;35;1mSQL (0.2ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 17:12:29) [GET]
+  Parameters: {"id"=>"2"}
+  [4;35;1mForumCategory Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mForumCategory Load (0.3ms)[0m   [0;1mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 2) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;35;1mForumTopic Load (0.4ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 2) ORDER BY updated_at DESC[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 44ms (View: 32, DB: 4) | 200 OK [http://localhost/forum_categories/2]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 17:12:34) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumCategory Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mForumCategory Load (0.1ms)[0m   [0mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC[0m
+  [4;35;1mForumTopic Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 206ms (View: 184, DB: 4) | 200 OK [http://localhost/forum_categories/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:12:53) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mForumTopic Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;35;1mForumPost Load (0.4ms)[0m   [0mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 5) ORDER BY id ASC[0m
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (1.8ms)
+Completed in 67ms (View: 45, DB: 4) | 200 OK [http://localhost/forum_topics/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing NewsPostsController#index (for 127.0.0.1 at 2009-08-30 17:12:55) [GET]
+  [4;36;1mNewsPost Load (0.1ms)[0m   [0;1mSELECT * FROM `news_posts` ORDER BY created_at DESC LIMIT 5[0m
+Rendering template within layouts/application
+Rendering news_posts/index
+  [4;35;1mNewsPost Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `news_posts`[0m
+  [4;36;1mUser Columns (5.7ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 49ms (View: 34, DB: 8) | 200 OK [http://localhost/news_posts]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing NewsPostsController#show (for 127.0.0.1 at 2009-08-30 17:14:31) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mNewsPost Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `news_posts`[0m
+  [4;35;1mNewsPost Load (0.3ms)[0m   [0mSELECT * FROM `news_posts` WHERE (`news_posts`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering news_posts/show
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (5.6ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 44ms (View: 24, DB: 8) | 200 OK [http://localhost/news_posts/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing NewsPostsController#index (for 127.0.0.1 at 2009-08-30 17:14:36) [GET]
+  [4;35;1mNewsPost Load (0.2ms)[0m   [0mSELECT * FROM `news_posts` ORDER BY created_at DESC LIMIT 5[0m
+Rendering template within layouts/application
+Rendering news_posts/index
+  [4;36;1mNewsPost Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `news_posts`[0m
+  [4;35;1mUser Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 77ms (View: 65, DB: 3) | 200 OK [http://localhost/news_posts]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing NewsPostsController#show (for 127.0.0.1 at 2009-08-30 17:14:38) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mNewsPost Columns (3.2ms)[0m   [0mSHOW FIELDS FROM `news_posts`[0m
+  [4;36;1mNewsPost Load (0.1ms)[0m   [0;1mSELECT * FROM `news_posts` WHERE (`news_posts`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering news_posts/show
+  [4;35;1mUser Columns (2.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 63ms (View: 35, DB: 7) | 200 OK [http://localhost/news_posts/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing NewsPostsController#index (for 127.0.0.1 at 2009-08-30 17:15:08) [GET]
+  [4;36;1mNewsPost Load (0.1ms)[0m   [0;1mSELECT * FROM `news_posts` ORDER BY created_at DESC LIMIT 5[0m
+Rendering template within layouts/application
+Rendering news_posts/index
+  [4;35;1mNewsPost Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `news_posts`[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 50ms (View: 40, DB: 3) | 200 OK [http://localhost/news_posts]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#index (for 127.0.0.1 at 2009-08-30 17:15:10) [GET]
+  [4;36;1mForumCategory Load (0.2ms)[0m   [0;1mSELECT * FROM `forum_categories` [0m
+Rendering template within layouts/application
+Rendering forum_categories/index
+  [4;35;1mForumCategory Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (1.8ms)
+Completed in 216ms (View: 184, DB: 4) | 200 OK [http://localhost/forum]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumCategoriesController#show (for 127.0.0.1 at 2009-08-30 17:15:14) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumCategory Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `forum_categories`[0m
+  [4;35;1mForumCategory Load (0.1ms)[0m   [0mSELECT * FROM `forum_categories` WHERE (`forum_categories`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_categories/show
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.forum_category_id = 1) ORDER BY updated_at DESC[0m
+  [4;35;1mForumTopic Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mUser Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.1ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.6ms)
+Completed in 83ms (View: 65, DB: 4) | 200 OK [http://localhost/forum_categories/1]
+  [4;35;1mSQL (0.1ms)[0m   [0mSET NAMES 'utf8'[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:15:17) [GET]
+  Parameters: {"id"=>"5"}
+  [4;35;1mForumTopic Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `forum_topics`[0m
+  [4;36;1mForumTopic Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 5) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;35;1mForumPost Load (0.1ms)[0m   [0mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 5) ORDER BY id ASC[0m
+  [4;36;1mUser Columns (1.1ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;36;1mUserPermissions Columns (0.7ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mUserPermissions Load (0.1ms)[0m   [0mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 65ms (View: 48, DB: 3) | 200 OK [http://localhost/forum_topics/5]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+
+
+Processing ForumTopicsController#show (for 127.0.0.1 at 2009-08-30 17:15:19) [GET]
+  Parameters: {"id"=>"1"}
+  [4;36;1mForumTopic Columns (18.7ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+Rendering template within layouts/application
+Rendering forum_topics/show
+  [4;36;1mForumPost Load (0.1ms)[0m   [0;1mSELECT * FROM `forum_posts` WHERE (`forum_posts`.forum_topic_id = 1) ORDER BY id ASC[0m
+  [4;35;1mForumPost Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_posts`[0m
+  [4;36;1mUser Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `users`[0m
+  [4;35;1mUser Load (0.1ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mCACHE (0.0ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;35;1mCACHE (0.0ms)[0m   [0mSELECT * FROM `users` WHERE (`users`.`id` = 1) [0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT * FROM `users` WHERE (`users`.`id` = 1) LIMIT 1[0m
+  [4;35;1mUserPermissions Columns (0.7ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mUserPermissions Load (0.2ms)[0m   [0;1mSELECT * FROM `user_permissions` WHERE (`user_permissions`.`user_id` = 1 AND `user_permissions`.`permission` = '--- :admin\n') LIMIT 1[0m
+Rendered users/_user_bar (0.5ms)
+Completed in 95ms (View: 63, DB: 22) | 200 OK [http://localhost/forum_topics/1]
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (9.2ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (5.4ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090829163902)
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (4.0ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(40), `name` varchar(100) DEFAULT '', `email` varchar(100), `crypted_password` varchar(40), `salt` varchar(40), `created_at` datetime, `updated_at` datetime, `remember_token` varchar(40), `remember_token_expires_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (16.5ms)[0m   [0mCREATE UNIQUE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829163902')[0m
+Migrating to CreateNewsPosts (20090829165231)
+  [4;35;1mSQL (6.6ms)[0m   [0mCREATE TABLE `news_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `image` varchar(255), `contents` text, `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829165231')[0m
+Migrating to CreateUserPermissions (20090829232815)
+  [4;35;1mSQL (3.9ms)[0m   [0mCREATE TABLE `user_permissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `permission` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.4ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829232815')[0m
+Migrating to CreateForumCategories (20090830183104)
+  [4;35;1mSQL (3.6ms)[0m   [0mCREATE TABLE `forum_categories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `parent` int(11), `priority` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830183104')[0m
+Migrating to CreateForumTopics (20090830185757)
+  [4;35;1mSQL (2.8ms)[0m   [0mCREATE TABLE `forum_topics` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `name` varchar(255), `forum_category_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830185757')[0m
+Migrating to CreateForumPosts (20090830192706)
+  [4;35;1mSQL (5.1ms)[0m   [0mCREATE TABLE `forum_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `title` varchar(255), `content` text, `forum_topic_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830192706')[0m
+Migrating to CreateForumForums (20090830212140)
+  [4;35;1mSQL (3.1ms)[0m   [0mCREATE TABLE `forum_forums` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `forum_category_id` int(11), `priority` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830212140')[0m
+Migrating to AddTestData (99999999999999)
+  [4;35;1mUser Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.3ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`login` = BINARY 'domia') LIMIT 1[0m
+  [4;36;1mUser Load (0.1ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY 'asuah@gatech.edu') LIMIT 1[0m
+  [4;35;1mUser Create (0.3ms)[0m   [0mINSERT INTO `users` (`name`, `salt`, `created_at`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `remember_token`, `login`, `email`) VALUES('', '12b644a2a80ad70742080c50c61de5606eecffdf', '2009-08-30 21:49:20', '2ea34f494f6514b751a3c7b277414904616a8f1a', NULL, '2009-08-30 21:49:20', NULL, 'domia', 'asuah@gatech.edu')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mNewsPost Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `news_posts`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.4ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:49:21', 'Lorem Ipsum 1', '2009-08-30 21:49:20', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mNewsPost Create (0.2ms)[0m   [0;1mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:49:22', 'Lorem Ipsum 2', '2009-08-30 21:49:20', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.2ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:49:23', 'Lorem Ipsum 3', '2009-08-30 21:49:20', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mNewsPost Create (0.2ms)[0m   [0;1mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:49:24', 'Lorem Ipsum 4', '2009-08-30 21:49:20', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.2ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:49:25', 'Lorem Ipsum 5', '2009-08-30 21:49:20', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUserPermissions Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUserPermissions Create (0.2ms)[0m   [0mINSERT INTO `user_permissions` (`created_at`, `updated_at`, `user_id`, `permission`) VALUES('2009-08-30 21:49:20', '2009-08-30 21:49:20', 1, '--- :admin\n')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumCategory Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumCategory Create (0.2ms)[0m   [0mINSERT INTO `forum_categories` (`name`, `parent`, `created_at`, `updated_at`, `priority`, `description`) VALUES('General', NULL, '2009-08-30 21:49:20', '2009-08-30 21:49:20', NULL, 'General chatter goes here')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumCategory Create (0.1ms)[0m   [0;1mINSERT INTO `forum_categories` (`name`, `parent`, `created_at`, `updated_at`, `priority`, `description`) VALUES('Off-topic', NULL, '2009-08-30 21:49:20', '2009-08-30 21:49:20', NULL, 'Off-topic chatter goes here')[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mCOMMIT[0m
+  [4;36;1mForumTopic Columns (0.8ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (0.3ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 1 in General', '2009-08-30 21:49:20', '2009-08-30 21:49:21', 1, 1)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumTopic Create (0.2ms)[0m   [0mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 2 in General', '2009-08-30 21:49:20', '2009-08-30 21:49:22', 1, 1)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (0.2ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 3 in General', '2009-08-30 21:49:20', '2009-08-30 21:49:23', 1, 1)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumTopic Create (0.1ms)[0m   [0mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 4 in General', '2009-08-30 21:49:20', '2009-08-30 21:49:24', 1, 1)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (0.2ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 5 in General', '2009-08-30 21:49:20', '2009-08-30 21:49:25', 1, 1)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mForumPost Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mForumTopic Load (0.3ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.3ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:49:21', 'Re: Example Topic 1 in General', '2009-08-30 21:49:20', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:49:22', 'Re: Example Topic 1 in General', '2009-08-30 21:49:20', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:49:23', 'Re: Example Topic 1 in General', '2009-08-30 21:49:20', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:49:24', 'Re: Example Topic 1 in General', '2009-08-30 21:49:20', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:49:25', 'Re: Example Topic 1 in General', '2009-08-30 21:49:20', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('99999999999999')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `forum_categories`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `forum_categories`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `forum_forums`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `forum_forums`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `forum_forums`[0m
+  [4;35;1mSQL (0.8ms)[0m   [0mSHOW FIELDS FROM `forum_posts`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `forum_posts`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `forum_posts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `forum_topics`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `forum_topics`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `news_posts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `news_posts`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `news_posts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `user_permissions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `user_permissions`[0m
+  [4;35;1mSQL (1.2ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.3ms)[0m   [0mSHOW KEYS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mSET NAMES 'utf8'[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mSET SQL_AUTO_IS_NULL=0[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (6.5ms)[0m   [0mCREATE TABLE `schema_migrations` (`version` varchar(255) NOT NULL) ENGINE=InnoDB[0m
+  [4;36;1mSQL (5.3ms)[0m   [0;1mCREATE UNIQUE INDEX `unique_schema_migrations` ON `schema_migrations` (`version`)[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSELECT version FROM schema_migrations[0m
+Migrating to CreateUsers (20090829163902)
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW TABLES[0m
+  [4;36;1mSQL (4.3ms)[0m   [0;1mCREATE TABLE `users` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `login` varchar(40), `name` varchar(100) DEFAULT '', `email` varchar(100), `crypted_password` varchar(40), `salt` varchar(40), `created_at` datetime, `updated_at` datetime, `remember_token` varchar(40), `remember_token_expires_at` datetime) ENGINE=InnoDB[0m
+  [4;35;1mSQL (16.1ms)[0m   [0mCREATE UNIQUE INDEX `index_users_on_login` ON `users` (`login`)[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829163902')[0m
+Migrating to CreateNewsPosts (20090829165231)
+  [4;35;1mSQL (2.9ms)[0m   [0mCREATE TABLE `news_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `title` varchar(255), `image` varchar(255), `contents` text, `user_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829165231')[0m
+Migrating to CreateUserPermissions (20090829232815)
+  [4;35;1mSQL (3.3ms)[0m   [0mCREATE TABLE `user_permissions` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `permission` varchar(255), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090829232815')[0m
+Migrating to CreateForumCategories (20090830183104)
+  [4;35;1mSQL (3.7ms)[0m   [0mCREATE TABLE `forum_categories` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `parent` int(11), `priority` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830183104')[0m
+Migrating to CreateForumTopics (20090830185757)
+  [4;35;1mSQL (26.6ms)[0m   [0mCREATE TABLE `forum_topics` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `name` varchar(255), `forum_category_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (1.0ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830185757')[0m
+Migrating to CreateForumPosts (20090830192706)
+  [4;35;1mSQL (4.7ms)[0m   [0mCREATE TABLE `forum_posts` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `user_id` int(11), `title` varchar(255), `content` text, `forum_topic_id` int(11), `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830192706')[0m
+Migrating to CreateForumForums (20090830212140)
+  [4;35;1mSQL (10.3ms)[0m   [0mCREATE TABLE `forum_forums` (`id` int(11) DEFAULT NULL auto_increment PRIMARY KEY, `name` varchar(255), `description` text, `forum_category_id` int(11), `priority` int(11) DEFAULT 0, `created_at` datetime, `updated_at` datetime) ENGINE=InnoDB[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mINSERT INTO schema_migrations (version) VALUES ('20090830212140')[0m
+Migrating to AddTestData (99999999999999)
+  [4;35;1mUser Columns (1.4ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUser Load (0.4ms)[0m   [0mSELECT `users`.id FROM `users` WHERE (`users`.`login` = BINARY 'domia') LIMIT 1[0m
+  [4;36;1mUser Load (0.2ms)[0m   [0;1mSELECT `users`.id FROM `users` WHERE (`users`.`email` = BINARY 'asuah@gatech.edu') LIMIT 1[0m
+  [4;35;1mUser Create (0.3ms)[0m   [0mINSERT INTO `users` (`name`, `salt`, `created_at`, `crypted_password`, `remember_token_expires_at`, `updated_at`, `remember_token`, `login`, `email`) VALUES('', '50eb4fe51d90be0bcf5973c95ab7b4df915f1cab', '2009-08-30 21:50:44', 'bb490d5654b392c9deba76b3601698e7db49d889', NULL, '2009-08-30 21:50:44', NULL, 'domia', 'asuah@gatech.edu')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mNewsPost Columns (1.1ms)[0m   [0mSHOW FIELDS FROM `news_posts`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.4ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:50:45', 'Lorem Ipsum 1', '2009-08-30 21:50:44', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (22.6ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mNewsPost Create (0.3ms)[0m   [0;1mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:50:47', 'Lorem Ipsum 2', '2009-08-30 21:50:45', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.2ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:50:48', 'Lorem Ipsum 3', '2009-08-30 21:50:45', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mNewsPost Create (0.2ms)[0m   [0;1mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:50:49', 'Lorem Ipsum 4', '2009-08-30 21:50:45', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mNewsPost Create (0.3ms)[0m   [0mINSERT INTO `news_posts` (`created_at`, `title`, `updated_at`, `user_id`, `contents`, `image`) VALUES('2009-08-30 21:50:50', 'Lorem Ipsum 5', '2009-08-30 21:50:45', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.', NULL)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mUserPermissions Columns (0.8ms)[0m   [0mSHOW FIELDS FROM `user_permissions`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mUserPermissions Create (0.2ms)[0m   [0mINSERT INTO `user_permissions` (`created_at`, `updated_at`, `user_id`, `permission`) VALUES('2009-08-30 21:50:45', '2009-08-30 21:50:45', 1, '--- :admin\n')[0m
+  [4;36;1mSQL (0.8ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumCategory Columns (0.9ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumCategory Create (0.2ms)[0m   [0mINSERT INTO `forum_categories` (`name`, `parent`, `created_at`, `updated_at`, `priority`, `description`) VALUES('General', NULL, '2009-08-30 21:50:45', '2009-08-30 21:50:45', NULL, 'General chatter goes here')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumCategory Create (0.1ms)[0m   [0;1mINSERT INTO `forum_categories` (`name`, `parent`, `created_at`, `updated_at`, `priority`, `description`) VALUES('Off-topic', NULL, '2009-08-30 21:50:45', '2009-08-30 21:50:45', NULL, 'Off-topic chatter goes here')[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mForumTopic Columns (1.0ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mSQL (0.1ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (0.2ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 1 in General', '2009-08-30 21:50:45', '2009-08-30 21:50:46', 1, 1)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumTopic Create (0.2ms)[0m   [0mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 2 in General', '2009-08-30 21:50:45', '2009-08-30 21:50:47', 1, 1)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (0.2ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 3 in General', '2009-08-30 21:50:45', '2009-08-30 21:50:48', 1, 1)[0m
+  [4;35;1mSQL (0.4ms)[0m   [0mCOMMIT[0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumTopic Create (0.1ms)[0m   [0mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 4 in General', '2009-08-30 21:50:45', '2009-08-30 21:50:49', 1, 1)[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.0ms)[0m   [0mBEGIN[0m
+  [4;36;1mForumTopic Create (0.1ms)[0m   [0;1mINSERT INTO `forum_topics` (`name`, `created_at`, `updated_at`, `user_id`, `forum_category_id`) VALUES('Example Topic 5 in General', '2009-08-30 21:50:45', '2009-08-30 21:50:50', 1, 1)[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mCOMMIT[0m
+  [4;36;1mForumPost Columns (0.9ms)[0m   [0;1mSHOW FIELDS FROM `forum_posts`[0m
+  [4;35;1mForumTopic Load (0.3ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.3ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:50:46', 'Re: Example Topic 1 in General', '2009-08-30 21:50:45', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:50:47', 'Re: Example Topic 1 in General', '2009-08-30 21:50:45', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:50:48', 'Re: Example Topic 1 in General', '2009-08-30 21:50:45', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.1ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:50:49', 'Re: Example Topic 1 in General', '2009-08-30 21:50:45', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mForumTopic Load (0.1ms)[0m   [0mSELECT * FROM `forum_topics` WHERE (`forum_topics`.`id` = 1) [0m
+  [4;36;1mSQL (0.0ms)[0m   [0;1mBEGIN[0m
+  [4;35;1mForumPost Create (0.2ms)[0m   [0mINSERT INTO `forum_posts` (`forum_topic_id`, `created_at`, `title`, `updated_at`, `user_id`, `content`) VALUES(1, '2009-08-30 21:50:50', 'Re: Example Topic 1 in General', '2009-08-30 21:50:45', 1, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ut arcu in libero viverra suscipit. Cras et orci enim, in ultricies purus. Duis auctor, orci at dignissim euismod, metus sem pharetra diam, semper varius mauris ante sit amet nisl. Sed eleifend egestas sagittis. Aliquam nibh massa, convallis et volutpat a, gravida eu sapien. Ut dui justo, rutrum sed iaculis ac, egestas in enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis adipiscing tempor semper. Donec malesuada ipsum id odio egestas pellentesque. Maecenas a erat est. Curabitur vel nisl sed dui adipiscing placerat id laoreet leo.')[0m
+  [4;36;1mSQL (0.4ms)[0m   [0;1mCOMMIT[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mINSERT INTO schema_migrations (version) VALUES ('99999999999999')[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mSELECT version FROM schema_migrations[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW TABLES[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `forum_categories`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `forum_categories`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `forum_categories`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mSHOW FIELDS FROM `forum_forums`[0m
+  [4;35;1mSQL (10.3ms)[0m   [0mdescribe `forum_forums`[0m
+  [4;36;1mSQL (0.3ms)[0m   [0;1mSHOW KEYS FROM `forum_forums`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `forum_posts`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mdescribe `forum_posts`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `forum_posts`[0m
+  [4;36;1mSQL (0.6ms)[0m   [0;1mSHOW FIELDS FROM `forum_topics`[0m
+  [4;35;1mSQL (0.5ms)[0m   [0mdescribe `forum_topics`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `forum_topics`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mSHOW FIELDS FROM `news_posts`[0m
+  [4;36;1mSQL (0.5ms)[0m   [0;1mdescribe `news_posts`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `news_posts`[0m
+  [4;36;1mSQL (1.1ms)[0m   [0;1mSHOW FIELDS FROM `user_permissions`[0m
+  [4;35;1mSQL (0.6ms)[0m   [0mdescribe `user_permissions`[0m
+  [4;36;1mSQL (0.2ms)[0m   [0;1mSHOW KEYS FROM `user_permissions`[0m
+  [4;35;1mSQL (0.7ms)[0m   [0mSHOW FIELDS FROM `users`[0m
+  [4;36;1mSQL (0.7ms)[0m   [0;1mdescribe `users`[0m
+  [4;35;1mSQL (0.2ms)[0m   [0mSHOW KEYS FROM `users`[0m

@@ -1,18 +1,7 @@
-<p>
-  <b>User:</b>
-  <%=h @forum_topic.user %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%=h @forum_topic.name %>
-</p>
-
-<p>
-  <b>Forum category:</b>
-  <%=h @forum_topic.forum_category %>
-</p>
-
-
-<%= link_to 'Edit', edit_forum_topic_path(@forum_topic) %> |
-<%= link_to 'Back', forum_topics_path %>
+<% @forum_topic.forum_posts.find(:all, :order => 'id ASC').each do |post| %>
+<div>
+	<h3 style="display: inline;"><%=h post.title %></h3>
+	<p style="display: inline;"><%=h post.user.login %> at <%=h post.created_at.to_s(:standard) %></p>
+	<p><%= post.content %></p>
+</div>
+<% end %>

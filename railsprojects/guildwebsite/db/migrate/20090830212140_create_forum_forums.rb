@@ -1,9 +1,9 @@
-class CreateForumCategories < ActiveRecord::Migration
+class CreateForumForums < ActiveRecord::Migration
   def self.up
-    create_table :forum_categories do |t|
+    create_table :forum_forums do |t|
       t.string :name
       t.text :description
-      t.integer :parent
+      t.references :forum_category
       t.integer :priority, :default => 0
 
       t.timestamps
@@ -11,6 +11,6 @@ class CreateForumCategories < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :forum_categories
+    drop_table :forum_forums
   end
 end
