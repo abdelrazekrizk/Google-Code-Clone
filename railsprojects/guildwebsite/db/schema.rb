@@ -13,8 +13,6 @@ ActiveRecord::Schema.define(:version => 99999999999999) do
 
   create_table "forum_categories", :force => true do |t|
     t.string   "name"
-    t.text     "description"
-    t.integer  "parent"
     t.integer  "priority"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -23,15 +21,15 @@ ActiveRecord::Schema.define(:version => 99999999999999) do
   create_table "forum_forums", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "forum_category_id"
-    t.integer  "priority",          :default => 0
+    t.integer  "priority"
+    t.integer  "forum_category_id", :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "forum_posts", :force => true do |t|
-    t.integer  "user_id"
     t.string   "title"
+    t.integer  "user_id"
     t.text     "content"
     t.integer  "forum_topic_id"
     t.datetime "created_at"
@@ -39,9 +37,10 @@ ActiveRecord::Schema.define(:version => 99999999999999) do
   end
 
   create_table "forum_topics", :force => true do |t|
+    t.string   "title"
+    t.boolean  "stickied",       :default => false
     t.integer  "user_id"
-    t.string   "name"
-    t.integer  "forum_category_id"
+    t.integer  "forum_forum_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

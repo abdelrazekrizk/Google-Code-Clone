@@ -1,0 +1,46 @@
+<h1><%=h @forum.name %></h1>
+
+<% unless @stickied.empty? %>
+<table>
+	<thead>
+		<tr>
+			<th>Stickied Topics</th>
+			<th>Replies</th>
+			<th>Last Post</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @stickied.each do |topic| %>
+		<tr>
+			<td><%= link_to topic.name, :controller => :forum_topics, :action => :show, :id => topic.id %></td>
+			<td>reply count here</td>
+			<td>last post here</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+<% end %>
+
+<table>
+	<thead>
+		<tr>
+			<th>Topics</th>
+			<th>Replies</th>
+			<th>Last Post</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @topics.each do |topic| %>
+		<tr>
+			<td><%= link_to topic.title, :controller => :forum_topics, :action => :show, :id => topic.id %></td>
+			<td>reply count here</td>
+			<td>last post here</td>
+		</tr>
+		<% end %>
+		<% if @topics.empty? %>
+		<tr>
+			<td>No topics in this forum.</td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>

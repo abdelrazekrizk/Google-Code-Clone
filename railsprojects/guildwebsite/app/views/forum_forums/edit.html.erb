@@ -1,0 +1,28 @@
+<h1>Editing forum_forum</h1>
+
+<% form_for(@forum_forum) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :priority %><br />
+    <%= f.text_field :priority %>
+  </p>
+  <p>
+    <%= f.label :ForumCategory %><br />
+    <%= f.text_field :ForumCategory %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @forum_forum %> |
+<%= link_to 'Back', forum_forums_path %>

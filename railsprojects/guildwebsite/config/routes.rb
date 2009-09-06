@@ -1,5 +1,11 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :forum_posts
+
+  map.resources :forum_topics
+
   map.resources :forum_forums
+
+  map.resources :forum_categories
 
   map.resources :forum_posts
 

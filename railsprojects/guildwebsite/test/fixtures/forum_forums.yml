@@ -3,9 +3,11 @@
 one:
   name: MyString
   description: MyText
-  forum_category: 
+  priority: 1
+  ForumCategory: 
 
 two:
   name: MyString
   description: MyText
-  forum_category: 
+  priority: 1
+  ForumCategory: 

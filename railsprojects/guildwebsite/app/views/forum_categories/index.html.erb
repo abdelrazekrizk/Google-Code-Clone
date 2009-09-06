@@ -1,0 +1,31 @@
+<h1>Forums</h11>
+
+<% @forum_categories.each do |category| %>
+<div>
+	<table>
+		<tbody>
+			<tr>
+				<td>
+					<%=h category.name %>
+				</td>
+				<td>
+					Posts
+				</td>
+				<td>
+					Last Post
+				</td>
+			</tr>
+			<% if category.forum_forums.empty? %>
+			<tr><td>No forums in this category.</td></tr>
+			<% end %>
+			<% category.forum_forums.each do |forum| %>
+				<tr>
+					<td><h4><%= link_to h(forum.name), :controller => :forum_forums, :action => :show, :id => forum.id %></h4><p><%=h forum.description %></p></td>
+					<td><p>post count here</p></td>
+					<td><p>last post here</p></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+</div>
+<% end %>

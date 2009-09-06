@@ -1,0 +1,8 @@
+<h1><%=h @forum_topic.title %></h1>
+
+<% @forum_topic.forum_posts.each do |post| %>
+<div>
+	<h4><%= post.title %></h4>
+	<p><%= post.content %></p>
+</div>
+<% end %>	

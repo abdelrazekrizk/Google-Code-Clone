@@ -1,0 +1,8 @@
+<p>
+  <b>Name:</b>
+  <%=h @forum_category.name %>
+</p>
+
+
+<%= link_to 'Edit', edit_forum_category_path(@forum_category) %> |
+<%= link_to 'Back', forum_categories_path %>
