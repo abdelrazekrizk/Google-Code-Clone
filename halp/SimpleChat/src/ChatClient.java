@@ -59,14 +59,19 @@ public class ChatClient extends AbstractClient {
 	 *            The message from the server.
 	 */
 	public void handleMessageFromServer(Object msg) {
-		if (msg instanceof String) {
-			clientUI.display(msg.toString());
-		} else if (msg instanceof FileTransferRequest) {
-			// for now accept all requests, in the future add some type of
-			// confirmation
-			FileTransferRequest req = (FileTransferRequest) msg;
-			req.acceptRequest();
+		if(msg.toString().charAt(0) == '#')
+		{
+			if(msg.toString().indexOf("#sendfile") >= 0)
+			{
+				
+			}
 		}
+		else
+		{
+			clientUI.display(msg.toString());
+		}
+		
+		 
 	}
 
 	/**
@@ -142,7 +147,16 @@ public class ChatClient extends AbstractClient {
 						}
 					}
 				} else if (message.indexOf("#sendfile") >= 0) {
-					sendFileToUser(message);
+					String[] split = message.split(" ");
+					String fullFilePath = split[2];
+					
+					File f = new File(fullFilePath);
+					int size = (int)f.length();
+
+					message = message +" "+ getPort()+1 + " " + size;
+					sendToServer(message);
+					FileTransfer ft = new FileTransfer(fullFilePath, getPort()+1);
+					ft.start();
 				} else {
 					sendToServer(message);
 				}
@@ -155,36 +169,18 @@ public class ChatClient extends AbstractClient {
 		}
 	}
 
-	private void sendFileToUser(String message) {
+	/*private void sendFileToUser(String message) {
 		// starts as e.g. "#sendfile Bob C:\|file.jpg"
-		String targetUser;
-		String dir;
-		String filename;
-		String full = message.toString();
-		int start = full.indexOf("#sendfile") + 10;
-		int end = full.length();
-		full = full.substring(start, end);
-		// e.g. full is now "Bob C:\ file.jpg"
-
-		targetUser = full;
-		end = targetUser.indexOf(" ");
-		targetUser = targetUser.substring(0, end);
-		// targetUser should now be "Bob"
-		full = full.substring(end, full.length());
-		// full should now be "c:\|file.jpg"
-		dir = full;
-		end = dir.indexOf("|");
-		dir = dir.substring(0 + 1, end);
-		full = full.substring(end + 1, full.length());
-		filename = full;
-
-		File f = new File(dir + filename);
-		int filesize = (int) f.length();
-		String host = getInetAddress().toString();
-		dir = dir + "\\";
-
-		FileTransferRequest sf = new FileTransferRequest(filename, filesize,
-				host, getPort() + 1, userName, targetUser);
+		String[] split = message.split(" ");
+		String targetUser = split[1];
+		String fullFilePath = split[2];
+		
+		String filename = fullFilePath.substring(fullFilePath.lastIndexOf('\\') + 1);
+		
+		System.out.println(targetUser);
+		System.out.println(fullFilePath);
+		System.out.println(filename);
+		
 		try {
 			sendToServer(sf);
 		} catch (IOException ioe) {
@@ -196,7 +192,7 @@ public class ChatClient extends AbstractClient {
 				getInetAddress().toString(), getPort() + 1, userName,
 				targetUser);
 		ft.start();
-	}
+	}*/
 
 	/**
 	 * Client Command Methods

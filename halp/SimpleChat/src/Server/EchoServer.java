@@ -56,9 +56,6 @@ public class EchoServer extends AbstractServer {
 	public void handleMessageFromClient(Object msg, ConnectionToClient client) {
 		if (msg.toString().charAt(0) == '#') {
 			performClientCommand(msg, client);
-		} else if (msg instanceof FileTransferRequest) {
-			FileTransferRequest req = (FileTransferRequest) msg;
-			sendFileToAClient(req);
 		} else {
 
 			if (client.getInfo("group") == null) {
@@ -314,6 +311,20 @@ public class EchoServer extends AbstractServer {
 		}
 
 	}
+	
+	private void clientSendFile(Object msg, ConnectionToClient client)
+	{
+		String senderIP = client.getInetAddress().toString();
+		String message = msg.toString();
+		String[] split = message.split(" ");
+		String targetUser = split[1];
+		String fullFilePath = split[2];
+		String filename = fullFilePath.substring(fullFilePath.lastIndexOf('\\') + 1);
+		
+		System.out.println(targetUser);
+		System.out.println(fullFilePath);
+		System.out.println(filename);
+	}
 
 	private void clientCommandIsHere(Object msg, ConnectionToClient client) {
 		if (client.getInfo("group") != null) {
@@ -392,7 +403,7 @@ public class EchoServer extends AbstractServer {
 		}
 	}
 
-	public void sendFileToAClient(FileTransferRequest req) {
+	/*public void sendFileToAClient(FileTransferRequest req) {
 		String targetUser = req.getTargetUser();
 
 		Thread[] clientThreadList = getClientConnections();
@@ -407,7 +418,7 @@ public class EchoServer extends AbstractServer {
 				} catch (Exception ex) {
 				}
 		}
-	}
+	}*/
 
 	/**************** End Client Commands *********************/
 

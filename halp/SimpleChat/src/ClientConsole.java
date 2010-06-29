@@ -55,7 +55,7 @@ public class ClientConsole extends JFrame implements ChatIF {
 					if (!targetuser.getText().equals("")) {
 						String message = "#sendfile" + " "
 								+ targetuser.getText() + " " + dir.getText()
-								+ "|" + filename.getText();
+								+ "" + filename.getText();
 						;
 						client.handleMessageFromClientUI(message);
 					} else {

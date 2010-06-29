@@ -31,12 +31,20 @@ public class FileReceive extends Thread {
 			System.out.println(ioe);
 		}
 
-		byte[] transferArray = new byte[fileSize];
+		//byte[] transferArray = new byte[fileSize];
+		byte[] buffer=new byte[1024];
 		try {
 			InputStream is = clientSocket.getInputStream();
 			FileOutputStream fos = new FileOutputStream(saveDir + fileName);
 			BufferedOutputStream bos = new BufferedOutputStream(fos);
-			bytesRead = is.read(transferArray, 0, transferArray.length);
+			
+			int readData;
+			while((readData=is.read(buffer))!=-1)
+			{
+				bos.write(buffer,0,readData);
+			} 
+			
+			/*bytesRead = is.read(transferArray, 0, transferArray.length);
 			current = bytesRead;
 
 			do {
@@ -46,7 +54,7 @@ public class FileReceive extends Thread {
 					current += bytesRead;
 			} while (bytesRead > -1);
 
-			bos.write(transferArray, 0, current);
+			bos.write(transferArray, 0, current);*/
 			bos.flush();
 			bos.close();
 			clientSocket.close();

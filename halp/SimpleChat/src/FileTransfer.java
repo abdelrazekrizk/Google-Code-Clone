@@ -3,10 +3,6 @@ import java.io.*;
 
 public class FileTransfer extends Thread {
 	String fileDir;
-	String fileName;
-	String hostIP;
-	String sendingUserName;
-	String targetUserName;
 	int fileSize;
 	int port;
 	ServerSocket fileHostSocket;
@@ -17,16 +13,9 @@ public class FileTransfer extends Thread {
 
 	}
 
-	public FileTransfer(String fileDir, String fileName, int fileSize,
-			String hostIP, int port, String sendingUserName,
-			String targetUserName) {
+	public FileTransfer(String fileDir,int port) {
 		this.fileDir = fileDir;
-		this.fileName = fileName;
-		this.fileSize = fileSize;
-		this.hostIP = hostIP;
 		this.port = port;
-		this.sendingUserName = sendingUserName;
-		this.targetUserName = targetUserName;
 	}
 
 	public void run() {
@@ -37,7 +26,7 @@ public class FileTransfer extends Thread {
 			System.out.println(e);
 		}
 
-		transferFile = new File(fileDir + fileName);
+		transferFile = new File(fileDir);
 		byte[] transferArray = new byte[(int) transferFile.length()];
 		try {
 			FileInputStream fis = new FileInputStream(transferFile);
