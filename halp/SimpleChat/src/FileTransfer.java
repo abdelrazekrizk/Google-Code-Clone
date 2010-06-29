@@ -1,8 +1,7 @@
 import java.net.*;
 import java.io.*;
 
-public class FileTransfer extends Thread
-{
+public class FileTransfer extends Thread {
 	String fileDir;
 	String fileName;
 	String hostIP;
@@ -13,15 +12,14 @@ public class FileTransfer extends Thread
 	ServerSocket fileHostSocket;
 	Socket clientSocket;
 	File transferFile;
-	
-	
-	public FileTransfer()
-	{
-		
+
+	public FileTransfer() {
+
 	}
-	
-	public FileTransfer(String fileDir, String fileName, int fileSize, String hostIP, int port, String sendingUserName, String targetUserName)
-	{
+
+	public FileTransfer(String fileDir, String fileName, int fileSize,
+			String hostIP, int port, String sendingUserName,
+			String targetUserName) {
 		this.fileDir = fileDir;
 		this.fileName = fileName;
 		this.fileSize = fileSize;
@@ -30,52 +28,38 @@ public class FileTransfer extends Thread
 		this.sendingUserName = sendingUserName;
 		this.targetUserName = targetUserName;
 	}
-	
-	public void run()
-	{
-		try
-		{
+
+	public void run() {
+		try {
 			fileHostSocket = new ServerSocket(port);
 			clientSocket = fileHostSocket.accept();
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			System.out.println(e);
 		}
-		
-		transferFile =  new File(fileDir + fileName);
-		byte [] transferArray  = new byte [(int)transferFile.length()];
-		try
-		{
+
+		transferFile = new File(fileDir + fileName);
+		byte[] transferArray = new byte[(int) transferFile.length()];
+		try {
 			FileInputStream fis = new FileInputStream(transferFile);
 			BufferedInputStream bis = new BufferedInputStream(fis);
-			bis.read(transferArray,0,transferArray.length);
+			bis.read(transferArray, 0, transferArray.length);
 			fis.close();
 			bis.close();
 
-		}
-		catch(FileNotFoundException fne)
-		{
+		} catch (FileNotFoundException fne) {
 			System.out.println(fne);
-		}
-		catch(IOException ioe)
-		{
+		} catch (IOException ioe) {
 			System.out.println(ioe);
 		}
-		
-		try
-		{
+
+		try {
 			OutputStream os = clientSocket.getOutputStream();
-			os.write(transferArray,0,transferArray.length);
+			os.write(transferArray, 0, transferArray.length);
 			os.flush();
 			clientSocket.close();
-		}
-		catch(Exception e)
-		{
+		} catch (Exception e) {
 			System.out.println(e);
 		}
-
-
 
 	}
 }
