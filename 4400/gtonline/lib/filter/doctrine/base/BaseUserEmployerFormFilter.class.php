@@ -15,7 +15,7 @@ abstract class BaseUserEmployerFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'userId'     => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('User'), 'add_empty' => true)),
       'employerId' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Employer'), 'add_empty' => true)),
-      'jobTitle'   => new sfWidgetFormFilterInput(),
+      'jobTitle'   => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(

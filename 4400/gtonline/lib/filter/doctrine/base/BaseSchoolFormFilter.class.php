@@ -13,13 +13,13 @@ abstract class BaseSchoolFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'name' => new sfWidgetFormFilterInput(array('with_empty' => false)),
-      'type' => new sfWidgetFormChoice(array('choices' => array('' => '', 'College/University' => 'College/University', 'High School' => 'High School', 'Middle School' => 'Middle School', 'Elementary School' => 'Elementary School'))),
+      'name'           => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'school_type_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('SchoolType'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
-      'name' => new sfValidatorPass(array('required' => false)),
-      'type' => new sfValidatorChoice(array('required' => false, 'choices' => array('College/University' => 'College/University', 'High School' => 'High School', 'Middle School' => 'Middle School', 'Elementary School' => 'Elementary School'))),
+      'name'           => new sfValidatorPass(array('required' => false)),
+      'school_type_id' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('SchoolType'), 'column' => 'id')),
     ));
 
     $this->widgetSchema->setNameFormat('school_filters[%s]');
@@ -39,9 +39,9 @@ abstract class BaseSchoolFormFilter extends BaseFormFilterDoctrine
   public function getFields()
   {
     return array(
-      'id'   => 'Number',
-      'name' => 'Text',
-      'type' => 'Enum',
+      'id'             => 'Number',
+      'name'           => 'Text',
+      'school_type_id' => 'ForeignKey',
     );
   }
 }

@@ -15,15 +15,15 @@ abstract class BaseSchoolForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'   => new sfWidgetFormInputHidden(),
-      'name' => new sfWidgetFormInputText(),
-      'type' => new sfWidgetFormChoice(array('choices' => array('College/University' => 'College/University', 'High School' => 'High School', 'Middle School' => 'Middle School', 'Elementary School' => 'Elementary School'))),
+      'id'             => new sfWidgetFormInputHidden(),
+      'name'           => new sfWidgetFormInputText(),
+      'school_type_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('SchoolType'), 'add_empty' => false)),
     ));
 
     $this->setValidators(array(
-      'id'   => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'name' => new sfValidatorString(array('max_length' => 255)),
-      'type' => new sfValidatorChoice(array('choices' => array(0 => 'College/University', 1 => 'High School', 2 => 'Middle School', 3 => 'Elementary School'))),
+      'id'             => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'name'           => new sfValidatorString(array('max_length' => 255)),
+      'school_type_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('SchoolType'))),
     ));
 
     $this->validatorSchema->setPostValidator(

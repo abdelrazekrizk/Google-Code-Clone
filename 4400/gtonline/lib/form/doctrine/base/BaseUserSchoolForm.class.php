@@ -25,8 +25,12 @@ abstract class BaseUserSchoolForm extends BaseFormDoctrine
       'id'             => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'userId'         => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('User'))),
       'schoolId'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('School'))),
-      'graduationYear' => new sfValidatorInteger(array('required' => false)),
+      'graduationYear' => new sfValidatorInteger(),
     ));
+
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorDoctrineUnique(array('model' => 'UserSchool', 'column' => array('userid', 'schoolid', 'graduationyear')))
+    );
 
     $this->widgetSchema->setNameFormat('user_school[%s]');
 

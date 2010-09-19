@@ -15,21 +15,21 @@ abstract class BaseAccountForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'          => new sfWidgetFormInputHidden(),
-      'email'       => new sfWidgetFormInputText(),
-      'password'    => new sfWidgetFormInputText(),
-      'firstname'   => new sfWidgetFormInputText(),
-      'lastname'    => new sfWidgetFormInputText(),
-      'accountType' => new sfWidgetFormChoice(array('choices' => array('normal' => 'normal', 'admin' => 'admin'))),
+      'id'        => new sfWidgetFormInputHidden(),
+      'email'     => new sfWidgetFormInputText(),
+      'password'  => new sfWidgetFormInputText(),
+      'firstname' => new sfWidgetFormInputText(),
+      'lastname'  => new sfWidgetFormInputText(),
+      'isAdmin'   => new sfWidgetFormInputCheckbox(),
     ));
 
     $this->setValidators(array(
-      'id'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
-      'email'       => new sfValidatorString(array('max_length' => 255)),
-      'password'    => new sfValidatorString(array('max_length' => 255)),
-      'firstname'   => new sfValidatorString(array('max_length' => 255)),
-      'lastname'    => new sfValidatorString(array('max_length' => 255)),
-      'accountType' => new sfValidatorChoice(array('choices' => array(0 => 'normal', 1 => 'admin'))),
+      'id'        => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'email'     => new sfValidatorString(array('max_length' => 255)),
+      'password'  => new sfValidatorString(array('max_length' => 255)),
+      'firstname' => new sfValidatorString(array('max_length' => 255)),
+      'lastname'  => new sfValidatorString(array('max_length' => 255)),
+      'isAdmin'   => new sfValidatorBoolean(),
     ));
 
     $this->validatorSchema->setPostValidator(

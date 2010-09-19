@@ -25,7 +25,7 @@ abstract class BaseUserEmployerForm extends BaseFormDoctrine
       'id'         => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'userId'     => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('User'))),
       'employerId' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Employer'))),
-      'jobTitle'   => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'jobTitle'   => new sfValidatorString(array('max_length' => 255)),
     ));
 
     $this->widgetSchema->setNameFormat('user_employer[%s]');

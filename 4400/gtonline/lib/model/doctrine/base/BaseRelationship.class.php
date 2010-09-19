@@ -9,7 +9,7 @@
  * @property integer $destinationUserId
  * @property string $description
  * @property date $acceptTime
- * @property enum $status
+ * @property integer $status
  * @property User $SourceUser
  * @property User $DestinationUser
  * 
@@ -17,7 +17,7 @@
  * @method integer      getDestinationUserId() Returns the current record's "destinationUserId" value
  * @method string       getDescription()       Returns the current record's "description" value
  * @method date         getAcceptTime()        Returns the current record's "acceptTime" value
- * @method enum         getStatus()            Returns the current record's "status" value
+ * @method integer      getStatus()            Returns the current record's "status" value
  * @method User         getSourceUser()        Returns the current record's "SourceUser" value
  * @method User         getDestinationUser()   Returns the current record's "DestinationUser" value
  * @method Relationship setSourceUserId()      Sets the current record's "sourceUserId" value
@@ -53,15 +53,8 @@ abstract class BaseRelationship extends sfDoctrineRecord
         $this->hasColumn('acceptTime', 'date', null, array(
              'type' => 'date',
              ));
-        $this->hasColumn('status', 'enum', null, array(
-             'type' => 'enum',
-             'values' => 
-             array(
-              0 => 'pending',
-              1 => 'accepted',
-              2 => 'rejected',
-              3 => 'cancelled',
-             ),
+        $this->hasColumn('status', 'integer', null, array(
+             'type' => 'integer',
              'notnull' => true,
              ));
     }

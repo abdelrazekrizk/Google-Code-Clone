@@ -10,7 +10,7 @@
  * @property string $password
  * @property string $firstname
  * @property string $lastname
- * @property enum $accountType
+ * @property boolean $isAdmin
  * @property Doctrine_Collection $User
  * @property Doctrine_Collection $Administrator
  * 
@@ -19,7 +19,7 @@
  * @method string              getPassword()      Returns the current record's "password" value
  * @method string              getFirstname()     Returns the current record's "firstname" value
  * @method string              getLastname()      Returns the current record's "lastname" value
- * @method enum                getAccountType()   Returns the current record's "accountType" value
+ * @method boolean             getIsAdmin()       Returns the current record's "isAdmin" value
  * @method Doctrine_Collection getUser()          Returns the current record's "User" collection
  * @method Doctrine_Collection getAdministrator() Returns the current record's "Administrator" collection
  * @method Account             setId()            Sets the current record's "id" value
@@ -27,7 +27,7 @@
  * @method Account             setPassword()      Sets the current record's "password" value
  * @method Account             setFirstname()     Sets the current record's "firstname" value
  * @method Account             setLastname()      Sets the current record's "lastname" value
- * @method Account             setAccountType()   Sets the current record's "accountType" value
+ * @method Account             setIsAdmin()       Sets the current record's "isAdmin" value
  * @method Account             setUser()          Sets the current record's "User" collection
  * @method Account             setAdministrator() Sets the current record's "Administrator" collection
  * 
@@ -67,13 +67,8 @@ abstract class BaseAccount extends sfDoctrineRecord
              'notnull' => true,
              'length' => 255,
              ));
-        $this->hasColumn('accountType', 'enum', null, array(
-             'type' => 'enum',
-             'values' => 
-             array(
-              0 => 'normal',
-              1 => 'admin',
-             ),
+        $this->hasColumn('isAdmin', 'boolean', null, array(
+             'type' => 'boolean',
              'notnull' => true,
              ));
     }

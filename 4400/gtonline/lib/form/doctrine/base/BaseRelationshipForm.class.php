@@ -19,7 +19,7 @@ abstract class BaseRelationshipForm extends BaseFormDoctrine
       'destinationUserId' => new sfWidgetFormInputHidden(),
       'description'       => new sfWidgetFormInputText(),
       'acceptTime'        => new sfWidgetFormDate(),
-      'status'            => new sfWidgetFormChoice(array('choices' => array('pending' => 'pending', 'accepted' => 'accepted', 'rejected' => 'rejected', 'cancelled' => 'cancelled'))),
+      'status'            => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -27,7 +27,7 @@ abstract class BaseRelationshipForm extends BaseFormDoctrine
       'destinationUserId' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('destinationUserId')), 'empty_value' => $this->getObject()->get('destinationUserId'), 'required' => false)),
       'description'       => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'acceptTime'        => new sfValidatorDate(array('required' => false)),
-      'status'            => new sfValidatorChoice(array('choices' => array(0 => 'pending', 1 => 'accepted', 2 => 'rejected', 3 => 'cancelled'))),
+      'status'            => new sfValidatorInteger(),
     ));
 
     $this->widgetSchema->setNameFormat('relationship[%s]');

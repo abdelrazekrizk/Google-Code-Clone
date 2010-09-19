@@ -50,7 +50,18 @@ abstract class BaseUserEmployer extends sfDoctrineRecord
              ));
         $this->hasColumn('jobTitle', 'string', 255, array(
              'type' => 'string',
+             'notnull' => true,
              'length' => 255,
+             ));
+
+
+        $this->index('uniqueness', array(
+             'fields' => 
+             array(
+              0 => 'userId',
+              1 => 'employerId',
+              2 => 'jobTitle',
+             ),
              ));
     }
 

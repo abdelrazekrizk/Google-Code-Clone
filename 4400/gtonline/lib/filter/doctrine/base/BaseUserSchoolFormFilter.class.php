@@ -15,7 +15,7 @@ abstract class BaseUserSchoolFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'userId'         => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('User'), 'add_empty' => true)),
       'schoolId'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('School'), 'add_empty' => true)),
-      'graduationYear' => new sfWidgetFormFilterInput(),
+      'graduationYear' => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(

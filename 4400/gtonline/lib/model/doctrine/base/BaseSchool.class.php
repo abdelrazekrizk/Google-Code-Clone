@@ -7,17 +7,20 @@
  * 
  * @property integer $id
  * @property string $name
- * @property enum $type
+ * @property integer $school_type_id
+ * @property SchoolType $SchoolType
  * @property Doctrine_Collection $UserSchool
  * 
- * @method integer             getId()         Returns the current record's "id" value
- * @method string              getName()       Returns the current record's "name" value
- * @method enum                getType()       Returns the current record's "type" value
- * @method Doctrine_Collection getUserSchool() Returns the current record's "UserSchool" collection
- * @method School              setId()         Sets the current record's "id" value
- * @method School              setName()       Sets the current record's "name" value
- * @method School              setType()       Sets the current record's "type" value
- * @method School              setUserSchool() Sets the current record's "UserSchool" collection
+ * @method integer             getId()             Returns the current record's "id" value
+ * @method string              getName()           Returns the current record's "name" value
+ * @method integer             getSchoolTypeId()   Returns the current record's "school_type_id" value
+ * @method SchoolType          getSchoolType()     Returns the current record's "SchoolType" value
+ * @method Doctrine_Collection getUserSchool()     Returns the current record's "UserSchool" collection
+ * @method School              setId()             Sets the current record's "id" value
+ * @method School              setName()           Sets the current record's "name" value
+ * @method School              setSchoolTypeId()   Sets the current record's "school_type_id" value
+ * @method School              setSchoolType()     Sets the current record's "SchoolType" value
+ * @method School              setUserSchool()     Sets the current record's "UserSchool" collection
  * 
  * @package    gtonline
  * @subpackage model
@@ -40,22 +43,19 @@ abstract class BaseSchool extends sfDoctrineRecord
              'notnull' => true,
              'length' => 255,
              ));
-        $this->hasColumn('type', 'enum', null, array(
-             'type' => 'enum',
+        $this->hasColumn('school_type_id', 'integer', null, array(
+             'type' => 'integer',
              'notnull' => true,
-             'values' => 
-             array(
-              0 => 'College/University',
-              1 => 'High School',
-              2 => 'Middle School',
-              3 => 'Elementary School',
-             ),
              ));
     }
 
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('SchoolType', array(
+             'local' => 'school_type_id',
+             'foreign' => 'id'));
+
         $this->hasMany('UserSchool', array(
              'local' => 'id',
              'foreign' => 'schoolId'));

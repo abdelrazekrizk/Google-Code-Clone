@@ -15,13 +15,13 @@ abstract class BaseRelationshipFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'description'       => new sfWidgetFormFilterInput(),
       'acceptTime'        => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate())),
-      'status'            => new sfWidgetFormChoice(array('choices' => array('' => '', 'pending' => 'pending', 'accepted' => 'accepted', 'rejected' => 'rejected', 'cancelled' => 'cancelled'))),
+      'status'            => new sfWidgetFormFilterInput(array('with_empty' => false)),
     ));
 
     $this->setValidators(array(
       'description'       => new sfValidatorPass(array('required' => false)),
       'acceptTime'        => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDate(array('required' => false)), 'to_date' => new sfValidatorDateTime(array('required' => false)))),
-      'status'            => new sfValidatorChoice(array('required' => false, 'choices' => array('pending' => 'pending', 'accepted' => 'accepted', 'rejected' => 'rejected', 'cancelled' => 'cancelled'))),
+      'status'            => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('relationship_filters[%s]');
@@ -45,7 +45,7 @@ abstract class BaseRelationshipFormFilter extends BaseFormFilterDoctrine
       'destinationUserId' => 'Number',
       'description'       => 'Text',
       'acceptTime'        => 'Date',
-      'status'            => 'Enum',
+      'status'            => 'Number',
     );
   }
 }

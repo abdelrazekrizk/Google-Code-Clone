@@ -5,10 +5,7 @@ Account:
     password: { type: string(255), notnull: true }
     firstname: { type: string(255), notnull: true }
     lastname: { type: string(255), notnull: true }
-    accountType: 
-      type: enum
-      values: [ normal, admin ]
-      notnull: true
+    isAdmin: { type: boolean, notnull: true }
 
 User:
   columns:
@@ -23,8 +20,6 @@ User:
       class: Account 
       local: accountId 
       foreign: id
-# any number of schools - set of schools and their types are maintained by administrator. each school record can also have a graduation year (not required). the same school can appear multiple times with different graduation years. allow deletion in case of error.
-# any number of professional information records. a list of employers is maintained by administrator. User will select employer from list and provide a job title. the job title is not managed by admin and can be any text value. Can have multiple employers - can have the same employer multiple times as long as the job title is different in each case. also allow deletion of employers in case of error.
 
 UserInterest:
   columns:
@@ -42,8 +37,7 @@ UserSchool:
     id: { type: integer, primary: true, autoincrement: true }
     userId: { type: integer, notnull: true }
     schoolId: { type: integer, notnull: true }
-    graduationYear: { type: integer }
-# some kind of uniqueness in (userId, schoolId, graduationYear)
+    graduationYear: { type: integer, notnull: true } # by convention lets not allow this to be null. set -1 to be "not yet graduated" status.
   relations:
     User:
       class: User
@@ -53,14 +47,17 @@ UserSchool:
       class: School
       local: schoolId
       foreign: id
+  indexes:
+    uniqueness:
+      fields: [userId, schoolId, graduationYear]
+      type: unique
 
 UserEmployer:
   columns:
     id: { type: integer, primary: true, autoincrement: true }
     userId: { type: integer, notnull: true }
     employerId: { type: integer, notnull: true }
-    jobTitle: { type: string(255) }
-# some kind of uniqueness in (userId, employerId, jobTitle)
+    jobTitle: { type: string(255), notnull: true }
   relations:
     User:
       class: User
@@ -70,6 +67,9 @@ UserEmployer:
       class: Employer
       local: employerId
       foreign: id
+  indexes:
+    uniqueness:
+      fields: [ userId, employerId, jobTitle ]
 
 Administrator:
   columns:
@@ -88,10 +88,7 @@ Relationship:
     destinationUserId: { type: integer, primary: true }
     description: { type: string(255) }
     acceptTime: { type: date } # This field will be null until accepted. once accepted, it should never be null.
-    status:
-      type: enum
-      values: [pending, accepted, rejected, cancelled]
-      notnull: true
+    status: { type: integer, notnull: true } # 0: pending 1: accepted 2: rejected 3: cancelled
   relations:
     SourceUser: 
       class: User
@@ -135,7 +132,18 @@ School:
   columns:
     id: { type: integer, primary: true, autoincrement: true }
     name: { type: string(255), unique: true, notnull: true }
-    type: { type: enum, notnull: true, values: ["College/University", "High School", "Middle School", "Elementary School"] }
+    school_type_id: { type: integer, notnull: true }
+  relations:
+    SchoolType:
+      class: SchoolType
+      local: school_type_id
+      foreign: id
+
+SchoolType:
+  columns:
+    id: { type: integer, primary: true, autoincrement: true }
+    name: { type: string(255), unique: true, notnull: true }
+# initialize as "College/University", "High School", "Middle School", "Elementary School"
 
 Employer:
   columns:

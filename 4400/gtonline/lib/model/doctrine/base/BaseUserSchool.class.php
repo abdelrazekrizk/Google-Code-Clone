@@ -50,6 +50,18 @@ abstract class BaseUserSchool extends sfDoctrineRecord
              ));
         $this->hasColumn('graduationYear', 'integer', null, array(
              'type' => 'integer',
+             'notnull' => true,
+             ));
+
+
+        $this->index('uniqueness', array(
+             'fields' => 
+             array(
+              0 => 'userId',
+              1 => 'schoolId',
+              2 => 'graduationYear',
+             ),
+             'type' => 'unique',
              ));
     }
 
