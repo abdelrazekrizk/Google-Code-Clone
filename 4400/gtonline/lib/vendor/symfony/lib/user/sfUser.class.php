@@ -259,6 +259,10 @@ class sfUser implements ArrayAccess
     $this->getAttributeHolder()->remove($offset);
   }
 
+  /**
+   *
+   * @return sfParameterHolder
+   */
   public function getAttributeHolder()
   {
     return $this->attributeHolder;

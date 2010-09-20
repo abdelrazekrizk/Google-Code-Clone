@@ -9,6 +9,16 @@
     <?php include_javascripts() ?>
   </head>
   <body>
+	  <?php if(($notice = $sf_user->getFlash('notice'))): ?>
+		  <div class="flash-notice">
+			  <?php echo $notice ?>
+		  </div>
+	  <?php endif; ?>
+	  <?php if(($error = $sf_user->getFlash('error'))): ?>
+		  <div class="flash-error">
+			  <?php echo $error ?>
+		  </div>
+	  <?php endif; ?>
     <?php echo $sf_content ?>
   </body>
 </html>

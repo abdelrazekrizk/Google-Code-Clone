@@ -233,7 +233,7 @@ abstract class sfComponent
    *
    * <code>$this->getContext()->getUser()</code>
    *
-   * @return sfUser The current sfUser implementation instance
+   * @return myUser The current sfUser implementation instance
    */
   public function getUser()
   {

@@ -1,0 +1,1 @@
+<p>Temporary admin page!</p>
